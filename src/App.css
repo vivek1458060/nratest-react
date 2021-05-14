@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+#root {
+    height: 100%;
+}
+
+.custom-anchor {
+    color: rgba(0,0,0,.85);
+    transition: all .3s;
+}
+.custom-anchor:hover {
+    color: #1890ff;
+}
+
+.pre-wrap {
+    white-space: pre-wrap;
+}
+
+.custom-meta-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.p-0 {
+    padding: 0;
+}
