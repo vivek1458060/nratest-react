@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import { List, Button, Form, Input, Typography } from 'antd';
+import { useEffect, useState } from 'react';
+import { List, Button, Form, Input, Typography, message } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import QuestionCommentsWrapper from './QuestionComments.style';
 import RenderAuthModal from '../RenderAuthModal';
 
 export default function QuestionComments(props) {
-    const { question_id, comments } = props;
+    const { question_id } = props;
     const [showCommentForm, toggleCommentForm] = useState(false);
     const [comment, setComment] = useState('');
+    const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showSigninModal, showSigninModalFunc] = useState(false);
 
@@ -16,21 +17,33 @@ export default function QuestionComments(props) {
         try {
             const res = await axios.get(`/comments/list/question/${question_id}`);
             const comments = res.data.comments;
-            props.onAddComment(question_id, comments);
+            setComments(comments)
         } catch (e) {
             console.log(e);
         }
     }
 
+    useEffect(() => {
+        console.log("useeffect!!!")
+        getComments();
+    }, []);
+
     async function onSubmit() {
-        if(!props.user) return showSigninModalFunc(true);
+        if (!props.user) return showSigninModalFunc(true);
 
         if (!comment) return;
         setLoading(true);
         try {
-            await axios.post(`/comments/question/${question_id}`, { text: comment });
+            const res = await axios.post(`/comments/question/${question_id}`, { text: comment });
             setComment('');
-            getComments();
+            setComments([{
+                ...res.data.comment,
+                createdBy: props.user,
+            },
+            ...comments
+            ]);
+            props.onAddComment(question_id, comments);
+            message.success("Your comment added successfuly");
         } catch (e) {
             console.log(e);
         }

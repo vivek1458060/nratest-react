@@ -8,6 +8,10 @@ const QuestionWrapper = styled.div`
     .list-meta .ant-list-item-meta-title {
         margin-bottom: 0px;
     };
+    .list-meta .ant-list-item-meta-title {
+        display: flex;
+        justify-content: space-between;
+    }
     .ant-collapse-header {
         display: none;
     };
@@ -40,7 +44,28 @@ const QuestionWrapper = styled.div`
         .ant-collapse-content-box {
             padding: 0px;
         }
-    }
+    };
+    .title-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    };
+
+    .img-container {
+        display: flex;
+        align-items: center;
+        margin: 0 0 0 60px;
+    };
+
+    @media (max-width: 768px) {
+        .img-container  {
+          flex: 100%;
+          margin: 24px 0 0;
+          img {
+            max-width: unset !important;
+          }
+        }
+    };
 `
 
 export default QuestionWrapper;

@@ -13,12 +13,13 @@ import EditAnswer from './pages/EditAnswer/EditAnswer';
 import PublicRoute from './routers/PublicRoute';
 import PrivateRoute from './routers/PrivateRoute';
 
-import 'antd/dist/antd.min.css';
-import './App.css'
+import 'antd/dist/antd.less';
+import './App.less'
 
 export const history = createBrowserHistory();
 
 axios.defaults.baseURL = 'http://nratest-env.eba-cdrj7amm.ap-south-1.elasticbeanstalk.com';
+// axios.defaults.baseURL = 'http://localhost:8080';
 
 function App() {
   const dispatch = useDispatch();

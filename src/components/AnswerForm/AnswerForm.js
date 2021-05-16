@@ -52,13 +52,13 @@ class AnswerForm extends Component {
                 message.success("Your answer updated successfully");
                 history.push(`/${this.props.answer.questionId}/solutions`);
             } else {
-                await axios.post('/answers/' + this.props.question_id, formData, {
+                const res = await axios.post('/answers/' + this.props.question_id, formData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                     },
                 });
                 this.formRef.current.resetFields();
-                this.props.onAddAnswer()
+                this.props.onAddAnswer(res.data.answer)
                 message.success("Your answer added successfully");
             }
         } catch (e) {

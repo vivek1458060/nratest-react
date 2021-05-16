@@ -48,11 +48,28 @@ class Solutions extends Component {
         this.getAnswers();
         this.getQuestion();
     }
-    onAddAnswer = async () => this.getAnswers();
 
-    onAddComment = (question_id, comments) => {
+    onAddAnswer = async (answer) => {
         this.setState({
-            question: { ...this.state.question, comments },
+            answers: [{
+                ...answer,
+                createdBy: this.props.user,
+            },
+            ...this.state.answers
+            ],
+            question: {
+                ...this.state.question,
+                answerCount: this.state.question.answerCount + 1,
+            }
+        })
+    };
+
+    onAddComment = () => {
+        this.setState({
+            question: {
+                ...this.state.question,
+                commentCount: this.state.question.commentCount + 1
+            },
         })
     }
     deleteAnswer = (answer) => {
@@ -65,7 +82,11 @@ class Solutions extends Component {
                     try {
                         await axios.delete(`/answers/${answer._id}`);
                         this.setState({
-                            answers: this.state.answers.filter(({ _id }) => _id !== answer._id)
+                            answers: this.state.answers.filter(({ _id }) => _id !== answer._id),
+                            question: {
+                                ...this.state.question,
+                                commentCount: this.state.question.commentCount - 1
+                            },
                         });
                         message.success("Answer deleted successfully");
                     } catch (e) {
@@ -78,11 +99,18 @@ class Solutions extends Component {
             console.log(e);
         }
     }
-    onSettingMenuItemClick = ({ key }, answer) => {
+    onAnswerSettingClick = ({ key }, answer) => {
         if (key === 'answer_edit') {
             this.props.history.push(`/answer/${answer._id}`);
         } else if (key === 'answer_delete') {
             this.deleteAnswer(answer);
+        }
+    }
+    onQuestionSettingClick = ({ key }, question) => {
+        if (key === 'question_edit') {
+            this.props.history.push(`/question/edit/${question._id}`);
+        } else if (key === 'question_delete') {
+            this.deleteQuestion(question);
         }
     }
     handleCommentCollapse = (key) => {
@@ -129,51 +157,77 @@ class Solutions extends Component {
                                             <Button
                                                 type="text"
                                                 style={{ color: '#1890ff' }}
-                                                icon={<LikeFilled />}
                                                 onClick={() => this.handleLike(question, 'REMOVE_LIKE')}
                                             >
-                                                {String(question.likeCount)}
+                                                <LikeFilled /> {question.likeCount}
                                             </Button>
                                         ) : (
                                             <Button
                                                 type="text"
                                                 shape="circle"
-                                                icon={<LikeOutlined />}
                                                 onClick={() => this.handleLike(question, 'LIKE')}
                                             >
-                                                {String(question.likeCount)}
+                                                <LikeOutlined /> {question.likeCount}
                                             </Button>
                                         ),
                                         <Button
                                             type="text"
                                             shape="circle"
-                                            icon={<MessageOutlined />}
                                             onClick={() => this.handleCommentCollapse("activeKey" + question._id)}
                                         >
-                                            {String(question.comments.length)}
+                                            <MessageOutlined /> {question.commentCount}
                                         </Button>,
                                     ]}
-                                    extra={
-                                        question.imageUrl &&
-                                        <Image
-                                            width={200}
-                                            src={question.imageUrl}
-                                        />
-                                    }
                                 >
                                     <List.Item.Meta
                                         className="list-meta"
                                         avatar={<Avatar src={question.createdBy?.dpUrl} />}
                                         title={
-                                            <div className="custom-meta-title">
-                                                <span>{question.createdBy?.fullName}</span>
-                                                <span style={{ fontSize: '12px' }}>
-                                                    <Text type="secondary">Asked</Text>: {moment(question.createdAt).format('LLL')}
-                                                </span>
-                                            </div>
+                                            <>
+                                                <div className="custom-meta-title">
+                                                    <span>{question.createdBy.fullName}</span>
+                                                    <span style={{ fontSize: '12px' }}>
+                                                        <Text type="secondary">Asked: {moment(question.createdAt).format('LLL')}</Text>
+                                                    </span>
+                                                </div>
+                                                {
+                                                    user && (user._id === question.createdBy._id || user.role === 'admin') && <Dropdown
+                                                        overlay={
+                                                            <Menu style={{ minWidth: '150px' }} onClick={(e) => this.onQuestionSettingClick(e, question)}>
+                                                                <Menu.Item key="question_edit" icon={<EditOutlined />}>
+                                                                    Edit
+                                                            </Menu.Item>
+                                                                <Menu.Item key="question_delete" icon={<DeleteOutlined />}>
+                                                                    Delete
+                                                            </Menu.Item>
+                                                            </Menu>
+                                                        }
+                                                        trigger={['click']}
+                                                    >
+                                                        <Button
+                                                            type="text"
+                                                            icon={<SettingOutlined />}
+                                                            onClick={e => e.preventDefault()}
+                                                        >
+                                                        </Button>
+                                                    </Dropdown>
+                                                }
+                                            </>
                                         }
                                     />
-                                    {question.text}
+                                    <Row>
+                                        {question.text && <div style={{ flex: 1 }}>
+                                            <Typography.Paragraph className="pre-wrap">
+                                                {question.text}
+                                            </Typography.Paragraph>
+                                        </div>}
+                                        <div className="img-container">
+                                            <Image
+                                                style={{ maxWidth: question.text ? '250px' : '573px' }}
+                                                src={question.imageUrl}
+                                            />
+                                        </div>
+                                    </Row>
                                 </List.Item>
                             )}
                         />
@@ -181,7 +235,6 @@ class Solutions extends Component {
                             <Collapse.Panel header="This panel can only be collapsed by clicking text" key="1">
                                 <Comments
                                     user={this.props.user}
-                                    comments={question?.comments || []}
                                     question_id={this.question_id}
                                     onAddComment={this.onAddComment}
                                 />
@@ -212,11 +265,17 @@ class Solutions extends Component {
                                         //description={<Text type="secondary">- {moment(answer.createdAt).format('LLL')}</Text>}
                                         />}
                                     extra={
-                                        user && (user._id === answer.createdBy._id || user.role === 'admin') && <Dropdown
+                                        user &&
+                                        (
+                                            user.role === 'admin' ||
+                                            user._id === answer.createdBy._id ||
+                                            user._id === answer.createdBy
+                                        ) &&
+                                        <Dropdown
                                             overlay={
                                                 <Menu
                                                     style={{ minWidth: '150px' }}
-                                                    onClick={(e) => this.onSettingMenuItemClick(e, answer)}
+                                                    onClick={(e) => this.onAnswerSettingClick(e, answer)}
                                                 >
                                                     <Menu.Item key="answer_edit" icon={<EditOutlined />}>
                                                         Edit
