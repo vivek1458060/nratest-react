@@ -10,6 +10,9 @@ module.exports = override(
     }),
     addLessLoader({
         javascriptEnabled: true,
-        // modifyVars: {}
+        modifyVars: {
+            "@font-size-base": "16px",
+            "@line-height-base": "24px"
+        }
     })
 );

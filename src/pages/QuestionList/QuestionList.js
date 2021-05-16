@@ -171,9 +171,9 @@ class QuestionList extends Component {
                                         </Button>,
                                         <Link to={`/${question._id}/solutions`}>
                                             <Button
-                                                type="primary"
+                                                // type="primary"
                                             >
-                                                4 {question.answerCount} 4 Answers
+                                                {question.answerCount} Answers
                                             </Button>
                                         </Link>,
                                         <Collapse collapsible="header" activeKey={this.state["activeKey" + question._id]} className="comment-collapse">

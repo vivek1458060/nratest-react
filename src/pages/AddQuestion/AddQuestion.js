@@ -109,7 +109,7 @@ class AddQuestion extends Component {
                                         type="primary"
                                         htmlType="submit"
                                     >
-                                        {this.question_id ? 'Updated Question' : 'Add Question'}
+                                        {this.question_id ? 'Update Question' : 'Add Question'}
                                     </Button>
                                     <RenderAuthModal 
                                         show={this.state.showSigninModal}

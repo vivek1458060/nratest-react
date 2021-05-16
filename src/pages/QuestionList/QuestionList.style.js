@@ -43,7 +43,10 @@ const QuestionWrapper = styled.div`
     .comment-collapse {
         .ant-collapse-content-box {
             padding: 0px;
-        }
+        };
+        .ant-collapse-item {
+            border-bottom: none;
+        };
     };
     .title-container {
         display: flex;
