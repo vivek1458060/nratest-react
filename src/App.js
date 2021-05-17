@@ -10,7 +10,8 @@ import './App.less';
 import PublicRoute from './routers/PublicRoute';
 import PrivateRoute from './routers/PrivateRoute';
 import loadable from "@loadable/component";
-const Login = loadable(() => import("./pages/Login/Login"));
+// const Login = loadable(() => import("./pages/Login/Login"));
+import Login from './pages/Login/Login';
 const Signup = loadable(() => import("./pages/Signup/Signup"));
 const QuestionList = loadable(() => import("./pages/QuestionList/QuestionList"));
 const Solutions = loadable(() => import("./pages/Solutions/Solutions"));
@@ -19,8 +20,8 @@ const EditAnswer = loadable(() => import("./pages/EditAnswer/EditAnswer"));
 
 export const history = createBrowserHistory();
 
-axios.defaults.baseURL = 'http://nratest-env-2.eba-hu3zpjka.ap-south-1.elasticbeanstalk.com';
-// axios.defaults.baseURL = 'http://localhost:8080';
+// axios.defaults.baseURL = 'http://nratest-env-2.eba-hu3zpjka.ap-south-1.elasticbeanstalk.com';
+axios.defaults.baseURL = 'http://localhost:8080';
 
 function App() {
   const dispatch = useDispatch();
