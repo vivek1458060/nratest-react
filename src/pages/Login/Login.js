@@ -26,7 +26,7 @@ class Login extends Component {
                 this.props.history.push("/question/list");
             }
         } catch(e) {
-            if(e.response?.status == 400) {
+            if(e.response?.status === 400) {
                 message.error("Email or password is invalid")
             } else {
                 message.error("Something went wrong")
@@ -73,11 +73,11 @@ class Login extends Component {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your username!',
+                                    message: 'Please input your Email!',
                                 },
                             ]}
                         >
-                            <Input prefix={<MailOutlined />} />
+                            <Input placeholder="Email" prefix={<MailOutlined />} />
                         </Form.Item>
 
                         <Form.Item
@@ -92,7 +92,7 @@ class Login extends Component {
                                 },
                             ]}
                         >
-                            <Input.Password prefix={<LockOutlined />} />
+                            <Input.Password placeholder="Password" prefix={<LockOutlined />} />
                         </Form.Item>
 
                         <Form.Item style={{ marginBottom: '10px' }}>

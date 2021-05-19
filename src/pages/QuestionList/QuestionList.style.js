@@ -53,22 +53,6 @@ const QuestionWrapper = styled.div`
         justify-content: space-between;
         align-items: center;
     };
-
-    .img-container {
-        display: flex;
-        align-items: center;
-        margin: 0 0 0 60px;
-    };
-
-    @media (max-width: 768px) {
-        .img-container  {
-          flex: 100%;
-          margin: 24px 0 0;
-          img {
-            max-width: unset !important;
-          }
-        }
-    };
 `
 
 export default QuestionWrapper;

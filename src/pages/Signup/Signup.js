@@ -83,7 +83,7 @@ class Signup extends Component {
                                 },
                             ]}
                         >
-                            <Input placeholder="Enter you name" prefix={<UserOutlined />} />
+                            <Input placeholder="Full name" prefix={<UserOutlined />} />
                         </Form.Item>
 
                         <Form.Item
@@ -97,7 +97,7 @@ class Signup extends Component {
                                 },
                             ]}
                         >
-                            <Input prefix={<MailOutlined />} />
+                            <Input placeholder="Email" prefix={<MailOutlined />} />
                         </Form.Item>
 
                         <Form.Item
@@ -111,7 +111,7 @@ class Signup extends Component {
                                 },
                             ]}
                         >
-                            <Input.Password prefix={<LockOutlined />} />
+                            <Input.Password placeholder="Password" prefix={<LockOutlined />} />
                         </Form.Item>
 
                         <Form.Item style={{ marginBottom: '10px' }} loading={this.state.loading}>

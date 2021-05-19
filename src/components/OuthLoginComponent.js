@@ -26,7 +26,7 @@ export default function OuthLoginComponent(props) {
                     style={{borderColor: '#1890ff'}}
                 >
                     <Space>
-                        <img src="/google.svg"/> Sign in with Google
+                        <img src="/google.svg" alt=""/> Sign in with Google
                     </Space>
                 </Button>
             )}

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Row, Col, Typography, Card, Upload, Button, message, Form, Input, Modal } from 'antd';
+import { Typography, Card, Upload, Button, message, Form, Input } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 import AddQuestionWrapper from './AddQuestion.style'
-import Login from '../Login/Login';
-import Signup from '../Signup/Signup';
 import RenderAuthModal from '../../components/RenderAuthModal';
 
 const normFile = (e) => {
@@ -83,43 +81,37 @@ class AddQuestion extends Component {
     render() {
         return (
             <AddQuestionWrapper>
-                <Row>
-                    <Col md={{ span: 14, offset: 5 }} xs={24}>
-                        <Typography.Title level={3} className="title" style={{ fontWeight: 300, marginBottom: '25px' }}>
-                            {this.question_id ? 'Update Question' : 'Ask a public question'}
-                        </Typography.Title>
-                        <Card className="form-card">
-                            <Form layout="vertical" ref={this.formRef} onFinish={this.onFinish}>
-                                <Form.Item label="Question Text" name="text">
-                                    <Input.TextArea placeholder="Type your quesetion here..." autoSize={{ minRows: 4 }} />
-                                </Form.Item>
-                                <Form.Item
-                                    label="Upload Image"
-                                    name="image"
-                                    valuePropName="fileList"
-                                    getValueFromEvent={normFile}
-                                >
-                                    <Upload beforeUpload={() => false} listType="picture" accept="image/png,image/jpeg,image/jpg" maxCount={1}>
-                                        <Button icon={<UploadOutlined />}>Upload Image</Button>
-                                    </Upload>
-                                </Form.Item>
-                                <Form.Item>
-                                    <Button
-                                        loading={this.state.loading}
-                                        type="primary"
-                                        htmlType="submit"
-                                    >
-                                        {this.question_id ? 'Update Question' : 'Add Question'}
-                                    </Button>
-                                    <RenderAuthModal 
-                                        show={this.state.showSigninModal}
-                                        onClose={() => this.setState({ showSigninModal: false })}
-                                    />
-                                </Form.Item>
-                            </Form>
-                        </Card>
-                    </Col>
-                </Row>
+                <Typography.Title level={3} className="title" style={{ fontWeight: 300, marginBottom: '25px' }}>
+                    {this.question_id ? 'Update Question' : 'Ask a public question'}
+                </Typography.Title>
+                <Form layout="vertical" ref={this.formRef} onFinish={this.onFinish}>
+                    <Form.Item label="Question Text" name="text">
+                        <Input.TextArea placeholder="Type your quesetion here..." autoSize={{ minRows: 4 }} />
+                    </Form.Item>
+                    <Form.Item
+                        label="Upload Image"
+                        name="image"
+                        valuePropName="fileList"
+                        getValueFromEvent={normFile}
+                    >
+                        <Upload beforeUpload={() => false} listType="picture" accept="image/png,image/jpeg,image/jpg" maxCount={1}>
+                            <Button icon={<UploadOutlined />}>Upload Image</Button>
+                        </Upload>
+                    </Form.Item>
+                    <Form.Item>
+                        <Button
+                            loading={this.state.loading}
+                            type="primary"
+                            htmlType="submit"
+                        >
+                            {this.question_id ? 'Update Question' : 'Add Question'}
+                        </Button>
+                        <RenderAuthModal
+                            show={this.state.showSigninModal}
+                            onClose={() => this.setState({ showSigninModal: false })}
+                        />
+                    </Form.Item>
+                </Form>
             </AddQuestionWrapper>
         );
     }

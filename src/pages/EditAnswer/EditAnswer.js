@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Typography, Card } from 'antd';
+import { Typography, Card } from 'antd';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
@@ -13,21 +13,15 @@ class EditAnswer extends Component {
         try {
             const res = await axios.get(`/answers/${this.answer_id}`);
             this.setState({ answer: res.data.answer });
-        } catch(e) {
+        } catch (e) {
             console.log(e);
         }
     }
     render() {
         return (
             <EditAnswerWrapper>
-                <Row>
-                    <Col md={{ span: 14, offset: 5 }} xs={24}>
-                        <Typography.Title level={3} style={{ fontWeight: 300, marginBottom: '25px' }} className="title">Edit Answer</Typography.Title>
-                        <Card className="form-card">
-                            {this.state.answer && <AnswerForm user={this.props.user} answer={this.state.answer} />}
-                        </Card>
-                    </Col>
-                </Row>
+                <Typography.Title level={3} style={{ fontWeight: 300, marginBottom: '25px' }} className="title">Edit Answer</Typography.Title>
+                {this.state.answer && <AnswerForm user={this.props.user} answer={this.state.answer} />}
             </EditAnswerWrapper>
         );
     }

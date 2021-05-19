@@ -1,0 +1,106 @@
+[
+    {
+      "id": 1,
+      "createdAt": "May 19, 2021",
+      "questionList": [
+        {
+          "id": 1,
+          "text": "Sohan started a business with a capital of Rs. 80000. After 6 months Mohan joined as a partner by investing Rs. 65000. After one year they earned total profit Rs. 20000. What is share of Sohan in the profit?",
+          "options": [
+            {
+              "id": 1,
+              "text": "Rs. 5222.2"
+            },
+            {
+              "id": 2,
+              "text": "Rs. 5777.7"
+            },
+            {
+              "id": 3,
+              "text": "Rs. 6222.2"
+            },
+            {
+              "id": 4,
+              "text": "Rs. 6777.7"
+            }
+          ],
+          "correctOption": 2
+        },
+        {
+          "id": 2,
+          "text": "A mother is twice as old as her son. If 20 years ago, the age of the mother was 10 times the age of the son, what is the present age of the mother?",
+          "options": [
+            {
+              "id": 1,
+              "text": "38 years"
+            },
+            {
+              "id": 2,
+              "text": "40 years"
+            },
+            {
+              "id": 3,
+              "text": "43 years"
+            },
+            {
+              "id": 4,
+              "text": "45 years"
+            }
+          ],
+          "correctOption": 4
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "createdAt": "May 18, 2021",
+      "questionList": [
+        {
+          "id": 1,
+          "text": "How many times the hands of a clock coincide in a day?",
+          "options": [
+            {
+              "id": 1,
+              "text": "24"
+            },
+            {
+              "id": 2,
+              "text": "22"
+            },
+            {
+              "id": 3,
+              "text": "23"
+            },
+            {
+              "id": 4,
+              "text": "21"
+            }
+          ],
+          "correctOption": 2
+        },
+        {
+          "id": 2,
+          "text": "Two ships are sailing in the sea on the two sides of a lighthouse. The angles of elevation of the top of the lighthouse observed from the ships are 30° and 45° respectively. If the lighthouse is 100m high, find the distance between the two ships.",
+          "options": [
+            {
+              "id": 1,
+              "text": "155.80 m"
+            },
+            {
+              "id": 2,
+              "text": "157.80 m"
+            },
+            {
+              "id": 3,
+              "text": "159. 80 m"
+            },
+            {
+              "id": 4,
+              "text": "161.80 m"
+            }
+          ],
+          "correctOption": 2
+        }
+      ]
+    }
+  ]

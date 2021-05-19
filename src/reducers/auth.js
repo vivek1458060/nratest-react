@@ -1,4 +1,4 @@
-export default (state = {}, action) => {
+const authReducer = (state = {}, action) => {
     switch (action.type) {
         case 'LOGIN':
             return {
@@ -10,3 +10,5 @@ export default (state = {}, action) => {
             return state;
     }
 }
+
+export default authReducer;

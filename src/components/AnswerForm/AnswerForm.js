@@ -72,7 +72,7 @@ class AnswerForm extends Component {
         return (
             <Form layout="vertical" ref={this.formRef} onFinish={this.onSubmit}>
                 <Form.Item label="Answer Text" name="text">
-                    <Input.TextArea placeholder="Type your quesetion here..." autoSize={{ minRows: 4 }} />
+                    <Input.TextArea placeholder="Type your answer here..." autoSize={{ minRows: 4 }} />
                 </Form.Item>
                 <Form.Item label="Video URL" name="videoUrl">
                     <Input placeholder="Post video url" />
