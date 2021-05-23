@@ -1,44 +1,42 @@
-import { Row, Col, Tabs, Breadcrumb } from 'antd';
-
-import { Layout, Menu, Card } from 'antd';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-import { NavLink, Navlink } from 'react-router-dom';
+import { Row, Col, Layout, Menu } from 'antd';
+import { NavLink } from 'react-router-dom';
 import { history } from '../../App';
 import LayoutWrapper from './Layout.style';
 import CustomHeader from '../../components/Header/Header';
 
-import { useMediaQuery } from 'react-responsive'
-
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
-export const SiderMenu = ({ menuStyle }) => (
-    <Menu
-        mode="inline"
-        defaultSelectedKeys={[history.location.pathname]}
-        defaultOpenKeys={['quiz']}
-        style={menuStyle}
-        onClick={(e) => console.log(e)}
-    >
-        <Menu.Item key="/question/list">
-            <NavLink to="/question/list">Doubt</NavLink>
-        </Menu.Item>
-        {/* <SubMenu key="quiz" title="Quiz">
-            <Menu.Item key="/add-quiz">
-                <NavLink to="/add-quiz">Add Quiz</NavLink>
+export const SiderMenu = (props) => {
+    const pathname = history.location.pathname;
+    return (
+        <Menu
+            mode="inline"
+            defaultSelectedKeys={[pathname === '/' ? '/question/list' : pathname]}
+            // defaultOpenKeys={['quiz']}
+            style={props.menuStyle}
+            onClick={props.onClick}
+        >
+            <Menu.Item key="/question/list">
+                <NavLink to="/question/list">Doubt</NavLink>
             </Menu.Item>
+            {/* <SubMenu key="quiz" title="Quiz">
+                <Menu.Item key="/add-quiz">
+                    <NavLink to="/add-quiz">Add Quiz</NavLink>
+                </Menu.Item>
+                <Menu.Item key="/quizzes">
+                    <NavLink to="/quizzes">Take Quiz</NavLink>
+                </Menu.Item>
+            </SubMenu> */}
             <Menu.Item key="/quizzes">
                 <NavLink to="/quizzes">Take Quiz</NavLink>
             </Menu.Item>
-        </SubMenu> */}
-        <Menu.Item key="/quizzes">
-            <NavLink to="/quizzes">Take Quiz</NavLink>
-        </Menu.Item>
-        <Menu.Item key="/classes">
-            <NavLink to="/classes">Classes</NavLink>
-        </Menu.Item>
-    </Menu>
-)
+            <Menu.Item key="/classes">
+                <NavLink to="/classes">Classes</NavLink>
+            </Menu.Item>
+        </Menu>
+    )
+}
 
 function LayoutCom(props) {
     return (

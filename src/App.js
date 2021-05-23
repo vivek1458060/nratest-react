@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { createBrowserHistory } from "history";
-import { Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import './App.less';
@@ -22,8 +22,8 @@ const Quizzes = loadable(() => import("./pages/Quizzes/Quizzes"));
 
 export const history = createBrowserHistory();
 
-axios.defaults.baseURL = 'http://nratest-env-2.eba-hu3zpjka.ap-south-1.elasticbeanstalk.com';
-// axios.defaults.baseURL = 'http://localhost:8080';
+//axios.defaults.baseURL = 'https://backend.nratest.com';
+axios.defaults.baseURL = 'http://localhost:8080';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,13 +41,13 @@ function App() {
         <Route>
           <Switch>
             <Layout>
-              <Route path="/" component={QuestionList} exact />
+              <Route path="/" component={() => <Redirect to="/question/list" />} exact />
               <Route path="/question/list" component={QuestionList} exact />
               <Route path="/question/ask" component={AddQuestion} exact />
               <PrivateRoute path="/question/edit/:question_id" component={AddQuestion} exact />
               <Route path="/:question_id/solutions" component={Solutions} exact />
               <PrivateRoute path="/answer/:answer_id" component={EditAnswer} exact />
-              <PrivateRoute path="/classes" component={Classes} exact />
+              <Route path="/classes" component={Classes} exact />
               <Route path="/quizzes" component={Quizzes} exact />
             </Layout>
           </Switch>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { List, Avatar, Row, Typography, Button, Card, Collapse, Dropdown, Menu, Modal, message, Image, Radio } from 'antd';
+import { List, Avatar, Row, Typography, Button, Empty, Collapse, Dropdown, Menu, Modal, message, Image, Radio, Spin } from 'antd';
 import { MessageOutlined, LikeOutlined, LikeFilled, SettingOutlined, ExclamationCircleOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -9,7 +9,8 @@ import moment from 'moment';
 import QuestionWrapper from './QuestionList.style';
 import Comments from '../../components/Comments/QuestionComments';
 import RenderAuthModal from '../../components/RenderAuthModal';
-import IntersectionObserverComponent from '../../components/IntersectionObserverComponent';
+import { InView } from 'react-intersection-observer';
+import InfiniteScroll from 'react-infinite-scroller';
 
 const { Text, Title } = Typography;
 const { Panel } = Collapse;
@@ -19,20 +20,21 @@ class QuestionList extends Component {
     state = {
         showCommentForm: false,
         questions: [],
+        loading: false,
+        hasMore: true,
+        skip: 0,
+        limit: 10
     }
-    getQuestions = async (filters) => {
-        try {
-            const res = await axios.get("/questions/list", {
-                params: filters
-            });
-            const questions = res.data.questions;
-            this.setState({ questions });
-        } catch (e) {
-            console.log(e);
-        }
+    getQuestions = (query = {
+        skip: this.state.skip,
+        limit: this.state.limit
+    }) => {
+        return axios.get("/questions/list", {
+            params: query
+        });
     }
-    async componentDidMount() {
-        this.getQuestions();
+    componentDidMount() {
+        this.handleInfiniteOnLoad();
     }
     handleCommentCollapse = (key) => {
         this.setState({ [key]: !this.state[key] || this.state[key] === "0" ? "1" : "0" })
@@ -50,6 +52,38 @@ class QuestionList extends Component {
             })
         });
     }
+    handleFilterTabChange = async (e) => {
+        this.setState({ loading: true, hasMore: true, questions: [] });
+        try {
+            const skip = 0; 
+            const res = await this.getQuestions({ tab: e.target.value, skip, limit: this.state.limit });
+            const questions = res.data.questions;
+            this.setState({
+                questions,
+                skip: skip + this.state.limit,
+                hasMore: !!questions.length,
+            })
+        } catch (e) {
+            console.log(e);
+        }
+        this.setState({ loading: false });
+    }
+    handleInfiniteOnLoad = async () => {
+        this.setState({ loading: true });
+        if (!this.state.hasMore) return;
+        try {
+            const res = await this.getQuestions();
+            const questions = res.data.questions;
+            this.setState({
+                questions: this.state.questions.concat(questions),
+                skip: this.state.skip + this.state.limit,
+                hasMore: questions.length > 0,
+            })
+        } catch (e) {
+            console.log(e);
+        }
+        this.setState({ loading: false });
+    };
     deleteQuestion = (question) => {
         try {
             confirm({
@@ -105,9 +139,10 @@ class QuestionList extends Component {
     render() {
         const { questions } = this.state;
         const { user } = this.props;
+        console.log(this.state.skip, this.state.limit)
         return (
             <QuestionWrapper>
-                <div bordered={false} className="title-card">
+                <div bordered="false" className="title-card">
                     <div className="title-container">
                         <Title level={2} className="title">Questions</Title>
                         <Link to="/question/ask">
@@ -118,126 +153,145 @@ class QuestionList extends Component {
                 </div>
                 <Radio.Group
                     defaultValue="newest"
-                    onChange={(e) => this.getQuestions({ tab: e.target.value })}
+                    onChange={this.handleFilterTabChange}
                     className="filters"
                     size="small"
                 >
-                    <Radio.Button style={{height: '40px', lineHeight: '36px', padding: '0px 12px'}} value="newest">Newest</Radio.Button>
-                    <Radio.Button style={{height: '40px', lineHeight: '36px', padding: '0px 12px'}} value="answered">Answered</Radio.Button>
-                    {user && <Radio.Button style={{height: '40px', lineHeight: '36px', padding: '0px 12px'}} value="my_questions">My Questions</Radio.Button>}
+                    <Radio.Button style={{ height: '40px', lineHeight: '36px', padding: '0px 12px' }} value="newest">Newest</Radio.Button>
+                    <Radio.Button style={{ height: '40px', lineHeight: '36px', padding: '0px 12px' }} value="answered">Answered</Radio.Button>
+                    {user && <Radio.Button style={{ height: '40px', lineHeight: '36px', padding: '0px 12px' }} value="my_questions">My Questions</Radio.Button>}
                 </Radio.Group>
-                <List
-                    itemLayout="vertical"
-                    size="small"
-                    pagination={{
-                        onChange: page => {
-                            console.log(page);
-                        },
-                        pageSize: 3,
-                    }}
-                    dataSource={questions}
-                    // footer={
-                    //     <div>
-                    //         <b>ant design</b> footer part
-                    //     </div>
-                    // }
-                    renderItem={question => (
-                        <List.Item
-                            key={question._id}
-                            actions={[
-                                this.props.user && question.likes.includes(this.props.user._id) ? (
+                <InfiniteScroll
+                    initialLoad={false}
+                    pageStart={0}
+                    loadMore={this.handleInfiniteOnLoad}
+                    hasMore={!this.state.loading && this.state.hasMore}
+                    useWindow={true}
+                >
+                    <List
+                        itemLayout="vertical"
+                        size="small"
+                        dataSource={questions}
+                        renderItem={question => (
+                            <List.Item
+                                key={question._id}
+                                actions={[
+                                    this.props.user && question.likes.includes(this.props.user._id) ? (
+                                        <Button
+                                            type="text"
+                                            size="small"
+                                            onClick={() => this.handleLike(question, 'REMOVE_LIKE')}
+                                            style={{ color: '#1890ff' }}
+                                        >
+                                            <LikeFilled /> {question.likeCount}
+                                        </Button>
+                                    ) : (
+                                        <Button
+                                            type="text"
+                                            size="small"
+                                            onClick={() => this.handleLike(question, 'LIKE')}
+                                        >
+                                            <LikeOutlined /> {question.likeCount}
+                                        </Button>
+                                    ),
                                     <Button
                                         type="text"
                                         size="small"
-                                        onClick={() => this.handleLike(question, 'REMOVE_LIKE')}
-                                        style={{ color: '#1890ff' }}
+                                        onClick={() => this.handleCommentCollapse("activeKey" + question._id)}
                                     >
-                                        <LikeFilled /> {question.likeCount}
-                                    </Button>
-                                ) : (
-                                    <Button
-                                        type="text"
-                                        size="small"
-                                        onClick={() => this.handleLike(question, 'LIKE')}
-                                    >
-                                        <LikeOutlined /> {question.likeCount}
-                                    </Button>
-                                ),
-                                <Button
-                                    type="text"
-                                    size="small"
-                                    onClick={() => this.handleCommentCollapse("activeKey" + question._id)}
-                                >
-                                    <MessageOutlined /> {question.commentCount}
-                                </Button>,
-                                <Link to={`/${question._id}/solutions`}>
-                                    <Button
-                                    // type="primary"
-                                    >
-                                        {question.answerCount} Answers
+                                        <MessageOutlined /> {question.commentCount}
+                                    </Button>,
+                                    <Link to={`/${question._id}/solutions`}>
+                                        <Button
+                                        // type="primary"
+                                        >
+                                            {question.answerCount} Answers
                                             </Button>
-                                </Link>,
-                                <Collapse collapsible="header" activeKey={this.state["activeKey" + question._id]} className="comment-collapse">
-                                    <Panel header="This panel can only be collapsed by clicking text" key="1">
-                                        <Comments
-                                            user={this.props.user}
-                                            question_id={question._id}
-                                            onAddComment={this.onAddComment}
-                                        />
-                                    </Panel>
-                                </Collapse>
-                            ]}
-                        >
-                            <List.Item.Meta
-                                className="list-meta"
-                                avatar={<Avatar src={question.createdBy.dpUrl} />}
-                                title={
-                                    <>
-                                        <div className="custom-meta-title">
-                                            <span>{question.createdBy.fullName}</span>
-                                            <span style={{ fontSize: '12px' }}>
-                                                <Text type="secondary">Asked: {moment(question.createdAt).format('LLL')}</Text>
-                                            </span>
-                                        </div>
-                                        {
-                                            user && (user._id === question.createdBy._id || user.role === 'admin') && <Dropdown
-                                                overlay={
-                                                    <Menu style={{ minWidth: '150px' }} onClick={(e) => this.onSettingMenuItemClick(e, question)}>
-                                                        <Menu.Item key="question_edit" icon={<EditOutlined />}>
-                                                            Edit
+                                    </Link>,
+                                    <Collapse collapsible="header" activeKey={this.state["activeKey" + question._id]} className="comment-collapse">
+                                        <Panel header="This panel can only be collapsed by clicking text" key="1">
+                                            <Comments
+                                                user={this.props.user}
+                                                question_id={question._id}
+                                                onAddComment={this.onAddComment}
+                                            />
+                                        </Panel>
+                                    </Collapse>
+                                ]}
+                            >
+                                <List.Item.Meta
+                                    className="list-meta"
+                                    avatar={<Avatar src={question.createdBy.dpUrl} />}
+                                    title={
+                                        <>
+                                            <div className="custom-meta-title">
+                                                <span>{question.createdBy.fullName}</span>
+                                                <span style={{ fontSize: '12px' }}>
+                                                    <Text type="secondary">Asked: {moment(question.createdAt).format('LLL')}</Text>
+                                                </span>
+                                            </div>
+                                            {
+                                                user && (user._id === question.createdBy._id || user.role === 'admin') && <Dropdown
+                                                    overlay={
+                                                        <Menu style={{ minWidth: '150px' }} onClick={(e) => this.onSettingMenuItemClick(e, question)}>
+                                                            <Menu.Item key="question_edit" icon={<EditOutlined />}>
+                                                                Edit
                                                             </Menu.Item>
-                                                        <Menu.Item key="question_delete" icon={<DeleteOutlined />}>
-                                                            Delete
+                                                            <Menu.Item key="question_delete" icon={<DeleteOutlined />}>
+                                                                Delete
                                                             </Menu.Item>
-                                                    </Menu>
-                                                }
-                                                trigger={['click']}
-                                            >
-                                                <Button
-                                                    type="text"
-                                                    icon={<SettingOutlined />}
-                                                    onClick={e => e.preventDefault()}
+                                                        </Menu>
+                                                    }
+                                                    trigger={['click']}
                                                 >
-                                                </Button>
-                                            </Dropdown>
-                                        }
-                                    </>
-                                }
-                            />
-                            <Row>
-                                {question.text && <div style={{ flex: 1 }}>
-                                    <Typography.Paragraph className="pre-wrap">
-                                        {question.text}
-                                    </Typography.Paragraph>
-                                </div>}
-                                <Image
-                                    className="contain-image"
-                                    src={question.imageUrl}
+                                                    <Button
+                                                        type="text"
+                                                        icon={<SettingOutlined />}
+                                                        onClick={e => e.preventDefault()}
+                                                    >
+                                                    </Button>
+                                                </Dropdown>
+                                            }
+                                        </>
+                                    }
                                 />
-                            </Row>
-                        </List.Item>
-                    )}
-                />
+                                <Row>
+                                    {question.text && <div style={{ flex: 1 }}>
+                                        <Typography.Paragraph className="pre-wrap">
+                                            {question.text}
+                                        </Typography.Paragraph>
+                                    </div>}
+                                    <InView triggerOnce={true}>
+                                        {({ inView, ref, entry }) => {
+                                            return (
+                                                <div ref={ref}>
+                                                    <Image
+                                                        className="contain-image"
+                                                        src={inView ? question.imageUrl : ''}
+                                                    />
+                                                </div>
+                                            )
+                                        }}
+                                    </InView>
+                                </Row>
+                            </List.Item>
+                        )}
+                    >
+                        {this.state.loading && this.state.hasMore && (
+                            <div className="demo-loading-container">
+                                <Spin size="large" />
+                            </div>
+                        )}
+                        {
+                            !this.state.loading && !this.state.hasMore && (
+                                <Empty
+                                    image={Empty.PRESENTED_IMAGE_SIMPLE}
+                                    description="No more questions"
+                                />
+                            )
+                        }
+                    </List>
+                </InfiniteScroll>
                 <RenderAuthModal
                     show={this.state.showSigninModal}
                     onClose={() => this.setState({ showSigninModal: false })}

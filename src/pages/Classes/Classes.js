@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PageHeader, Tabs, Button, Statistic, Descriptions, Row, Col } from 'antd';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import RenderAuthModal from '../../components/RenderAuthModal';
 
 const renderContent = (column = 1) => (
     <Descriptions size="small" column={column} bordered={true}>
@@ -47,8 +48,11 @@ const Content = ({ children, extra }) => (
 
 function Classes(props) {
     const [joinUrl, setJoinUrl] = useState();
+    const [showSigninModal, setSigninModal] = useState(false);
 
     const joinMeeting = async () => {
+        if(!props.user) return setSigninModal(true);
+
         const meetingConfig = {
             mn: 8371743121,
             name: props.user.fullName,
@@ -81,7 +85,7 @@ function Classes(props) {
                 subTitle="This is for all level students"
                 extra={[
                     <Button key="1" type="primary" onClick={joinMeeting}>
-                        Join Class
+                        {props.user?.role === 'admin' ? 'Start Class' : 'Join Class'}
                     </Button>,
                 ]}
             >
@@ -97,6 +101,10 @@ function Classes(props) {
                     allow="microphone; camera; fullscreen;"
                 ></iframe>
             )}
+            <RenderAuthModal
+                show={showSigninModal}
+                onClose={() => setSigninModal(false)}
+            />
         </div>
     )
 }

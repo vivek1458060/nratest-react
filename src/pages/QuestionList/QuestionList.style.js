@@ -53,6 +53,11 @@ const QuestionWrapper = styled.div`
         justify-content: space-between;
         align-items: center;
     };
+    .demo-loading-container {
+        padding: 50px 0px;
+        width: 100%;
+        text-align: center;
+    }
 `
 
 export default QuestionWrapper;
