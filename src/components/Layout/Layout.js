@@ -18,7 +18,7 @@ export const SiderMenu = (props) => {
             onClick={props.onClick}
         >
             <Menu.Item key="/question/list">
-                <NavLink to="/question/list">Doubt</NavLink>
+                <NavLink to="/question/list">Doubts</NavLink>
             </Menu.Item>
             {/* <SubMenu key="quiz" title="Quiz">
                 <Menu.Item key="/add-quiz">
@@ -32,7 +32,7 @@ export const SiderMenu = (props) => {
                 <NavLink to="/quizzes">Take Quiz</NavLink>
             </Menu.Item>
             <Menu.Item key="/classes">
-                <NavLink to="/classes">Classes</NavLink>
+                <NavLink to="/classes">Live Class</NavLink>
             </Menu.Item>
         </Menu>
     )

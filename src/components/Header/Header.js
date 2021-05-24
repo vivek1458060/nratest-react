@@ -63,6 +63,7 @@ function Navbar() {
                 </div>
                 <Drawer
                     title={<img src="/cover.png" style={{ maxWidth: '200px' }} />}
+                    width={270}
                     placement="left"
                     closable={false}
                     onClose={() => showDrawer(false)}
