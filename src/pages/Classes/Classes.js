@@ -16,6 +16,12 @@ const renderContent = (column = 1) => (
         <Descriptions.Item label="Topics Covered">
             According to syllabus
         </Descriptions.Item>
+        <Descriptions.Item label="Start Date">
+            26th May, 2021
+        </Descriptions.Item>
+        <Descriptions.Item label="Timings">
+            Monday to Friday, Morning at 8:00 O'Clock
+        </Descriptions.Item>
     </Descriptions>
 );
 
@@ -36,7 +42,7 @@ const extraContent = (
                 display: 'block'
             }}
         />
-        <Statistic title="Time" value="Monday to Friday, Morning at 8:00 O'Clock" />
+        {/* <Statistic title="Time" value="Monday to Friday, Morning at 8:00 O'Clock" /> */}
     </Row>
 );
 
@@ -56,16 +62,16 @@ function Classes(props) {
             const res = await axios.get("/meeting/joinUrl");
             setJoinUrl(res.data.joinUrl);
         } catch(e) {
-            message.error("Something went wrong");
+            //message.error("Something went wrong");
             console.log(e);
         }
     }
 
     useEffect(() => {
-        if(!joinUrl) {
+        if(props.user && !joinUrl) {
             getJoinUrl();
         }
-    }, [])
+    }, [props.user])
 
     const joinMeeting = async () => {
         if(!props.user) return setSigninModal(true);

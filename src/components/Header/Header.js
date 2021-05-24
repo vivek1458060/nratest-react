@@ -37,9 +37,9 @@ function Navbar() {
                     </Link>
                 </div>
                 <div className="menu-right">
-                    <Button 
+                    <Button
                         size="large"
-                        className="menu-unfold-icon" 
+                        className="menu-unfold-icon"
                         onClick={() => showDrawer(true)}
                         icon={<MenuOutlined
                             style={{ fontSize: '20px' }}
@@ -70,17 +70,31 @@ function Navbar() {
                     footer={
                         user ? (
                             <div>
+                                <div style={{ marginBottom: '20px' }}>
+                                    <Typography.Text>Contact Us</Typography.Text>
+                                    <Button type="text" size="small" style={{ padding: 0 }}><PhoneOutlined style={{ transform: 'rotate(100deg)' }} />+91 7980527922</Button>
+                                    <Button type="text" size="small" style={{ padding: 0 }}><MailOutlined />iamprincebhakt@gmail.com</Button>
+                                </div>
                                 <Typography.Text type="secondary">Welcome {user.fullName}. </Typography.Text>
                                 <br />
                                 <Link to="/question/list" onClick={logout}>Logout</Link>
                             </div>
-                        ) : (<Space>
-                            <Link to="/login"><Button type="primary">Login</Button></Link>
-                            <Link to="/login"><Button>Sign Up</Button></Link>
-                        </Space>)
+                        ) : (
+                            <div>
+                                <div style={{ marginBottom: '20px' }}>
+                                    <Typography.Text>Contact Us</Typography.Text>
+                                    <Button type="text" size="small" style={{ padding: 0 }}><PhoneOutlined style={{ transform: 'rotate(100deg)' }} />+91 7980527922</Button>
+                                    <Button type="text" size="small" style={{ padding: 0 }}><MailOutlined />iamprincebhakt@gmail.com</Button>
+                                </div>
+                                <Space>
+                                    <Link to="/login"><Button type="primary">Login</Button></Link>
+                                    <Link to="/login"><Button>Sign Up</Button></Link>
+                                </Space>
+                            </div>
+                        )
                     }
-                    footerStyle={{ paddingTop: '40px' }}
-                    bodyStyle={{ flexGrow: 0, padding: 0 }}
+                    footerStyle={{ paddingBottom: '30px' }}
+                    bodyStyle={{ padding: 0 }}
                 >
                     <SiderMenu onClick={() => showDrawer(false)} />
                 </Drawer>
