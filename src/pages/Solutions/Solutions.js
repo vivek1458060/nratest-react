@@ -293,8 +293,14 @@ class Solutions extends Component {
                                 style={{ marginBottom: answer.videoUrl ? '10px' : '' }}
                                 src={answer.imageUrl}
                             />}
-                            {answer.videoUrl && <iframe width="100%" height="315" title="video solution"
-                                src={answer.videoUrl}>
+                            {answer.videoUrl && 
+                            <iframe 
+                                width="100%" 
+                                height="400" 
+                                title="video solution"
+                                src={answer.videoUrl}
+                                allow="fullscreen;"
+                            >
                             </iframe>}
                         </Card>
                     ))

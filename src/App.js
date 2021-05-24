@@ -22,8 +22,8 @@ const Quizzes = loadable(() => import("./pages/Quizzes/Quizzes"));
 
 export const history = createBrowserHistory();
 
-//axios.defaults.baseURL = 'https://backend.nratest.com';
-axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.baseURL = 'https://backend.nratest.com';
+// axios.defaults.baseURL = 'http://localhost:8080';
 
 function App() {
   const dispatch = useDispatch();

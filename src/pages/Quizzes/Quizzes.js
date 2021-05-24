@@ -106,19 +106,19 @@ const quizList = [
                 "options": [
                     {
                         "id": 1,
-                        "text": "4800"
+                        "text": "48000"
                     },
                     {
                         "id": 2,
-                        "text": "5100"
+                        "text": "51000"
                     },
                     {
                         "id": 3,
-                        "text": "4500"
+                        "text": "45000"
                     },
                     {
                         "id": 4,
-                        "text": "5000"
+                        "text": "50000"
                     }
                 ],
                 "correctOption": 4
@@ -229,11 +229,11 @@ const quizList = [
                     },
                     {
                         "id": 3,
-                        "text": "32000"
+                        "text": "320000"
                     },
                     {
                         "id": 4,
-                        "text": "30000"
+                        "text": "300000"
                     }
                 ],
                 "correctOption": 3

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Col, Layout, Drawer, Space, Button, Typography, Dropdown, message } from 'antd';
-import { MenuOutlined, PhoneOutlined, DownOutlined } from '@ant-design/icons'
+import { MenuOutlined, PhoneOutlined, DownOutlined, MailOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Menu } from 'antd';
@@ -47,6 +47,7 @@ function Navbar() {
                     ></Button>
                     <Space className="menu-right-items">
                         <Button type="text"><PhoneOutlined style={{ transform: 'rotate(100deg)' }} />+91 7980527922</Button>
+                        <Button type="text"><MailOutlined />iamprincebhakt@gmail.com</Button>
                         {!user && <Button type="text">
                             <Space>
                                 <Typography.Text type="secondary">Welcome Guest. </Typography.Text>

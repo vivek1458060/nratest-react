@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { PageHeader, Tabs, Button, Statistic, Descriptions, Row, Col } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { PageHeader, Tabs, Button, Statistic, Descriptions, Row, Col, message, Typography } from 'antd';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import RenderAuthModal from '../../components/RenderAuthModal';
+import ClassesWrapper from './Classes.style';
 
 const renderContent = (column = 1) => (
     <Descriptions size="small" column={column} bordered={true}>
@@ -10,10 +11,10 @@ const renderContent = (column = 1) => (
         {/* <Descriptions.Item label="Association">
             <a>1 Week</a>
         </Descriptions.Item> */}
-        <Descriptions.Item label="Creation Time">2021-19-05</Descriptions.Item>
-        <Descriptions.Item label="Course Duration">1 Week</Descriptions.Item>
+        {/* <Descriptions.Item label="Creation Time">2021-19-05</Descriptions.Item> */}
+        {/* <Descriptions.Item label="Course Duration">1 Week</Descriptions.Item> */}
         <Descriptions.Item label="Topics Covered">
-            Percentage, Profit & Loss, Simplification, Linear equation etc...
+            According to syllabus
         </Descriptions.Item>
     </Descriptions>
 );
@@ -35,7 +36,7 @@ const extraContent = (
                 display: 'block'
             }}
         />
-        <Statistic title="Time" value="Everyday at 4:00 PM" />
+        <Statistic title="Time" value="Monday to Friday, Morning at 8:00 O'Clock" />
     </Row>
 );
 
@@ -50,38 +51,60 @@ function Classes(props) {
     const [joinUrl, setJoinUrl] = useState();
     const [showSigninModal, setSigninModal] = useState(false);
 
-    const joinMeeting = async () => {
-        if(!props.user) return setSigninModal(true);
-
-        const meetingConfig = {
-            mn: 8371743121,
-            name: props.user.fullName,
-            pwd: 'dHVtUXM1MGplWEZnNFc3bTVSclhPdz09',
-            role: props.user.role === 'admin' ? 1 : 0,
-            email: props.user.email,
-            lang: 'en-US',
-            china: 0,
-            apiKey: 'uhuFIaHKTNSQJo8NEw1_ug',
-        };
-
+    const getJoinUrl = async () => {
         try {
-            const res = await axios.get(`/zoom/signature?meetingNumber=${meetingConfig.mn}&role=${meetingConfig.role}`);
-            meetingConfig.signature = res.data.signature;
-            let joinUrl =
-                window.testTool.getCurrentDomain() +
-                "/meeting.html?" +
-                window.testTool.serialize(meetingConfig);
-            setJoinUrl(joinUrl);
-        } catch (e) {
+            const res = await axios.get("/meeting/joinUrl");
+            setJoinUrl(res.data.joinUrl);
+        } catch(e) {
+            message.error("Something went wrong");
             console.log(e);
         }
     }
+
+    useEffect(() => {
+        if(!joinUrl) {
+            getJoinUrl();
+        }
+    }, [])
+
+    const joinMeeting = async () => {
+        if(!props.user) return setSigninModal(true);
+        window.open(joinUrl, "_blank");
+
+        // const meetingConfig = {
+        //     mn: 8371743121,
+        //     name: props.user.fullName,
+        //     pwd: 'dHVtUXM1MGplWEZnNFc3bTVSclhPdz09',
+        //     role: props.user.role === 'admin' ? 1 : 0,
+        //     email: props.user.email,
+        //     lang: 'en-US',
+        //     china: 0,
+        //     apiKey: 'uhuFIaHKTNSQJo8NEw1_ug',
+        // };
+
+        // try {
+        //     const res = await axios.get(`/zoom/signature?meetingNumber=${meetingConfig.mn}&role=${meetingConfig.role}`);
+        //     meetingConfig.signature = res.data.signature;
+        //     let joinUrl =
+        //         window.testTool.getCurrentDomain() +
+        //         "/meeting.html?" +
+        //         window.testTool.serialize(meetingConfig);
+        //     setJoinUrl(joinUrl);
+        // } catch (e) {
+        //     console.log(e);
+        // }
+    }
     return (
-        <div>
+        <ClassesWrapper>
             <PageHeader
                 className="site-page-header-responsive"
                 onBack={() => props.history.goBack()}
-                title="Aptitude Class"
+                title={
+                    <div style={{display: 'flex', flexDirection: 'column'}}>
+                        <span>Aptitude Class</span>
+                        <Typography.Text className="mobile-subtitle" type="secondary" style={{fontSize: '12px'}}>This is for all level students</Typography.Text>
+                    </div>
+                }
                 subTitle="This is for all level students"
                 extra={[
                     <Button key="1" type="primary" onClick={joinMeeting}>
@@ -91,7 +114,7 @@ function Classes(props) {
             >
                 <Content extra={<><br />{extraContent}</>}>{renderContent()}</Content>
             </PageHeader>
-            {joinUrl && (
+            {/* {joinUrl && (
                 <iframe
                     id="zoom-iframe"
                     src={joinUrl}
@@ -100,12 +123,12 @@ function Classes(props) {
                     sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
                     allow="microphone; camera; fullscreen;"
                 ></iframe>
-            )}
+            )} */}
             <RenderAuthModal
                 show={showSigninModal}
                 onClose={() => setSigninModal(false)}
             />
-        </div>
+        </ClassesWrapper>
     )
 }
 
