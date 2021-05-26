@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Col, Layout, Drawer, Space, Button, Typography, Dropdown, message } from 'antd';
-import { MenuOutlined, PhoneOutlined, DownOutlined, MailOutlined } from '@ant-design/icons'
+import { MenuOutlined, PhoneOutlined, DownOutlined, MailOutlined, LogoutOutlined, PauseOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Menu } from 'antd';
@@ -8,6 +8,7 @@ import axios from 'axios';
 
 import HeaderWrapper from './Header.style';
 import { SiderMenu } from '../Layout/Layout';
+import SubHeader from './SubHeader';
 
 function Navbar() {
     const [visible, showDrawer] = useState(false);
@@ -23,7 +24,7 @@ function Navbar() {
     }
     const menu = (
         <Menu>
-            <Menu.Item key="0">
+            <Menu.Item key="0" icon={<LogoutOutlined style={{ fontSize: '16px' }} />}>
                 <Link to="/question/list" onClick={logout}>Logout</Link>
             </Menu.Item>
         </Menu>
@@ -32,22 +33,30 @@ function Navbar() {
         <HeaderWrapper>
             <Layout.Header className="header">
                 <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Button
+                        size="large"
+                        type="text"
+                        className="showunderlgscreen"
+                        onClick={() => showDrawer(true)}
+                        icon={<MenuOutlined
+                            style={{ fontSize: '25px' }}
+                        />}
+                    ></Button>
                     <Link to="/question/list">
                         <img className="logo" src="/cover2.png" width="250" alt="logo" />
                     </Link>
                 </div>
                 <div className="menu-right">
-                    <Button
-                        size="large"
-                        className="menu-unfold-icon"
-                        onClick={() => showDrawer(true)}
-                        icon={<MenuOutlined
-                            style={{ fontSize: '20px' }}
-                        />}
-                    ></Button>
-                    <Space className="menu-right-items">
+                    <Space className="menu-right-items showabovelgscreen">
                         <Button type="text"><PhoneOutlined style={{ transform: 'rotate(100deg)' }} />+91 7980527922</Button>
                         <Button type="text"><MailOutlined />iamprincebhakt@gmail.com</Button>
+                        <Button
+                            size="small"
+                            type="text"
+                            style={{ height: 'unset' }}
+                            onClick={() => dispatch({ type: 'SHOW' })}
+                        ><PauseOutlined />Demo
+                        </Button>
                         {!user && <Button type="text">
                             <Space>
                                 <Typography.Text type="secondary">Welcome Guest. </Typography.Text>
@@ -60,6 +69,12 @@ function Navbar() {
                             </a>
                         </Dropdown>}
                     </Space>
+                    <Button
+                        size="small"
+                        style={{ height: 'unset' }}
+                        className="showunderlgscreen"
+                        onClick={() => dispatch({ type: 'SHOW' })}
+                    ><PauseOutlined /> Demo</Button>
                 </div>
                 <Drawer
                     title={<img src="/cover.png" style={{ maxWidth: '200px' }} />}
@@ -72,7 +87,7 @@ function Navbar() {
                         user ? (
                             <div>
                                 <div style={{ marginBottom: '20px' }}>
-                                    <Typography.Text>Contact Us</Typography.Text>
+                                    <Typography.Text style={{ display: 'block' }}>Contact Us</Typography.Text>
                                     <Button type="text" size="small" style={{ padding: 0 }}><PhoneOutlined style={{ transform: 'rotate(100deg)' }} />+91 7980527922</Button>
                                     <Button type="text" size="small" style={{ padding: 0 }}><MailOutlined />iamprincebhakt@gmail.com</Button>
                                 </div>
@@ -83,7 +98,7 @@ function Navbar() {
                         ) : (
                             <div>
                                 <div style={{ marginBottom: '20px' }}>
-                                    <Typography.Text>Contact Us</Typography.Text>
+                                    <Typography.Text style={{ display: 'block' }}>Contact Us</Typography.Text>
                                     <Button type="text" size="small" style={{ padding: 0 }}><PhoneOutlined style={{ transform: 'rotate(100deg)' }} />+91 7980527922</Button>
                                     <Button type="text" size="small" style={{ padding: 0 }}><MailOutlined />iamprincebhakt@gmail.com</Button>
                                 </div>
@@ -95,11 +110,12 @@ function Navbar() {
                         )
                     }
                     footerStyle={{ paddingBottom: '30px' }}
-                    bodyStyle={{ padding: 0 }}
+                    bodyStyle={{ padding: 0, flexGrow: 0 }}
                 >
-                    <SiderMenu onClick={() => showDrawer(false)} />
+                    {/* <SiderMenu onClick={() => showDrawer(false)} /> */}
                 </Drawer>
             </Layout.Header>
+            <SubHeader />
         </HeaderWrapper>
     )
 }

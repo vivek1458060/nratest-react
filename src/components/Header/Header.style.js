@@ -5,6 +5,9 @@ const HeaderWrapper = styled.div`
         background: white;
         display: flex;
         justify-content: space-between;
+        > {
+            color: white !important;
+        }
     };
 
     .header.ant-layout-header {
@@ -22,17 +25,8 @@ const HeaderWrapper = styled.div`
         align-items: center;
     };
 
-    .menu-unfold-icon {
-        display: none;
-    };
-
     @media(max-width: 992px) {
-        .menu-right-items {
-            display: none;
-        };
-        .menu-unfold-icon {
-            display: block;
-        };
+
     };
 `
 

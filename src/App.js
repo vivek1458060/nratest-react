@@ -11,9 +11,11 @@ import PrivateRoute from './routers/PrivateRoute';
 import loadable from "@loadable/component";
 import Layout from './components/Layout/Layout';
 import './utils/zoom-tool';
+import Modal from './components/Modal';
+import QuestionList from "./pages/QuestionList/QuestionList";
 const Login = loadable(() => import("./pages/Login/Login"));
 const Signup = loadable(() => import("./pages/Signup/Signup"));
-const QuestionList = loadable(() => import("./pages/QuestionList/QuestionList"));
+// const QuestionList = loadable(() => import("./pages/QuestionList/QuestionList"));
 const Solutions = loadable(() => import("./pages/Solutions/Solutions"));
 const AddQuestion = loadable(() => import("./pages/AddQuestion/AddQuestion"));
 const EditAnswer = loadable(() => import("./pages/EditAnswer/EditAnswer"));
@@ -41,6 +43,7 @@ function App() {
         <Route>
           <Switch>
             <Layout>
+              <Modal />
               <Route path="/" component={() => <Redirect to="/question/list" />} exact />
               <Route path="/question/list" component={QuestionList} exact />
               <Route path="/question/ask" component={AddQuestion} exact />

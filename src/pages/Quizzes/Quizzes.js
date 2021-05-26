@@ -5,6 +5,242 @@ import QuizzzesWrapper from './Quizzes.style';
 
 const quizList = [
     {
+        "id": 1253,
+        "createdAt": "May 26, 2021",
+        "questionList": [
+            {
+                "id": 1,
+                "text": "What is square of 127 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "17129"
+                    },
+                    {
+                        "id": 2,
+                        "text": "16129"
+                    },
+                    {
+                        "id": 3,
+                        "text": "16234"
+                    },
+                    {
+                        "id": 4,
+                        "text": "16433"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 2,
+                "text": "What is  square of 113 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "12769"
+                    },
+                    {
+                        "id": 2,
+                        "text": "13465"
+                    },
+                    {
+                        "id": 3,
+                        "text": "12768"
+                    },
+                    {
+                        "id": 4,
+                        "text": "12786"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 3,
+                "text": "What is sqare of 108 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "11664"
+                    },
+                    {
+                        "id": 2,
+                        "text": "11672"
+                    },
+                    {
+                        "id": 3,
+                        "text": "12344"
+                    },
+                    {
+                        "id": 4,
+                        "text": "19343"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 4,
+                "text": "64 x 78 =  ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "4988"
+                    },
+                    {
+                        "id": 2,
+                        "text": "4888"
+                    },
+                    {
+                        "id": 3,
+                        "text": "4992"
+                    },
+                    {
+                        "id": 4,
+                        "text": "6732"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 5,
+                "text": "42 x 58 = ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "2436"
+                    },
+                    {
+                        "id": 2,
+                        "text": "2536"
+                    },
+                    {
+                        "id": 3,
+                        "text": "2636"
+                    },
+                    {
+                        "id": 4,
+                        "text": "2736"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 6,
+                "text": "84 x 62 =  ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "5228"
+                    },
+                    {
+                        "id": 2,
+                        "text": "5308"
+                    },
+                    {
+                        "id": 3,
+                        "text": "5408"
+                    },
+                    {
+                        "id": 4,
+                        "text": "5208"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 7,
+                "text": "What is square root of 20164  ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "148"
+                    },
+                    {
+                        "id": 2,
+                        "text": "158"
+                    },
+                    {
+                        "id": 3,
+                        "text": "142"
+                    },
+                    {
+                        "id": 4,
+                        "text": "138"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 8,
+                "text": "What is square root of 7569 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "83"
+                    },
+                    {
+                        "id": 2,
+                        "text": "87"
+                    },
+                    {
+                        "id": 3,
+                        "text": "77"
+                    },
+                    {
+                        "id": 4,
+                        "text": "63"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 9,
+                "text": "What is square root of 38416 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "186"
+                    },
+                    {
+                        "id": 2,
+                        "text": "184"
+                    },
+                    {
+                        "id": 3,
+                        "text": "194"
+                    },
+                    {
+                        "id": 4,
+                        "text": "196"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 10,
+                "text": "What is  square root of 47961 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "221"
+                    },
+                    {
+                        "id": 2,
+                        "text": "219"
+                    },
+                    {
+                        "id": 3,
+                        "text": "229"
+                    },
+                    {
+                        "id": 4,
+                        "text": "231"
+                    }
+                ],
+                "correctOption": 2
+            }
+        ]
+    },
+    {
         "id": 1,
         "createdAt": "May 24, 2021",
         "questionList": [
