@@ -8,7 +8,7 @@ import ClassesWrapper from './Classes.style';
 const classes = [{
     id: 2,
     title: 'Special Reasoning Class by Niraj Sir',
-    subtitle: 'This is for all level students',
+    subtitle: '7+ years of Teaching Experience',
     studentsAttending: '100',
     courseType: 'Free',
     topicCovered: 'On-Demand',
@@ -16,7 +16,7 @@ const classes = [{
 }, {
     id: 1,
     title: 'Aptitude Class by Prince Sir',
-    subtitle: 'This is for all level students',
+    subtitle: '3+ years of Teaching Experience',
     teacherName: 'Prince Sir',
     studentsAttending: '100',
     courseType: 'Free',
@@ -95,7 +95,7 @@ function Classes(props) {
                                 </Typography.Text>
                             </div>
                         }
-                        subTitle="This is for all level students"
+                        subTitle={item.subtitle}
                         extra={[
                             <Button key="1" type="primary" onClick={joinMeeting}>
                                 {props.user?.role === 'admin' ? 'Start Class' : 'Join Class'}

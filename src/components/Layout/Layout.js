@@ -1,4 +1,4 @@
-import { Row, Col, Layout, Menu } from 'antd';
+import { Row, Col, Layout, Menu, Affix, Button } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { history } from '../../App';
 import LayoutWrapper from './Layout.style';
@@ -47,9 +47,9 @@ function LayoutCom(props) {
                 </Col>
             </Row>
             <Row>
-                <Col lg={{ span: 20, offset: 2 }} xl={{span: 18, offset: 3}} xs={24}>
+                <Col lg={{ span: 20, offset: 2 }} xl={{ span: 18, offset: 3 }} xs={24}>
                     <Layout style={{ background: 'none' }}>
-                        <Content style={{paddingTop: '40px'}}>
+                        <Content style={{ paddingTop: '40px' }}>
                             <Layout style={{ background: 'none' }}>
                                 <Sider
                                     className="sider"
@@ -73,6 +73,11 @@ function LayoutCom(props) {
                     </Layout>
                 </Col>
             </Row>
+            <Affix style={{ position: 'fixed', right: 20, bottom: 20 }}>
+                <a href="https://t.me/joinchat/JI6tRCVtC1w0NjRl" target="_blank">
+                    <img src="/telegram.svg" width={64} height={64}/>
+                </a>
+            </Affix>
         </LayoutWrapper>
     )
 }

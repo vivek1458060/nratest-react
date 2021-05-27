@@ -8,6 +8,463 @@ import { connect } from 'react-redux';
 
 const quizList = [
     {
+        "id": "609e1cfb598a43f44ff8ae32",
+        "createdAt": "May 27, 2021",
+        "questionList": [
+            {
+                "id": 1,
+                "text": "What is the square of 119 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "14161"
+                    },
+                    {
+                        "id": 2,
+                        "text": "14261"
+                    },
+                    {
+                        "id": 3,
+                        "text": "14361"
+                    },
+                    {
+                        "id": 4,
+                        "text": "14461"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 2,
+                "text": "What is the square of 105 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "12025"
+                    },
+                    {
+                        "id": 2,
+                        "text": "11225"
+                    },
+                    {
+                        "id": 3,
+                        "text": "11325"
+                    },
+                    {
+                        "id": 4,
+                        "text": "11025"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 3,
+                "text": "What is the square of 88 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "7644"
+                    },
+                    {
+                        "id": 2,
+                        "text": "7544"
+                    },
+                    {
+                        "id": 3,
+                        "text": "7744"
+                    },
+                    {
+                        "id": 4,
+                        "text": "7344"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 4,
+                "text": "What is the square of 83 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "6689"
+                    },
+                    {
+                        "id": 2,
+                        "text": "6889"
+                    },
+                    {
+                        "id": 3,
+                        "text": "6589"
+                    },
+                    {
+                        "id": 4,
+                        "text": "6789"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 5,
+                "text": "What is the square of 63 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "3869"
+                    },
+                    {
+                        "id": 2,
+                        "text": "3969"
+                    },
+                    {
+                        "id": 3,
+                        "text": "4069"
+                    },
+                    {
+                        "id": 4,
+                        "text": "3979"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 6,
+                "text": "What is the square root of 15129 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "113"
+                    },
+                    {
+                        "id": 2,
+                        "text": "123"
+                    },
+                    {
+                        "id": 3,
+                        "text": "129"
+                    },
+                    {
+                        "id": 4,
+                        "text": "133"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 7,
+                "text": "What is the square root of 25921 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "169"
+                    },
+                    {
+                        "id": 2,
+                        "text": "159"
+                    },
+                    {
+                        "id": 3,
+                        "text": "161"
+                    },
+                    {
+                        "id": 4,
+                        "text": "151"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 8,
+                "text": "What is square root of 22801 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "161"
+                    },
+                    {
+                        "id": 2,
+                        "text": "171"
+                    },
+                    {
+                        "id": 3,
+                        "text": "169"
+                    },
+                    {
+                        "id": 4,
+                        "text": "151"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 9,
+                "text": "What is the square root of 14641 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "121"
+                    },
+                    {
+                        "id": 2,
+                        "text": "141"
+                    },
+                    {
+                        "id": 3,
+                        "text": "131"
+                    },
+                    {
+                        "id": 4,
+                        "text": "129"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 10,
+                "text": "What is the square root of 17689 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "123"
+                    },
+                    {
+                        "id": 2,
+                        "text": "133"
+                    },
+                    {
+                        "id": 3,
+                        "text": "127"
+                    },
+                    {
+                        "id": 4,
+                        "text": "137"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 11,
+                "text": "What is the cube of 26 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "17576"
+                    },
+                    {
+                        "id": 2,
+                        "text": "16576"
+                    },
+                    {
+                        "id": 3,
+                        "text": "11876"
+                    },
+                    {
+                        "id": 4,
+                        "text": "11976"
+                    }
+                ],
+                "correctOption": 1
+            }, {
+                "id": 12,
+                "text": "What is the cube of 36 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "46656"
+                    },
+                    {
+                        "id": 2,
+                        "text": "45656"
+                    },
+                    {
+                        "id": 3,
+                        "text": "47656"
+                    },
+                    {
+                        "id": 4,
+                        "text": "48656"
+                    }
+                ],
+                "correctOption": 1
+            }, {
+                "id": 13,
+                "text": "What is the cube of 63 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "250037"
+                    },
+                    {
+                        "id": 2,
+                        "text": "250047"
+                    },
+                    {
+                        "id": 3,
+                        "text": "250057"
+                    },
+                    {
+                        "id": 4,
+                        "text": "250067"
+                    }
+                ],
+                "correctOption": 2
+            }, {
+                "id": 14,
+                "text": "What is the cube of 56 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "156616"
+                    },
+                    {
+                        "id": 2,
+                        "text": "166616"
+                    },
+                    {
+                        "id": 3,
+                        "text": "175616"
+                    },
+                    {
+                        "id": 4,
+                        "text": "185616"
+                    }
+                ],
+                "correctOption": 3
+            }, {
+                "id": 15,
+                "text": "What is the cube of 69 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "328509"
+                    },
+                    {
+                        "id": 2,
+                        "text": "328609"
+                    },
+                    {
+                        "id": 3,
+                        "text": "329609"
+                    },
+                    {
+                        "id": 4,
+                        "text": "328999"
+                    }
+                ],
+                "correctOption": 1
+            }, {
+                "id": 16,
+                "text": "What is the cube root of 185193 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "57"
+                    },
+                    {
+                        "id": 2,
+                        "text": "67"
+                    },
+                    {
+                        "id": 3,
+                        "text": "47"
+                    },
+                    {
+                        "id": 4,
+                        "text": "77"
+                    }
+                ],
+                "correctOption": 1
+            }, {
+                "id": 17,
+                "text": "What is the cube root of 250047 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "63"
+                    },
+                    {
+                        "id": 2,
+                        "text": "53"
+                    },
+                    {
+                        "id": 3,
+                        "text": "73"
+                    },
+                    {
+                        "id": 4,
+                        "text": "43"
+                    }
+                ],
+                "correctOption": 1
+            }, {
+                "id": 18,
+                "text": "What is the cube root of 681472 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "88"
+                    },
+                    {
+                        "id": 2,
+                        "text": "78"
+                    },
+                    {
+                        "id": 3,
+                        "text": "68"
+                    },
+                    {
+                        "id": 4,
+                        "text": "98"
+                    }
+                ],
+                "correctOption": 1
+            }, {
+                "id": 19,
+                "text": "What is the cube root of 592704 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "84"
+                    },
+                    {
+                        "id": 2,
+                        "text": "74"
+                    },
+                    {
+                        "id": 3,
+                        "text": "64"
+                    },
+                    {
+                        "id": 4,
+                        "text": "94"
+                    }
+                ],
+                "correctOption": 1
+            }, {
+                "id": 20,
+                "text": "What is the cube root of 438976 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "66"
+                    },
+                    {
+                        "id": 2,
+                        "text": "76"
+                    },
+                    {
+                        "id": 3,
+                        "text": "86"
+                    },
+                    {
+                        "id": 4,
+                        "text": "96"
+                    }
+                ],
+                "correctOption": 2
+            }
+        ]
+    },
+    {
         "id": "60aeb5c182af3808df4a9a50",
         "createdAt": "May 26, 2021",
         "questionList": [
