@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Layout, Drawer, Space, Button, Typography, Dropdown, message } from 'antd';
+import { Layout, Drawer, Space, Button, Typography, Dropdown, message } from 'antd';
 import { MenuOutlined, PhoneOutlined, DownOutlined, MailOutlined, LogoutOutlined, PauseOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,8 +7,8 @@ import { Menu } from 'antd';
 import axios from 'axios';
 
 import HeaderWrapper from './Header.style';
-import { SiderMenu } from '../Layout/Layout';
 import SubHeader from './SubHeader';
+import { history } from '../../App';
 
 function Navbar() {
     const [visible, showDrawer] = useState(false);
@@ -21,11 +21,12 @@ function Navbar() {
         dispatch({ type: 'LOGOUT' });
         delete axios.defaults.headers.common['Authorization'];
         message.success(`You've been logged out`);
+        history.push("/question/list");
     }
     const menu = (
         <Menu>
-            <Menu.Item key="0" icon={<LogoutOutlined style={{ fontSize: '16px' }} />}>
-                <Link to="/question/list" onClick={logout}>Logout</Link>
+            <Menu.Item key="0" icon={<LogoutOutlined style={{ fontSize: '16px' }} />} onClick={logout}>
+                Logout
             </Menu.Item>
         </Menu>
     );

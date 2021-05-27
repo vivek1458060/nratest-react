@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { Card, Typography, Radio, Space, Button, Result, Statistic, Modal, Spin, Tag, Form, Input, Select } from 'antd';
+import { Card, Typography, Radio, Space, Button, Result, Statistic, Modal, Spin, Tag, Form, Select, Alert } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import QuizzzesWrapper from './Quizzes.style';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const quizList = [
     {
-        "id": 1253,
+        "id": "60aeb5c182af3808df4a9a50",
         "createdAt": "May 26, 2021",
         "questionList": [
             {
@@ -241,7 +244,243 @@ const quizList = [
         ]
     },
     {
-        "id": 1,
+        "id": "60aeb5edf77ca90903e0476e",
+        "createdAt": "May 25, 2021",
+        "questionList": [
+            {
+                "id": 1,
+                "text": " A shopkeeper earns a profit of 12% on selling a book at 10%  discount on the printed price. The ratio for the cost price and  the printed price of the book is",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "45:46"
+                    },
+                    {
+                        "id": 2,
+                        "text": "45:51"
+                    },
+                    {
+                        "id": 3,
+                        "text": "47:56"
+                    },
+                    {
+                        "id": 4,
+                        "text": "47:51"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 2,
+                "text": "A manufacturer marked an article at `50 and sold it allowing  20% discount. If his profit was 25% then the cost price of the  article was?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "40"
+                    },
+                    {
+                        "id": 2,
+                        "text": "35"
+                    },
+                    {
+                        "id": 3,
+                        "text": "32"
+                    },
+                    {
+                        "id": 4,
+                        "text": "30"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 3,
+                "text": "If on a marked price, the difference of selling prices with a  discount of 30% and two successive discounts of 20% and  10% is ` 72, then the marked price (in rupees) is  ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "3600"
+                    },
+                    {
+                        "id": 2,
+                        "text": "3000"
+                    },
+                    {
+                        "id": 3,
+                        "text": "2500"
+                    },
+                    {
+                        "id": 4,
+                        "text": "2400"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 4,
+                "text": "When the price of sugar decreases by 10%, a man could buy  1 kg more for ` 270. Then the original price of sugar per kg is ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "25"
+                    },
+                    {
+                        "id": 2,
+                        "text": "30"
+                    },
+                    {
+                        "id": 3,
+                        "text": "27"
+                    },
+                    {
+                        "id": 4,
+                        "text": "32"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 5,
+                "text": "X sells two articles for ` 4,000 each with no loss and no gain  in the interaction. If one was sold at a gain of 25% the other  is sold at a loss of",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "25%"
+                    },
+                    {
+                        "id": 2,
+                        "text": "20%"
+                    },
+                    {
+                        "id": 3,
+                        "text": "(50/3)%"
+                    },
+                    {
+                        "id": 4,
+                        "text": "15%"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 6,
+                "text": " A reduction of 20% in the price of sugar enables me to  purchase 5 kg more for ` 600. Find the price of sugar per kg  before reduction of price ",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "24"
+                    },
+                    {
+                        "id": 2,
+                        "text": "30"
+                    },
+                    {
+                        "id": 3,
+                        "text": "32"
+                    },
+                    {
+                        "id": 4,
+                        "text": "36"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 7,
+                "text": " A trader has a weighing balance that shows 1,200 gm for a  kilogram. He further marks up his cost price by 10%. Then  the net profit percentage is",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "32%"
+                    },
+                    {
+                        "id": 2,
+                        "text": "23%"
+                    },
+                    {
+                        "id": 3,
+                        "text": "31.75%"
+                    },
+                    {
+                        "id": 4,
+                        "text": "23.75%"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 8,
+                "text": " The monthly salaries of A and B together amount to ` 40,000.  A spends 85% of his salary and B, 95% of his salary. If now  their savings are the same, then the salary (in `) of A is ",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "10000"
+                    },
+                    {
+                        "id": 2,
+                        "text": "12000"
+                    },
+                    {
+                        "id": 3,
+                        "text": "16000"
+                    },
+                    {
+                        "id": 4,
+                        "text": "18000"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 9,
+                "text": " 36. The printed price of a book is ` 320. A retailer pays ` 244.80  for it. He gets successive discounts of 10% and an another  rate. His second rate is:   ",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "15%"
+                    },
+                    {
+                        "id": 2,
+                        "text": "16%"
+                    },
+                    {
+                        "id": 3,
+                        "text": "14%"
+                    },
+                    {
+                        "id": 4,
+                        "text": "12%"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 10,
+                "text": " A fruit seller buys some oranges at the rate of 4 for ` 10 and  an equal number more at 5 for ` 10. He sells the whole lot at  9 for ` 20. What is his loss or gain percent? ",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": " Loss percent 1(19/81)%  "
+                    },
+                    {
+                        "id": 2,
+                        "text": "Gain percent 1(19/81)%"
+                    },
+                    {
+                        "id": 3,
+                        "text": "No profit no loss"
+                    },
+                    {
+                        "id": 4,
+                        "text": "Loss of 2 %"
+                    }
+                ],
+                "correctOption": 1
+            }
+        ]
+    },
+    {
+        "id": "60aeb5d4633b3f08ee3d25c1",
         "createdAt": "May 24, 2021",
         "questionList": [
             {
@@ -476,242 +715,6 @@ const quizList = [
             }
         ]
     },
-    {
-        "id": 2,
-        "createdAt": "May 25, 2021",
-        "questionList": [
-            {
-                "id": 1,
-                "text": " A shopkeeper earns a profit of 12% on selling a book at 10%  discount on the printed price. The ratio for the cost price and  the printed price of the book is",
-                "options": [
-                    {
-                        "id": 1,
-                        "text": "45:46"
-                    },
-                    {
-                        "id": 2,
-                        "text": "45:51"
-                    },
-                    {
-                        "id": 3,
-                        "text": "47:56"
-                    },
-                    {
-                        "id": 4,
-                        "text": "47:51"
-                    }
-                ],
-                "correctOption": 3
-            },
-            {
-                "id": 2,
-                "text": "A manufacturer marked an article at `50 and sold it allowing  20% discount. If his profit was 25% then the cost price of the  article was?",
-                "options": [
-                    {
-                        "id": 1,
-                        "text": "40"
-                    },
-                    {
-                        "id": 2,
-                        "text": "35"
-                    },
-                    {
-                        "id": 3,
-                        "text": "32"
-                    },
-                    {
-                        "id": 4,
-                        "text": "30"
-                    }
-                ],
-                "correctOption": 3
-            },
-            {
-                "id": 3,
-                "text": "If on a marked price, the difference of selling prices with a  discount of 30% and two successive discounts of 20% and  10% is ` 72, then the marked price (in rupees) is  ?",
-                "options": [
-                    {
-                        "id": 1,
-                        "text": "3600"
-                    },
-                    {
-                        "id": 2,
-                        "text": "3000"
-                    },
-                    {
-                        "id": 3,
-                        "text": "2500"
-                    },
-                    {
-                        "id": 4,
-                        "text": "2400"
-                    }
-                ],
-                "correctOption": 3
-            },
-            {
-                "id": 4,
-                "text": "When the price of sugar decreases by 10%, a man could buy  1 kg more for ` 270. Then the original price of sugar per kg is ?",
-                "options": [
-                    {
-                        "id": 1,
-                        "text": "25"
-                    },
-                    {
-                        "id": 2,
-                        "text": "30"
-                    },
-                    {
-                        "id": 3,
-                        "text": "27"
-                    },
-                    {
-                        "id": 4,
-                        "text": "32"
-                    }
-                ],
-                "correctOption": 2
-            },
-            {
-                "id": 5,
-                "text": "X sells two articles for ` 4,000 each with no loss and no gain  in the interaction. If one was sold at a gain of 25% the other  is sold at a loss of",
-                "options": [
-                    {
-                        "id": 1,
-                        "text": "25%"
-                    },
-                    {
-                        "id": 2,
-                        "text": "20%"
-                    },
-                    {
-                        "id": 3,
-                        "text": "(50/3)%"
-                    },
-                    {
-                        "id": 4,
-                        "text": "15%"
-                    }
-                ],
-                "correctOption": 3
-            },
-            {
-                "id": 6,
-                "text": " A reduction of 20% in the price of sugar enables me to  purchase 5 kg more for ` 600. Find the price of sugar per kg  before reduction of price ",
-                "options": [
-                    {
-                        "id": 1,
-                        "text": "24"
-                    },
-                    {
-                        "id": 2,
-                        "text": "30"
-                    },
-                    {
-                        "id": 3,
-                        "text": "32"
-                    },
-                    {
-                        "id": 4,
-                        "text": "36"
-                    }
-                ],
-                "correctOption": 2
-            },
-            {
-                "id": 7,
-                "text": " A trader has a weighing balance that shows 1,200 gm for a  kilogram. He further marks up his cost price by 10%. Then  the net profit percentage is",
-                "options": [
-                    {
-                        "id": 1,
-                        "text": "32%"
-                    },
-                    {
-                        "id": 2,
-                        "text": "23%"
-                    },
-                    {
-                        "id": 3,
-                        "text": "31.75%"
-                    },
-                    {
-                        "id": 4,
-                        "text": "23.75%"
-                    }
-                ],
-                "correctOption": 1
-            },
-            {
-                "id": 8,
-                "text": " The monthly salaries of A and B together amount to ` 40,000.  A spends 85% of his salary and B, 95% of his salary. If now  their savings are the same, then the salary (in `) of A is ",
-                "options": [
-                    {
-                        "id": 1,
-                        "text": "10000"
-                    },
-                    {
-                        "id": 2,
-                        "text": "12000"
-                    },
-                    {
-                        "id": 3,
-                        "text": "16000"
-                    },
-                    {
-                        "id": 4,
-                        "text": "18000"
-                    }
-                ],
-                "correctOption": 1
-            },
-            {
-                "id": 9,
-                "text": " 36. The printed price of a book is ` 320. A retailer pays ` 244.80  for it. He gets successive discounts of 10% and an another  rate. His second rate is:   ",
-                "options": [
-                    {
-                        "id": 1,
-                        "text": "15%"
-                    },
-                    {
-                        "id": 2,
-                        "text": "16%"
-                    },
-                    {
-                        "id": 3,
-                        "text": "14%"
-                    },
-                    {
-                        "id": 4,
-                        "text": "12%"
-                    }
-                ],
-                "correctOption": 1
-            },
-            {
-                "id": 10,
-                "text": " A fruit seller buys some oranges at the rate of 4 for ` 10 and  an equal number more at 5 for ` 10. He sells the whole lot at  9 for ` 20. What is his loss or gain percent? ",
-                "options": [
-                    {
-                        "id": 1,
-                        "text": " Loss percent 1(19/81)%  "
-                    },
-                    {
-                        "id": 2,
-                        "text": "Gain percent 1(19/81)%"
-                    },
-                    {
-                        "id": 3,
-                        "text": "No profit no loss"
-                    },
-                    {
-                        "id": 4,
-                        "text": "Loss of 2 %"
-                    }
-                ],
-                "correctOption": 1
-            }
-        ]
-    }
 ]
 
 class Quizzes extends Component {
@@ -724,18 +727,25 @@ class Quizzes extends Component {
         scoreLoading: false,
     };
 
+    getScore = async (quizId) => {
+        try {
+            const res = await axios.get(`/score/${quizId}`);
+            const data = res.data.score;
+            this.setState({ score: data.score, isSubmitted: true, submission: data.submission || {} })
+        } catch(e) {
+            console.log(e);
+        }
+    }
+
     async componentDidMount() {
         try {
-            // const res = await axios.get("https://nratest.s3.ap-south-1.amazonaws.com/quiz-list.json", {
-            //     headers: {
-            //         Authorization: ''
-            //     }
-            // });
-            // const quizList = res.data
             this.setState({
                 quizList,
                 selectedQuiz: quizList[0]
             })
+            if(this.props.user) {
+                this.getScore(quizList[0].id)
+            }
         } catch (e) {
             console.log(e);
         }
@@ -749,20 +759,32 @@ class Quizzes extends Component {
             }
         });
     };
-    onSubmit = () => {
-        this.setState({ scoreLoading: true });
-        const { submission, selectedQuiz } = this.state;
-        let score = 0;
-        for (let key in submission) {
-            const question = selectedQuiz.questionList.filter(({ id }) => id == key)[0];
-            if (question.correctOption === submission[key]) {
-                score++;
+    onSubmit = async () => {
+        try {
+            this.setState({ scoreLoading: true });
+            const { submission, selectedQuiz } = this.state;
+            let score = 0;
+            for (let key in submission) {
+                const question = selectedQuiz.questionList.filter(({ id }) => id == key)[0];
+                if (question.correctOption === submission[key]) {
+                    score++;
+                }
             }
+            window.scrollTo(0, 0);
+            if(this.props.user) {
+                await axios.post("/score", { quizId: selectedQuiz.id, score, submission });
+            }
+            this.setState({ score, isSubmitted: true });
+        } catch(e) {
+            console.log(e);
         }
-        setTimeout(() => {
-            this.setState({ score, isSubmitted: true, scoreLoading: false });
-        }, 2000);
-        window.scrollTo(0, 0);
+        if(this.props.user) {
+            this.setState({ scoreLoading: false });
+        } else {
+            setTimeout(() => {
+                this.setState({ scoreLoading: false });
+            }, 2000)
+        }
     }
     resetCurrentQuizState = () => this.setState({ isSubmitted: false, score: 0, submission: {} })
     resetQuiz = () => {
@@ -775,11 +797,20 @@ class Quizzes extends Component {
             onCancel() { },
         });
     }
-    handleSelectQuiz = (quizId) => {
+    handleSelectQuiz = async (quizId) => {
         this.resetCurrentQuizState();
+        this.setState({ 
+            scoreLoading: true,
+            selectedQuiz: this.state.quizList.filter(({ id }) => id === quizId)[0],
+        });
+        if(this.props.user) {
+            try {
+                await this.getScore(quizId);
+            } catch(e) {}
+        }
         this.setState({
-            selectedQuiz: this.state.quizList.filter(({ id }) => id === quizId)[0]
-        })
+            scoreLoading: false 
+        });
     }
     render() {
         const { quizList, selectedQuiz, isSubmitted, score, scoreLoading } = this.state;
@@ -869,9 +900,16 @@ class Quizzes extends Component {
                                 </Card>
                             ))
                         }
-                        <div style={{ margin: '20px 0 100px' }}>
+                        <div>
                             <Button type="primary" size="large" onClick={this.onSubmit}>Submit & See result</Button>
                         </div>
+                        {!this.props.user && <Alert
+                            style={{margin: '20px 0px'}}
+                            message={<><Link to="/login">Login </Link>to save your choices and results.</>}
+                            // description="Additional description and information about copywriting."
+                            type="info"
+                            showIcon
+                        />}
                     </div>
                 )}
             </QuizzzesWrapper>
@@ -879,4 +917,9 @@ class Quizzes extends Component {
     }
 }
 
-export default Quizzes;
+
+const mapStateToProps = (state) => ({
+    user: state.auth.user,
+});
+
+export default connect(mapStateToProps)(Quizzes);

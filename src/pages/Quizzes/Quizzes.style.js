@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const QuizzzesWrapper = styled.div`
+    padding-bottom: 100px;
     .example {
         margin: 20px 0;
         margin-bottom: 20px;
