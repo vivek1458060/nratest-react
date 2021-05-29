@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Input, Button, Card, Typography, message, Divider, } from 'antd';
+import { Form, Input, Button, Card, Typography, message, Divider, Image } from 'antd';
 import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import SignupWrapper from "./Signup.style";
@@ -59,7 +59,7 @@ class Signup extends Component {
             <SignupWrapper style={{minHeight: this.isParentModal ? 'unset' : '100vh', maxWidth: '450px'}}>
                 <Card className="container" bordered={this.isParentModal ? false : true}>
                     {!this.isParentModal && <div className="login-logo">
-                        <img src="/cover.png" alt="logo" />
+                        <Image src="/cover.png" alt="logo" />
                     </div>}
                     <GoogleOuthLoginComponent handleLogin={this.handleSignup} />
                     <FacebookOuthLoginComponent handleLogin={this.handleSignup} />
