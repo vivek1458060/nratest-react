@@ -13,14 +13,6 @@ const LoginWrapper = styled.div`
             border: none;
         }
     };
-    .image-container {
-        display: flex;
-        justify-content: center;
-        img {
-            width: 277px;
-            height: 120px;
-        }
-    };
 `
 
 export default LoginWrapper;

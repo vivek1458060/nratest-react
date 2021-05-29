@@ -21,6 +21,7 @@ const AddQuestion = loadable(() => import("./pages/AddQuestion/AddQuestion"));
 const EditAnswer = loadable(() => import("./pages/EditAnswer/EditAnswer"));
 const Classes = loadable(() => import("./pages/Classes/Classes"));
 const Quizzes = loadable(() => import("./pages/Quizzes/Quizzes"));
+const PrivacyPolicy = loadable(() => import('./pages/PrivacyPolicy'));
 
 export const history = createBrowserHistory();
 
@@ -52,6 +53,7 @@ function App() {
               <PrivateRoute path="/answer/:answer_id" component={EditAnswer} exact />
               <Route path="/classes" component={Classes} exact />
               <Route path="/quizzes" component={Quizzes} exact />
+              <Route path="/privacy-policy" component={PrivacyPolicy} exact />
             </Layout>
           </Switch>
         </Route>

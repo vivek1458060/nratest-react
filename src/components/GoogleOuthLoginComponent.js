@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { GoogleLogin } from "react-google-login";
-import { Button, Space } from 'antd';
+import { Button, Space, message } from 'antd';
 
-export default function OuthLoginComponent(props) {
+export default function GoogleOuthLoginComponent(props) {
     const [isCookie, setCookie] = useState(true);
     const responseGoogleSuccess = (response) => {
         console.log(response);
@@ -23,10 +23,11 @@ export default function OuthLoginComponent(props) {
                     className="google-btn"
                     block
                     shape="round"
-                    style={{borderColor: '#1890ff'}}
+                    size="large"
+                    style={{borderColor: '#1890ff', marginBottom: '10px'}}
                 >
                     <Space>
-                        <img src="/google.svg" alt=""/> Sign in with Google
+                        <img src="/google.svg" alt="" width={24} height={24} /> Sign in with Google
                     </Space>
                 </Button>
             )}

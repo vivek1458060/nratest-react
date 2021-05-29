@@ -6,15 +6,24 @@ import RenderAuthModal from '../../components/RenderAuthModal';
 import ClassesWrapper from './Classes.style';
 
 const classes = [{
+    id: 1,
+    title: 'Special English Class by Pankaj Sir',
+    subtitle: '5+ years of Teaching Experience',
+    studentsAttending: '100',
+    courseType: 'Free',
+    topicCovered: 'Noun',
+    timings: `30th May, Morning at 11:30 O'Clock`,
+}, {
     id: 2,
-    title: 'Special Reasoning Class by Niraj Sir',
+    title: 'Reasoning Class by Niraj Sir',
     subtitle: '7+ years of Teaching Experience',
     studentsAttending: '100',
     courseType: 'Free',
     topicCovered: 'On-Demand',
-    timings: `27th May, 2021, Afternoon at 1:00 O'Clock`,
+    createdAt: '27th May, 2021',
+    timings: `Daily, Afternoon at 1:00 O'Clock`,
 }, {
-    id: 1,
+    id: 3,
     title: 'Aptitude Class by Prince Sir',
     subtitle: '3+ years of Teaching Experience',
     teacherName: 'Prince Sir',
@@ -84,7 +93,7 @@ function Classes(props) {
             {
                 classes.map((item) => (
                     <PageHeader
-                        style={{border: '1px solid #f0f0f0', marginBottom: '20px'}}
+                        style={{ border: '1px solid #f0f0f0', marginBottom: '20px' }}
                         className="site-page-header-responsive"
                         // onBack={() => props.history.goBack()}
                         title={

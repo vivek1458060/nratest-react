@@ -8,6 +8,463 @@ import { connect } from 'react-redux';
 
 const quizList = [
     {
+        "id": "60a29d21f8e26b1a947a4889",
+        "createdAt": "May 29, 2021",
+        "questionList": [
+            {
+                "id": 1,
+                "text": "368 X 25",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "9100"
+                    },
+                    {
+                        "id": 2,
+                        "text": "9200"
+                    },
+                    {
+                        "id": 3,
+                        "text": "9300"
+                    },
+                    {
+                        "id": 4,
+                        "text": "9400"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 2,
+                "text": "772 X 125",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "96000"
+                    },
+                    {
+                        "id": 2,
+                        "text": "96500"
+                    },
+                    {
+                        "id": 3,
+                        "text": "97000"
+                    },
+                    {
+                        "id": 4,
+                        "text": "95500"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 3,
+                "text": "468 X 625",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "192500"
+                    },
+                    {
+                        "id": 2,
+                        "text": "392500"
+                    },
+                    {
+                        "id": 3,
+                        "text": "292500"
+                    },
+                    {
+                        "id": 4,
+                        "text": "292000"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 4,
+                "text": "9867 X 9",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "88003"
+                    },
+                    {
+                        "id": 2,
+                        "text": "88203"
+                    },
+                    {
+                        "id": 3,
+                        "text": "88803"
+                    },
+                    {
+                        "id": 4,
+                        "text": "88403"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 5,
+                "text": "3246 X 5",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "16230"
+                    },
+                    {
+                        "id": 2,
+                        "text": "16330"
+                    },
+                    {
+                        "id": 3,
+                        "text": "16000"
+                    },
+                    {
+                        "id": 4,
+                        "text": "18000"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 6,
+                "text": "242 X 81",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "19602"
+                    },
+                    {
+                        "id": 2,
+                        "text": "19802"
+                    },
+                    {
+                        "id": 3,
+                        "text": "19700"
+                    },
+                    {
+                        "id": 4,
+                        "text": "19900"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 7,
+                "text": "68 X 62",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "4210"
+                    },
+                    {
+                        "id": 2,
+                        "text": "4215"
+                    },
+                    {
+                        "id": 3,
+                        "text": "4216"
+                    },
+                    {
+                        "id": 4,
+                        "text": "4226"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 8,
+                "text": "124 X 126",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "15634"
+                    },
+                    {
+                        "id": 2,
+                        "text": "15624"
+                    },
+                    {
+                        "id": 3,
+                        "text": "15644"
+                    },
+                    {
+                        "id": 4,
+                        "text": "15654"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 9,
+                "text": "142 X 148",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "21016"
+                    },
+                    {
+                        "id": 2,
+                        "text": "22016"
+                    },
+                    {
+                        "id": 3,
+                        "text": "12016"
+                    },
+                    {
+                        "id": 4,
+                        "text": "22016"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 10,
+                "text": "174 X 176",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "29624"
+                    },
+                    {
+                        "id": 2,
+                        "text": "28624"
+                    },
+                    {
+                        "id": 3,
+                        "text": "30624"
+                    },
+                    {
+                        "id": 4,
+                        "text": "31624"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 11,
+                "text": "192 X 198",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "38016"
+                    },
+                    {
+                        "id": 2,
+                        "text": "37016"
+                    },
+                    {
+                        "id": 3,
+                        "text": "36016"
+                    },
+                    {
+                        "id": 4,
+                        "text": "35016"
+                    }
+                ],
+                "correctOption": 1
+            }, {
+                "id": 12,
+                "text": "36 X 56",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "2116"
+                    },
+                    {
+                        "id": 2,
+                        "text": "2216"
+                    },
+                    {
+                        "id": 3,
+                        "text": "2316"
+                    },
+                    {
+                        "id": 4,
+                        "text": "2016"
+                    }
+                ],
+                "correctOption": 4
+            }, {
+                "id": 13,
+                "text": "52 X 78",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "4156"
+                    },
+                    {
+                        "id": 2,
+                        "text": "4056"
+                    },
+                    {
+                        "id": 3,
+                        "text": "4256"
+                    },
+                    {
+                        "id": 4,
+                        "text": "4356"
+                    }
+                ],
+                "correctOption": 2
+            }, {
+                "id": 14,
+                "text": "78 X 104",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "8012"
+                    },
+                    {
+                        "id": 2,
+                        "text": "8112"
+                    },
+                    {
+                        "id": 3,
+                        "text": "8212"
+                    },
+                    {
+                        "id": 4,
+                        "text": "8312"
+                    }
+                ],
+                "correctOption": 2
+            }, {
+                "id": 15,
+                "text": "46 X 60",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "2760"
+                    },
+                    {
+                        "id": 2,
+                        "text": "2660"
+                    },
+                    {
+                        "id": 3,
+                        "text": "2860"
+                    },
+                    {
+                        "id": 4,
+                        "text": "6760"
+                    }
+                ],
+                "correctOption": 1
+            }, {
+                "id": 16,
+                "text": "27 X 86",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "2322"
+                    },
+                    {
+                        "id": 2,
+                        "text": "2422"
+                    },
+                    {
+                        "id": 3,
+                        "text": "2522"
+                    },
+                    {
+                        "id": 4,
+                        "text": "2622"
+                    }
+                ],
+                "correctOption": 1
+            }, {
+                "id": 17,
+                "text": "193 X 24",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "4832"
+                    },
+                    {
+                        "id": 2,
+                        "text": "4632"
+                    },
+                    {
+                        "id": 3,
+                        "text": "4732"
+                    },
+                    {
+                        "id": 4,
+                        "text": "5032"
+                    }
+                ],
+                "correctOption": 2
+            }, {
+                "id": 18,
+                "text": "167 X 86",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "14462"
+                    },
+                    {
+                        "id": 2,
+                        "text": "14562"
+                    },
+                    {
+                        "id": 3,
+                        "text": "14362"
+                    },
+                    {
+                        "id": 4,
+                        "text": "14962"
+                    }
+                ],
+                "correctOption": 3
+            }, {
+                "id": 19,
+                "text": "145 X 242",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "36090"
+                    },
+                    {
+                        "id": 2,
+                        "text": "35090"
+                    },
+                    {
+                        "id": 3,
+                        "text": "33090"
+                    },
+                    {
+                        "id": 4,
+                        "text": "87090"
+                    }
+                ],
+                "correctOption": 2
+            }, {
+                "id": 20,
+                "text": "243 X 567",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "137681"
+                    },
+                    {
+                        "id": 2,
+                        "text": "137881"
+                    },
+                    {
+                        "id": 3,
+                        "text": "137781"
+                    },
+                    {
+                        "id": 4,
+                        "text": "137881"
+                    }
+                ],
+                "correctOption": 3
+            }
+        ]
+    },
+    {
         "id": "609e1cfb598a43f44ff8ae32",
         "createdAt": "May 27, 2021",
         "questionList": [
@@ -1189,7 +1646,7 @@ class Quizzes extends Component {
             const res = await axios.get(`/score/${quizId}`);
             const data = res.data.score;
             this.setState({ score: data.score, isSubmitted: true, submission: data.submission || {} })
-        } catch(e) {
+        } catch (e) {
             console.log(e);
         }
     }
@@ -1200,7 +1657,7 @@ class Quizzes extends Component {
                 quizList,
                 selectedQuiz: quizList[0]
             })
-            if(this.props.user) {
+            if (this.props.user) {
                 this.getScore(quizList[0].id)
             }
         } catch (e) {
@@ -1228,14 +1685,14 @@ class Quizzes extends Component {
                 }
             }
             window.scrollTo(0, 0);
-            if(this.props.user) {
+            if (this.props.user) {
                 await axios.post("/score", { quizId: selectedQuiz.id, score, submission });
             }
             this.setState({ score, isSubmitted: true });
-        } catch(e) {
+        } catch (e) {
             console.log(e);
         }
-        if(this.props.user) {
+        if (this.props.user) {
             this.setState({ scoreLoading: false });
         } else {
             setTimeout(() => {
@@ -1256,17 +1713,17 @@ class Quizzes extends Component {
     }
     handleSelectQuiz = async (quizId) => {
         this.resetCurrentQuizState();
-        this.setState({ 
+        this.setState({
             scoreLoading: true,
             selectedQuiz: this.state.quizList.filter(({ id }) => id === quizId)[0],
         });
-        if(this.props.user) {
+        if (this.props.user) {
             try {
                 await this.getScore(quizId);
-            } catch(e) {}
+            } catch (e) { }
         }
         this.setState({
-            scoreLoading: false 
+            scoreLoading: false
         });
     }
     render() {
@@ -1361,7 +1818,7 @@ class Quizzes extends Component {
                             <Button type="primary" size="large" onClick={this.onSubmit}>Submit & See result</Button>
                         </div>
                         {!this.props.user && <Alert
-                            style={{margin: '20px 0px'}}
+                            style={{ margin: '20px 0px' }}
                             message={<><Link to="/login">Login </Link>to save your choices and results.</>}
                             // description="Additional description and information about copywriting."
                             type="info"

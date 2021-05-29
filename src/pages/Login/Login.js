@@ -5,7 +5,8 @@ import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import LoginWrapper from "./Login.style";
 import axios from 'axios';
-import OuthLoginComponent from "../../components/OuthLoginComponent";
+import GoogleOuthLoginComponent from "../../components/GoogleOuthLoginComponent";
+import FacebookOuthLoginComponent from "../../components/FacebookOuthLoginComponent";
 
 class Login extends Component {
     state = {
@@ -50,15 +51,18 @@ class Login extends Component {
     };
     render() {
         return (
-            <LoginWrapper style={{minHeight: this.isParentModal ? 'unset' : '100vh', maxWidth: '450px'}}>
+            <LoginWrapper style={{ minHeight: this.isParentModal ? 'unset' : '100vh', maxWidth: '450px' }}>
                 <Card className="container" bordered={this.isParentModal ? false : true}>
-                    {!this.isParentModal && <div className="image-container">
+                    {!this.isParentModal && <div className="login-logo">
                         <img src="/cover.png" alt="logo" />
                     </div>}
+                    <GoogleOuthLoginComponent handleLogin={this.handleLogin} />
+                    <FacebookOuthLoginComponent handleLogin={this.handleLogin} />
+                    <Divider>OR</Divider>
                     <Typography.Title level={4} style={{ textAlign: 'center', fontWeight: 300 }}>Sign In</Typography.Title>
-                    <Typography.Text style={{ display: 'block', textAlign: 'center', marginBottom: '15px' }}>Fill in the fields below to sign into your account.</Typography.Text>
+                    {/* <Typography.Text style={{ display: 'block', textAlign: 'center', marginBottom: '15px' }}>Fill in the fields below to sign into your account.</Typography.Text> */}
                     <Form
-                        size="large"
+                        // size="large"
                         name="basic"
                         initialValues={{
                             remember: true,
@@ -106,8 +110,6 @@ class Login extends Component {
                             ) }
                         </Form.Item>
                     </Form>
-                    <Divider>OR</Divider>
-                    <OuthLoginComponent handleLogin={this.handleLogin} />
                 </Card>
             </LoginWrapper>
         );

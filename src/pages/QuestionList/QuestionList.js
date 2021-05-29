@@ -221,17 +221,17 @@ class QuestionList extends Component {
                             >
                                 <List.Item.Meta
                                     className="list-meta"
-                                    avatar={<Avatar src={question.createdBy.dpUrl} />}
+                                    avatar={<Avatar src={question.createdBy?.dpUrl} />}
                                     title={
                                         <>
                                             <div className="custom-meta-title">
-                                                <span>{question.createdBy.fullName}</span>
+                                                <span>{question.createdBy?.fullName}</span>
                                                 <span style={{ fontSize: '12px' }}>
                                                     <Text type="secondary">Asked: {moment(question.createdAt).format('LLL')}</Text>
                                                 </span>
                                             </div>
                                             {
-                                                user && (user._id === question.createdBy._id || user.role === 'admin') && <Dropdown
+                                                user && (user._id === question.createdBy?._id || user.role === 'admin') && <Dropdown
                                                     overlay={
                                                         <Menu style={{ minWidth: '150px' }} onClick={(e) => this.onSettingMenuItemClick(e, question)}>
                                                             <Menu.Item key="question_edit" icon={<EditOutlined />}>

@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import SignupWrapper from "./Signup.style";
 import axios from 'axios';
 import { connect } from 'react-redux';
-import OuthLoginComponent from "../../components/OuthLoginComponent";
+import GoogleOuthLoginComponent from "../../components/GoogleOuthLoginComponent";
+import FacebookOuthLoginComponent from "../../components/FacebookOuthLoginComponent";
 
 class Signup extends Component {
     state = {
@@ -57,13 +58,16 @@ class Signup extends Component {
         return (
             <SignupWrapper style={{minHeight: this.isParentModal ? 'unset' : '100vh', maxWidth: '450px'}}>
                 <Card className="container" bordered={this.isParentModal ? false : true}>
-                    {!this.isParentModal && <div className="image-container">
+                    {!this.isParentModal && <div className="login-logo">
                         <img src="/cover.png" alt="logo" />
                     </div>}
+                    <GoogleOuthLoginComponent handleLogin={this.handleSignup} />
+                    <FacebookOuthLoginComponent handleLogin={this.handleSignup} />
+                    <Divider>OR</Divider>
                     <Typography.Title level={4} style={{ textAlign: 'center', fontWeight: 300 }}>Sign Up</Typography.Title>
-                    <Typography.Text style={{ display: 'block', textAlign: 'center', marginBottom: '15px' }}>Fill in the fields below to create your account.</Typography.Text>
+                    {/* <Typography.Text style={{ display: 'block', textAlign: 'center', marginBottom: '15px' }}>Fill in the fields below to create your account.</Typography.Text> */}
                     <Form
-                        size="large"
+                        // size="large"
                         name="basic"
                         initialValues={{
                             remember: true,
@@ -125,8 +129,6 @@ class Signup extends Component {
                             ) }
                         </Form.Item>
                     </Form>
-                    <Divider>OR</Divider>
-                    <OuthLoginComponent handleLogin={this.handleSignup} />
                 </Card>
             </SignupWrapper>
         );
