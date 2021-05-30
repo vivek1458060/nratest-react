@@ -59,7 +59,7 @@ class Signup extends Component {
             <SignupWrapper style={{minHeight: this.isParentModal ? 'unset' : '100vh', maxWidth: '450px'}}>
                 <Card className="container" bordered={this.isParentModal ? false : true}>
                     {!this.isParentModal && <div className="login-logo">
-                        <Image src="/cover.png" alt="logo" />
+                        <Image src="/cover.png" alt="logo" preview={false} />
                     </div>}
                     <GoogleOuthLoginComponent handleLogin={this.handleSignup} />
                     <FacebookOuthLoginComponent handleLogin={this.handleSignup} />

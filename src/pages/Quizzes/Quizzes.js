@@ -8,6 +8,242 @@ import { connect } from 'react-redux';
 
 const quizList = [
     {
+        "id": "60acfcaa598a43f44f8fcc8f",
+        "createdAt": "May 30, 2021",
+        "questionList": [
+            {
+                "id": 1,
+                "text": "What is the largest possible two digit number by which 2179782 can be divided?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "88"
+                    },
+                    {
+                        "id": 2,
+                        "text": "66"
+                    },
+                    {
+                        "id": 3,
+                        "text": "50"
+                    },
+                    {
+                        "id": 4,
+                        "text": "99"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 2,
+                "text": "At least which number must be subtracted from 9999999 so that it will become the multiple of 125?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "124"
+                    },
+                    {
+                        "id": 2,
+                        "text": "24"
+                    },
+                    {
+                        "id": 3,
+                        "text": "4"
+                    },
+                    {
+                        "id": 4,
+                        "text": "none of these"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 3,
+                "text": `A number of the form 10" - 1 is always divisible by 11 for every n is a natural number, when`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "n is odd"
+                    },
+                    {
+                        "id": 2,
+                        "text": "n is even"
+                    },
+                    {
+                        "id": 3,
+                        "text": "n is prime"
+                    },
+                    {
+                        "id": 4,
+                        "text": "can't say"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 4,
+                "text": "Out of the following numbers which is divisible by 132?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "31218"
+                    },
+                    {
+                        "id": 2,
+                        "text": "38148"
+                    },
+                    {
+                        "id": 3,
+                        "text": "78520"
+                    },
+                    {
+                        "id": 4,
+                        "text": "52020"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 5,
+                "text": "If 653xy is divisible by 80 then the value of x + y is:",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "2"
+                    },
+                    {
+                        "id": 2,
+                        "text": "3"
+                    },
+                    {
+                        "id": 3,
+                        "text": "4"
+                    },
+                    {
+                        "id": 4,
+                        "text": "6"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 6,
+                "text": "The value of k if k35624 is divisible by 11",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "2"
+                    },
+                    {
+                        "id": 2,
+                        "text": "7"
+                    },
+                    {
+                        "id": 3,
+                        "text": "5"
+                    },
+                    {
+                        "id": 4,
+                        "text": "6"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 7,
+                "text": "If 42573k is divisible by 72 then the value of k is ",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "4"
+                    },
+                    {
+                        "id": 2,
+                        "text": "6"
+                    },
+                    {
+                        "id": 3,
+                        "text": "5"
+                    },
+                    {
+                        "id": 4,
+                        "text": "7"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 8,
+                "text": "How many numbers between 1 and 1000 are divisible by 7",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "777"
+                    },
+                    {
+                        "id": 2,
+                        "text": "143"
+                    },
+                    {
+                        "id": 3,
+                        "text": "142"
+                    },
+                    {
+                        "id": 4,
+                        "text": "none of these"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 9,
+                "text": "How many numbers between 55 and 555 including both the extreme values are divisible by 5?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "100"
+                    },
+                    {
+                        "id": 2,
+                        "text": "101"
+                    },
+                    {
+                        "id": 3,
+                        "text": "111"
+                    },
+                    {
+                        "id": 4,
+                        "text": "none of these"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 10,
+                "text": "How many numbers are there from 100 to 200 ?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "100"
+                    },
+                    {
+                        "id": 2,
+                        "text": "99"
+                    },
+                    {
+                        "id": 3,
+                        "text": "101"
+                    },
+                    {
+                        "id": 4,
+                        "text": "none of these"
+                    }
+                ],
+                "correctOption": 3
+            }
+        ]
+    },
+    {
         "id": "60a29d21f8e26b1a947a4889",
         "createdAt": "May 29, 2021",
         "questionList": [
