@@ -3,11 +3,13 @@ import { NavLink } from 'react-router-dom';
 import { history } from '../../App';
 import LayoutWrapper from './Layout.style';
 import CustomHeader from '../../components/Header/Header';
+import { useSelector } from 'react-redux';
 
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
 export const SiderMenu = (props) => {
+    const user = useSelector((state) => state.auth.user)
     const pathname = history.location.pathname;
     return (
         <Menu
@@ -34,6 +36,12 @@ export const SiderMenu = (props) => {
             <Menu.Item key="/classes">
                 <NavLink to="/classes">Live Class</NavLink>
             </Menu.Item>
+            <Menu.Item key="/online-test">
+                <NavLink to="/online-test">Online Tests</NavLink>
+            </Menu.Item>
+            {user?.role === 'admin' && <Menu.Item key="/create-online-test">
+                <NavLink to="/create-online-test">Create Online Test</NavLink>
+            </Menu.Item>}
         </Menu>
     )
 }
@@ -73,11 +81,6 @@ function LayoutCom(props) {
                     </Layout>
                 </Col>
             </Row>
-            <Affix style={{ position: 'fixed', right: 20, bottom: 20 }}>
-                <a href="https://t.me/joinchat/JI6tRCVtC1w0NjRl" target="_blank">
-                    <img src="/telegram.svg" width={64} height={64}/>
-                </a>
-            </Affix>
         </LayoutWrapper>
     )
 }

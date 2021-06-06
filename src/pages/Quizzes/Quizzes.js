@@ -8,8 +8,975 @@ import { connect } from 'react-redux';
 
 const quizList = [
     {
+        "subject": "APTITUDE",
+        "id": "60acb6cb598a43f44f8415eb",
+        "heading": "Aptitude Quiz",
+        "createdAt": "3rd June",
+        "questionList": [
+            {
+                "id": 1,
+                "text": "If 3 divides the integer n, the remainder is 2. Then, what will be the remainder when 7n is divided by 3",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "3"
+                    },
+                    {
+                        "id": 2,
+                        "text": "2"
+                    },
+                    {
+                        "id": 3,
+                        "text": "6"
+                    },
+                    {
+                        "id": 4,
+                        "text": "4"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 2,
+                "text": "What is the remainder when 1294*1298 is divided by 16",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "14"
+                    },
+                    {
+                        "id": 2,
+                        "text": "11"
+                    },
+                    {
+                        "id": 3,
+                        "text": "12"
+                    },
+                    {
+                        "id": 4,
+                        "text": "10"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 3,
+                "text": `310 + 510 is divisible by`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "34"
+                    },
+                    {
+                        "id": 2,
+                        "text": "26"
+                    },
+                    {
+                        "id": 3,
+                        "text": "8"
+                    },
+                    {
+                        "id": 4,
+                        "text": "20"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 4,
+                "text": "What is remainder obtained if 45518 is divided by 19",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "0"
+                    },
+                    {
+                        "id": 2,
+                        "text": "3"
+                    },
+                    {
+                        "id": 3,
+                        "text": "4"
+                    },
+                    {
+                        "id": 4,
+                        "text": "1"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 5,
+                "text": `What is the remainder of 15+25+ 35 + 45 + 55 + 65+75+…..+ 505 when divided by 5`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "3"
+                    },
+                    {
+                        "id": 2,
+                        "text": "4"
+                    },
+                    {
+                        "id": 3,
+                        "text": "2"
+                    },
+                    {
+                        "id": 4,
+                        "text": "0"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 6,
+                "text": "What is the unit digit of 287*586*878",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "6"
+                    },
+                    {
+                        "id": 2,
+                        "text": "9"
+                    },
+                    {
+                        "id": 3,
+                        "text": "2"
+                    },
+                    {
+                        "id": 4,
+                        "text": "4"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 7,
+                "text": "Find the remainder when 1! + 2! + 3! +4! + 5! + ————–  1000! is divided by 8",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "1"
+                    },
+                    {
+                        "id": 2,
+                        "text": "2"
+                    },
+                    {
+                        "id": 3,
+                        "text": "4"
+                    },
+                    {
+                        "id": 4,
+                        "text": "3"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 8,
+                "text": `Find the remainder when 51203 is divided by 7`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "2"
+                    },
+                    {
+                        "id": 2,
+                        "text": "4"
+                    },
+                    {
+                        "id": 3,
+                        "text": "5"
+                    },
+                    {
+                        "id": 4,
+                        "text": "6"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 9,
+                "text": `When (67<sup>67</sup> + 67) is divided by 68, the remainder is?`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "1"
+                    },
+                    {
+                        "id": 2,
+                        "text": "63"
+                    },
+                    {
+                        "id": 3,
+                        "text": "66"
+                    },
+                    {
+                        "id": 4,
+                        "text": "67"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 10,
+                "text": `What is the remainder when [(9)<sup>19</sup> + 6] is divided by 8`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "6"
+                    },
+                    {
+                        "id": 2,
+                        "text": "7"
+                    },
+                    {
+                        "id": 3,
+                        "text": "0"
+                    },
+                    {
+                        "id": 4,
+                        "text": "3"
+                    }
+                ],
+                "correctOption": 2
+            }
+        ]
+    },
+    {
+        "subject": "APTITUDE",
+        "id": "609e5c9e3dee7c066a1bddc4",
+        "heading": "Aptitude Quiz",
+        "createdAt": "2nd June",
+        "questionList": [
+            {
+                "id": 1,
+                "text": "What is unit digit of the expression (1!)<sup>1</sup> + (2!)<sup>2</sup> + (3!)<sup>3</sup> + ............+ (10!)<sup>10</sup>",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "4"
+                    },
+                    {
+                        "id": 2,
+                        "text": "5"
+                    },
+                    {
+                        "id": 3,
+                        "text": "6"
+                    },
+                    {
+                        "id": 4,
+                        "text": "7"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 2,
+                "text": "What is the unit digit of the expression (888)<sup>9325!</sup>",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "4"
+                    },
+                    {
+                        "id": 2,
+                        "text": "6"
+                    },
+                    {
+                        "id": 3,
+                        "text": "8"
+                    },
+                    {
+                        "id": 4,
+                        "text": "9"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 3,
+                "text": `Find the unit digit of the expression 1<sup>2</sup> + 2<sup>2</sup> + 3<sup>2</sup> + 4<sup>2</sup> + 5<sup>2</sup> + ................+ 100<sup>2</sup>`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "1"
+                    },
+                    {
+                        "id": 2,
+                        "text": "0"
+                    },
+                    {
+                        "id": 3,
+                        "text": "2"
+                    },
+                    {
+                        "id": 4,
+                        "text": "3"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 4,
+                "text": "Find the highest power of 81 that can divide 1800!",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "220"
+                    },
+                    {
+                        "id": 2,
+                        "text": "225"
+                    },
+                    {
+                        "id": 3,
+                        "text": "224"
+                    },
+                    {
+                        "id": 4,
+                        "text": "230"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 5,
+                "text": `Find the number of zeros at the end of the product of the expression: 
+                    2<sup>1</sup> x 5<sup>2</sup> x 2<sup>3</sup> x 2<sup>5</sup> x 5<sup>4</sup> x 5<sup>7</sup> x 2<sup>9</sup> x 5<sup>10</sup>
+                `,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "17"
+                    },
+                    {
+                        "id": 2,
+                        "text": "19"
+                    },
+                    {
+                        "id": 3,
+                        "text": "18"
+                    },
+                    {
+                        "id": 4,
+                        "text": "20"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 6,
+                "text": "Find the number of zeros in the expression 253!",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "61"
+                    },
+                    {
+                        "id": 2,
+                        "text": "61"
+                    },
+                    {
+                        "id": 3,
+                        "text": "63"
+                    },
+                    {
+                        "id": 4,
+                        "text": "62"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 7,
+                "text": "Find the highest power of 63 which can exactly divide 6336!",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "955"
+                    },
+                    {
+                        "id": 2,
+                        "text": "1054"
+                    },
+                    {
+                        "id": 3,
+                        "text": "854"
+                    },
+                    {
+                        "id": 4,
+                        "text": "1150"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 8,
+                "text": `If the seven digit number 74 x 29y6 is divisible by 72, then what will be the value of (2x+3y) ?`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "21"
+                    },
+                    {
+                        "id": 2,
+                        "text": "20"
+                    },
+                    {
+                        "id": 3,
+                        "text": "19"
+                    },
+                    {
+                        "id": 4,
+                        "text": "16"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 9,
+                "text": `A three-digit number 4a3 is added to another three-digit number 984 to give the four digit number 13b7 which is divisible by 11. Then the value of (a + b) is:`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "11"
+                    },
+                    {
+                        "id": 2,
+                        "text": "12"
+                    },
+                    {
+                        "id": 3,
+                        "text": "9"
+                    },
+                    {
+                        "id": 4,
+                        "text": "10"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 10,
+                "text": `If the six digit number 15x1y2 is divisible by 44, then (x + y) is equal to:`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "7"
+                    },
+                    {
+                        "id": 2,
+                        "text": "8"
+                    },
+                    {
+                        "id": 3,
+                        "text": "6"
+                    },
+                    {
+                        "id": 4,
+                        "text": "9"
+                    }
+                ],
+                "correctOption": 1
+            }
+        ]
+    },
+    {
+        "subject": "APTITUDE",
+        "id": "60b61cd2027b8807a290a777",
+        "heading": "Aptitude Quiz",
+        "createdAt": "1st June",
+        "questionList": [
+            {
+                "id": 1,
+                "text": "Find the numbers of all factors of 1008.",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "25"
+                    },
+                    {
+                        "id": 2,
+                        "text": "28"
+                    },
+                    {
+                        "id": 3,
+                        "text": "40"
+                    },
+                    {
+                        "id": 4,
+                        "text": "30"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 2,
+                "text": "Find the number of prime factor of 111.",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "2"
+                    },
+                    {
+                        "id": 2,
+                        "text": "4"
+                    },
+                    {
+                        "id": 3,
+                        "text": "5"
+                    },
+                    {
+                        "id": 4,
+                        "text": "3"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 3,
+                "text": `Find the number of even factor of 512.`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "8"
+                    },
+                    {
+                        "id": 2,
+                        "text": "9"
+                    },
+                    {
+                        "id": 3,
+                        "text": "10"
+                    },
+                    {
+                        "id": 4,
+                        "text": "11"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 4,
+                "text": "Find the sum of factor of 360.",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "1130"
+                    },
+                    {
+                        "id": 2,
+                        "text": "1170"
+                    },
+                    {
+                        "id": 3,
+                        "text": "1370"
+                    },
+                    {
+                        "id": 4,
+                        "text": "1270"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 5,
+                "text": "Find the number of all factors of 18522.",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "30"
+                    },
+                    {
+                        "id": 2,
+                        "text": "34"
+                    },
+                    {
+                        "id": 3,
+                        "text": "32"
+                    },
+                    {
+                        "id": 4,
+                        "text": "36"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 6,
+                "text": "Which of the following is a prime number.",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "407"
+                    },
+                    {
+                        "id": 2,
+                        "text": "409"
+                    },
+                    {
+                        "id": 3,
+                        "text": "413"
+                    },
+                    {
+                        "id": 4,
+                        "text": "417"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 7,
+                "text": "Which of the following is a prime number.",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "427"
+                    },
+                    {
+                        "id": 2,
+                        "text": "421"
+                    },
+                    {
+                        "id": 3,
+                        "text": "493"
+                    },
+                    {
+                        "id": 4,
+                        "text": "497"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 8,
+                "text": `Which of the following statement is true - 
+                    (1) All prime numbers (except 2 & 3) can be written in the form of (6n-1) or (6n+1).
+                    (2) All numbers Written in the form of (6n-1) or (6n+1) are prime numbers
+                `,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "only a"
+                    },
+                    {
+                        "id": 2,
+                        "text": "only b"
+                    },
+                    {
+                        "id": 3,
+                        "text": "both a & b"
+                    },
+                    {
+                        "id": 4,
+                        "text": "neither a & b"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 9,
+                "text": `Which statements is/are true - 
+                    (1) Prime numbers have only two factors.
+                    (2) Composite numbers have more than two factors
+                    (3) 1 is neither a prime number nor a composite number.
+                `,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "Only A"
+                    },
+                    {
+                        "id": 2,
+                        "text": "Only B"
+                    },
+                    {
+                        "id": 3,
+                        "text": "Only B & C"
+                    },
+                    {
+                        "id": 4,
+                        "text": "All are correct"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 10,
+                "text": `Which of the following statements is/are correct - 
+                    (1) Recurring decimals are irrational number.
+                    (2) Decimals which are non finite and non recurring are irrational numbers.
+                    (3) Recurring decimals are rational numbers.
+                `,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "Only 1"
+                    },
+                    {
+                        "id": 2,
+                        "text": "Only 1 & 2"
+                    },
+                    {
+                        "id": 3,
+                        "text": "Only 1 & 3"
+                    },
+                    {
+                        "id": 4,
+                        "text": "Only 2 & 3"
+                    }
+                ],
+                "correctOption": 4
+            }
+        ]
+    },
+    {
+        "subject": "APTITUDE",
+        "id": "60b1acdb598a43f44f5c0aca",
+        "heading": "Aptitude Quiz",
+        "createdAt": "May 31",
+        "questionList": [
+            {
+                "id": 1,
+                "text": "How many numbers are divisible by 3 in the numbers 300, 301, 302,..., 499, 500?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "200"
+                    },
+                    {
+                        "id": 2,
+                        "text": "67"
+                    },
+                    {
+                        "id": 3,
+                        "text": "66"
+                    },
+                    {
+                        "id": 4,
+                        "text": " none of these"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 2,
+                "text": "In the above question total numbers in the set of numbers S = (200,201... 800) which are either divisible by 5 or by 7 is:",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "210"
+                    },
+                    {
+                        "id": 2,
+                        "text": "199"
+                    },
+                    {
+                        "id": 3,
+                        "text": "190"
+                    },
+                    {
+                        "id": 4,
+                        "text": "can't be determined"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 3,
+                "text": `Total number of numbers lying in the range of 1331 and 3113 which are neither divisible by 2, 3 or 5 is :`,
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "477"
+                    },
+                    {
+                        "id": 2,
+                        "text": "653"
+                    },
+                    {
+                        "id": 3,
+                        "text": "594"
+                    },
+                    {
+                        "id": 4,
+                        "text": "none of these"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 4,
+                "text": "How many numbers are there in the set S = (200, 201, 202... 800) which are divisible by neither of 5 or 7?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "411"
+                    },
+                    {
+                        "id": 2,
+                        "text": "410"
+                    },
+                    {
+                        "id": 3,
+                        "text": "412"
+                    },
+                    {
+                        "id": 4,
+                        "text": "none of these"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 5,
+                "text": "Atleast what number must be subtracted from 434079 so that it becomes divisible by 137",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "173"
+                    },
+                    {
+                        "id": 2,
+                        "text": "97"
+                    },
+                    {
+                        "id": 3,
+                        "text": "63"
+                    },
+                    {
+                        "id": 4,
+                        "text": "can't be determined"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 6,
+                "text": ". In the above question, at least what number be added to 434079, so that it will become divisible by (or multiple of) 137?",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "97"
+                    },
+                    {
+                        "id": 2,
+                        "text": "75"
+                    },
+                    {
+                        "id": 3,
+                        "text": "74"
+                    },
+                    {
+                        "id": 4,
+                        "text": "none of these"
+                    }
+                ],
+                "correctOption": 3
+            },
+            {
+                "id": 7,
+                "text": "Which one number is closest to 193 which is divisible 18 is :",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "180"
+                    },
+                    {
+                        "id": 2,
+                        "text": "198"
+                    },
+                    {
+                        "id": 3,
+                        "text": "195"
+                    },
+                    {
+                        "id": 4,
+                        "text": "108"
+                    }
+                ],
+                "correctOption": 2
+            },
+            {
+                "id": 8,
+                "text": "The product of two numbers ab7 and cd5 could be. where ab7 and cd5 are individually three digit numbers:",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "8135"
+                    },
+                    {
+                        "id": 2,
+                        "text": "8735255"
+                    },
+                    {
+                        "id": 3,
+                        "text": "79236"
+                    },
+                    {
+                        "id": 4,
+                        "text": "none of these"
+                    }
+                ],
+                "correctOption": 4
+            },
+            {
+                "id": 9,
+                "text": "When a 3 digit number 984 is added to another 3 digit number 4p3, we get a four digit number 13q7, which is divisible by 11. The value of p + q is:",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "10"
+                    },
+                    {
+                        "id": 2,
+                        "text": "12"
+                    },
+                    {
+                        "id": 3,
+                        "text": "11"
+                    },
+                    {
+                        "id": 4,
+                        "text": "13"
+                    }
+                ],
+                "correctOption": 1
+            },
+            {
+                "id": 10,
+                "text": "When a number divided by 9235, we get the quotient 888 and the remainder 222, such a least possible number is:",
+                "options": [
+                    {
+                        "id": 1,
+                        "text": "820090"
+                    },
+                    {
+                        "id": 2,
+                        "text": "8200920"
+                    },
+                    {
+                        "id": 3,
+                        "text": "8200680"
+                    },
+                    {
+                        "id": 4,
+                        "text": "none of these"
+                    }
+                ],
+                "correctOption": 4
+            }
+        ]
+    },
+    {
+        "subject": "APTITUDE",
         "id": "60acfcaa598a43f44f8fcc8f",
-        "createdAt": "May 30, 2021",
+        "heading": "Aptitude Quiz",
+        "createdAt": "May 30",
         "questionList": [
             {
                 "id": 1,
@@ -244,8 +1211,10 @@ const quizList = [
         ]
     },
     {
+        "subject": "APTITUDE",
         "id": "60a29d21f8e26b1a947a4889",
-        "createdAt": "May 29, 2021",
+        "heading": "Aptitude Quiz",
+        "createdAt": "May 29",
         "questionList": [
             {
                 "id": 1,
@@ -701,8 +1670,10 @@ const quizList = [
         ]
     },
     {
+        "subject": "APTITUDE",
         "id": "609e1cfb598a43f44ff8ae32",
-        "createdAt": "May 27, 2021",
+        "heading": "Aptitude Quiz",
+        "createdAt": "May 27",
         "questionList": [
             {
                 "id": 1,
@@ -1158,8 +2129,10 @@ const quizList = [
         ]
     },
     {
+        "subject": "APTITUDE",
         "id": "60aeb5c182af3808df4a9a50",
-        "createdAt": "May 26, 2021",
+        "heading": "Aptitude Quiz",
+        "createdAt": "May 26",
         "questionList": [
             {
                 "id": 1,
@@ -1394,8 +2367,10 @@ const quizList = [
         ]
     },
     {
+        "subject": "APTITUDE",
         "id": "60aeb5edf77ca90903e0476e",
-        "createdAt": "May 25, 2021",
+        "heading": "Aptitude Quiz",
+        "createdAt": "May 25",
         "questionList": [
             {
                 "id": 1,
@@ -1630,8 +2605,10 @@ const quizList = [
         ]
     },
     {
+        "subject": "APTITUDE",
         "id": "60aeb5d4633b3f08ee3d25c1",
-        "createdAt": "May 24, 2021",
+        "heading": "Aptitude Quiz",
+        "createdAt": "May 24",
         "questionList": [
             {
                 "id": 1,
@@ -1879,7 +2856,7 @@ class Quizzes extends Component {
 
     getScore = async (quizId) => {
         try {
-            const res = await axios.get(`/score/${quizId}`);
+            const res = await axios.get(`/test-submission/${quizId}`);
             const data = res.data.score;
             this.setState({ score: data.score, isSubmitted: true, submission: data.submission || {} })
         } catch (e) {
@@ -1922,7 +2899,7 @@ class Quizzes extends Component {
             }
             window.scrollTo(0, 0);
             if (this.props.user) {
-                await axios.post("/score", { quizId: selectedQuiz.id, score, submission });
+                await axios.post("/test-submission", { testId: selectedQuiz.id, score, submission });
             }
             this.setState({ score, isSubmitted: true });
         } catch (e) {
@@ -1947,15 +2924,18 @@ class Quizzes extends Component {
             onCancel() { },
         });
     }
-    handleSelectQuiz = async (quizId) => {
+    handleSelectQuiz = async (value, type) => {
         this.resetCurrentQuizState();
+        const selectedQuiz = this.state.quizList.filter((quiz) => {
+            return type === 'date' ? quiz.createdAt === value : quiz.subject === value;
+        })[0];
         this.setState({
             scoreLoading: true,
-            selectedQuiz: this.state.quizList.filter(({ id }) => id === quizId)[0],
+            selectedQuiz,
         });
         if (this.props.user) {
             try {
-                await this.getScore(quizId);
+                await this.getScore(selectedQuiz.id);
             } catch (e) { }
         }
         this.setState({
@@ -1969,17 +2949,47 @@ class Quizzes extends Component {
         const showResult = !scoreLoading && isSubmitted;
         return (
             <QuizzzesWrapper>
-                {quizList && <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <Form.Item label={<strong style={{ paddingRight: '10px' }}>Select Quiz by date</strong>}>
-                        <Select value={selectedQuiz?.id} style={{ width: 200 }} onChange={this.handleSelectQuiz}>
-                            {
-                                quizList.map((quiz) => (
-                                    <Select.Option key={quiz.id} value={quiz.id}>{quiz.createdAt}</Select.Option>
-                                ))
-                            }
-                        </Select>
-                    </Form.Item>
-                </div>}
+                {quizList && (
+                    <Form 
+                        layout="vertical" 
+                        style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap', marginBottom: '15px' }}
+                    >
+                        {/* <Form.Item label={<strong>Subject</strong>} style={{ margin: '0px 10px' }}>
+                            <Select 
+                                value={selectedQuiz?.subject} 
+                                style={{ width: 150 }} 
+                                onChange={(value) => this.handleSelectQuiz(value, "subject")}
+                            >
+                                {
+                                    quizList.reduce((acc, quiz) => {
+                                        if(!acc.includes(quiz.subject)) {
+                                            acc.push(quiz.subject)
+                                        }
+                                        return acc;
+                                    }, []).map((subject) => (
+                                        <Select.Option key={subject} value={subject}>{subject}</Select.Option>
+                                    ))
+                                }
+                            </Select>
+                        </Form.Item> */}
+                        <Form.Item 
+                            label={<strong>Date</strong>} 
+                            style={{ margin: '0px 10px' }}
+                        >
+                            <Select 
+                                value={selectedQuiz?.createdAt} 
+                                style={{ width: 175 }} 
+                                onChange={(value) => this.handleSelectQuiz(value, "date")}
+                            >
+                                {
+                                    quizList.map((quiz) => (
+                                        <Select.Option key={quiz.id} value={quiz.createdAt}>{quiz.createdAt}</Select.Option>
+                                    ))
+                                }
+                            </Select>
+                        </Form.Item>
+                    </Form>
+                )}
                 {questionList && (
                     <div className="question-list">
                         {scoreLoading && <div className="example">
@@ -2004,7 +3014,7 @@ class Quizzes extends Component {
                                 </Result>
                             </Spin>
                         }
-                        <Typography.Title level={2}>Quiz</Typography.Title>
+                        <Typography.Title level={2}>{selectedQuiz?.heading}</Typography.Title>
                         <Typography.Text>
                             Responders will see the results and correct answers immediately after submitting the Quiz.
                             </Typography.Text><br />
@@ -2022,7 +3032,7 @@ class Quizzes extends Component {
                                     bordered={false}
                                     style={{ background: '#f5f5f5', margin: '15px 0' }}
                                 >
-                                    <Typography.Paragraph strong>{index + 1}. {question.text}</Typography.Paragraph>
+                                    <Typography.Paragraph strong>{index + 1}. <span dangerouslySetInnerHTML={{ __html: question.text }}></span></Typography.Paragraph>
                                     <Radio.Group
                                         onChange={(e) => this.onChange(e, question.id)}
                                         value={this.state.submission[question.id]}
@@ -2034,7 +3044,7 @@ class Quizzes extends Component {
                                                         value={option.id}
                                                         key={option.id}
                                                     >
-                                                        {option.text}
+                                                        <span dangerouslySetInnerHTML={{__html: option.text}}></span>
                                                     </Radio>
                                                 ))
                                             }

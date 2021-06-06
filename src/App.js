@@ -12,16 +12,19 @@ import loadable from "@loadable/component";
 import Layout from './components/Layout/Layout';
 import './utils/zoom-tool';
 import Modal from './components/Modal';
-import QuestionList from "./pages/QuestionList/QuestionList";
 const Login = loadable(() => import("./pages/Login/Login"));
 const Signup = loadable(() => import("./pages/Signup/Signup"));
-// const QuestionList = loadable(() => import("./pages/QuestionList/QuestionList"));
+const QuestionList = loadable(() => import("./pages/QuestionList/QuestionList"));
 const Solutions = loadable(() => import("./pages/Solutions/Solutions"));
 const AddQuestion = loadable(() => import("./pages/AddQuestion/AddQuestion"));
 const EditAnswer = loadable(() => import("./pages/EditAnswer/EditAnswer"));
 const Classes = loadable(() => import("./pages/Classes/Classes"));
 const Quizzes = loadable(() => import("./pages/Quizzes/Quizzes"));
 const PrivacyPolicy = loadable(() => import('./pages/PrivacyPolicy'));
+const AddTest = loadable(() => import('./pages/AddTest/AddTest'));
+const AddTestQuestion = loadable(() => import('./pages/AddTestQuestion/AddTestQuestion'));
+const AppearOnlineTest = loadable(() => import('./pages/AppearOnlineTest/AppearOnlineTest'));
+const OnlineTestList = loadable(() => import("./pages/OnlineTestList/OnlineTestList"));
 
 export const history = createBrowserHistory();
 
@@ -43,6 +46,7 @@ function App() {
         <PublicRoute path="/signup" component={Signup} exact />
         <Route>
           <Switch>
+            <PrivateRoute path="/online-test-appear/:testId" component={AppearOnlineTest} />
             <Layout>
               <Modal />
               <Route path="/" component={() => <Redirect to="/question/list" />} exact />
@@ -54,6 +58,9 @@ function App() {
               <Route path="/classes" component={Classes} exact />
               <Route path="/quizzes" component={Quizzes} exact />
               <Route path="/privacy-policy" component={PrivacyPolicy} exact />
+              <Route path="/create-online-test" component={AddTest} />
+              <Route path="/create-online-test-questions/:testId" component={AddTestQuestion} />
+              <Route path="/online-test" component={OnlineTestList} />
             </Layout>
           </Switch>
         </Route>

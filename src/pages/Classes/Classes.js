@@ -1,30 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import { PageHeader, Button, Statistic, Descriptions, Row, Col, message, Typography, Collapse } from 'antd';
+import { PageHeader, Button, Statistic, Descriptions, Row, Typography, Collapse, Alert } from 'antd';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import RenderAuthModal from '../../components/RenderAuthModal';
 import ClassesWrapper from './Classes.style';
 
-const classes = [{
-    id: 3,
-    title: 'Aptitude Class by Prince Sir',
-    subtitle: '3+ years of Teaching Experience',
-    teacherName: 'Prince Sir',
-    studentsAttending: '100',
-    courseType: 'Free',
-    topicCovered: 'According to syllabus',
-    createdAt: '24th May, 2021',
-    timings: `Monday to Friday, Morning at 9:00 O'Clock`,
-}, {
-    id: 2,
-    title: 'Reasoning Class by Niraj Sir',
-    subtitle: '7+ years of Teaching Experience',
-    studentsAttending: '100',
-    courseType: 'Free',
-    topicCovered: 'On-Demand',
-    createdAt: '27th May, 2021',
-    timings: `Daily, Afternoon at 1:00 O'Clock`,
-}]
+const classes = [
+    // {
+    //     id: 1,
+    //     title: 'Special GS Class by Chandan Sir',
+    //     subtitle: '5+ years of Teaching Experience',
+    //     studentsAttending: '100',
+    //     courseType: 'Free',
+    //     topicCovered: 'On-Demand',
+    //     timings: `1st June, Evening at 5:00 O'Clock`,
+    // },
+    {
+        id: 1,
+        title: 'English Class by Pankaj Sir',
+        subtitle: '5+ years of Teaching Experience',
+        studentsAttending: '100',
+        courseType: 'Free',
+        topicCovered: 'On-Demand',
+        timings: `Mon, Wed and Fri, Morning at 10:30  O'Clock`,
+    },
+    {
+        id: 3,
+        title: 'Aptitude Class by Prince Sir',
+        subtitle: '3+ years of Teaching Experience',
+        studentsAttending: '100',
+        courseType: 'Free',
+        topicCovered: 'According to syllabus',
+        createdAt: '24th May, 2021',
+        timings: `Monday to Friday, Morning at 9:00 O'Clock`,
+    },
+    {
+        id: 2,
+        title: 'Reasoning Class by Niraj Sir',
+        subtitle: '7+ years of Teaching Experience',
+        studentsAttending: '100',
+        courseType: 'Free',
+        topicCovered: 'On-Demand',
+        createdAt: '27th May, 2021',
+        timings: `Monday to Friday at 12:00 O'Clock`,
+        // message: "Today's class is suspended due to some unavoidable circumstances. Thanks!"
+    }]
 
 const Content = ({ children, extra }) => (
     <div className="content">
@@ -106,6 +126,18 @@ function Classes(props) {
                         <Content extra={
                             <>
                                 <br />
+                                {
+                                    item.message && (
+                                        <>
+                                            <Alert
+                                                message={item.message}
+                                                type="info"
+                                                showIcon
+                                            />
+                                            <br />
+                                        </>
+                                    )
+                                }
                                 <Row>
                                     <Statistic
                                         title="Students Attending"
