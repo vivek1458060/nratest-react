@@ -79,7 +79,7 @@ class AddTest extends Component {
     return (
       <AddTestWrapper>
         <h1 style={{ display: 'flex', justifyContent: 'space-between' }}>
-          Available Tests
+          Created Tests
           <Button type="primary" onClick={this.onShow}>Create a new Test</Button>
         </h1>
         <List

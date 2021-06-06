@@ -54,7 +54,7 @@ class OnlineTestList extends Component {
   render() {
     return (
       <div>
-        <h1 style={{ textAlign: 'center' }}>
+        <h1 style={{ textAlign: 'center', fontSize: '24px' }}>
           Available Tests
         </h1>
         <List
@@ -71,7 +71,7 @@ class OnlineTestList extends Component {
                   {
                     (!item.submission || item.submission?.length === 0) && (
                       <div>
-                        { moment().valueOf() > moment(item.scheduledTime).add(item.activeDuration, 'hour') && <span>Test is Over</span>}
+                        { moment().valueOf() > moment(item.scheduledTime).add(item.activeDuration, 'hour') && <span style={{color: 'red'}}>Test is Over</span>}
                         { moment().valueOf() < item.scheduledTime && (
                           <div style={{ marginTop: '30px', marginBottom: '10px' }}>
                             <Timer onComplete={this.onComplete} milliseconds={item.scheduledTime} />

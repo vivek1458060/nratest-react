@@ -100,7 +100,7 @@ class AppearOnlineTest extends React.Component {
     }
     onSubmitClick = async () => {
         Modal.confirm({
-            title: 'Do you want this Submit Test?',
+            title: 'Do you want to Submit this Test?',
             icon: <ExclamationCircleOutlined />,
             // content: ""
             onOk: () => {
