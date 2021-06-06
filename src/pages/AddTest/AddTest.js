@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, List, message, Modal } from 'antd';
+import { Button, List, message, Modal, Tag } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import AddTestWrapper from './AddTest.style';
 import axios from 'axios';
@@ -106,7 +106,7 @@ class AddTest extends Component {
             >
               {/* <Skeleton avatar title={false} loading={item.loading} active> */}
               <List.Item.Meta
-                title={item.title}
+                title={<><span style={{marginRight: '10px'}}>{item.title}</span><Tag color="orange">{item.type}</Tag></>}
                 description={item.description}
               />
               {/* <div>content</div> */}

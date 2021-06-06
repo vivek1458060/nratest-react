@@ -35,7 +35,7 @@ class OnlineTestList extends Component {
   }
   getTests = async () => {
     try {
-      const res = await axios.get("/test/all");
+      const res = await axios.get("/test/all", { params: { type: 'ONLINETEST' } });
       this.setState({ tests: res.data.tests });
     } catch (e) {
       console.log(e);

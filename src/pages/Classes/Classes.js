@@ -15,15 +15,15 @@ const classes = [
     //     topicCovered: 'On-Demand',
     //     timings: `1st June, Evening at 5:00 O'Clock`,
     // },
-    {
-        id: 1,
-        title: 'English Class by Pankaj Sir',
-        subtitle: '5+ years of Teaching Experience',
-        studentsAttending: '100',
-        courseType: 'Free',
-        topicCovered: 'On-Demand',
-        timings: `Mon, Wed and Fri, Morning at 10:30  O'Clock`,
-    },
+    // {
+    //     id: 1,
+    //     title: 'English Class by Pankaj Sir',
+    //     subtitle: '5+ years of Teaching Experience',
+    //     studentsAttending: '100',
+    //     courseType: 'Free',
+    //     topicCovered: 'On-Demand',
+    //     timings: `Mon, Wed and Fri, Morning at 10:30  O'Clock`,
+    // },
     {
         id: 3,
         title: 'Aptitude Class by Prince Sir',
@@ -42,7 +42,7 @@ const classes = [
         courseType: 'Free',
         topicCovered: 'On-Demand',
         createdAt: '27th May, 2021',
-        timings: `Monday to Friday at 12:00 O'Clock`,
+        timings: `Everyday at 12:00 O'Clock, Tue and Sat Off`,
         // message: "Today's class is suspended due to some unavoidable circumstances. Thanks!"
     }]
 

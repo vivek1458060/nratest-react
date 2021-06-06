@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { Button, Form, Input, Space } from 'antd';
+import { Button, Form, Input, Space, Select } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 const Wrapper = styled.div`
@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 function AddTestForm(props) {
   const formRef = React.useRef();
   useEffect(() => {
-    if(props.values) {
+    if (props.values) {
       formRef.current.setFieldsValue(props.values);
     }
   })
@@ -25,6 +25,24 @@ function AddTestForm(props) {
   return (
     <Wrapper>
       <Form onFinish={onFinish} ref={formRef} layout="vertical">
+        <Form.Item
+          label="Test Type"
+          validateTrigger={['onChange', 'onBlur']}
+          name="type"
+          rules={[
+            {
+              required: true,
+              whitespace: false,
+              message: "Please select a test Type",
+            },
+          ]}
+        // noStyle
+        >
+          <Select options={[
+            { label: 'Quiz', value: 'QUIZ' },
+            { label: 'Online Test', value: 'ONLINETEST' }
+          ]} placeholder="Select Test Type" />
+        </Form.Item>
         <Form.Item
           label="Title"
           validateTrigger={['onChange', 'onBlur']}
