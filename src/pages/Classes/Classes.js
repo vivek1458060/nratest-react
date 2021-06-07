@@ -34,17 +34,18 @@ const classes = [
         createdAt: '24th May, 2021',
         timings: `Monday to Friday, Morning at 9:00 O'Clock`,
     },
-    {
-        id: 2,
-        title: 'Reasoning Class by Niraj Sir',
-        subtitle: '7+ years of Teaching Experience',
-        studentsAttending: '100',
-        courseType: 'Free',
-        topicCovered: 'On-Demand',
-        createdAt: '27th May, 2021',
-        timings: `Everyday at 12:00 O'Clock, Tue and Sat Off`,
-        // message: "Today's class is suspended due to some unavoidable circumstances. Thanks!"
-    }]
+    // {
+    //     id: 2,
+    //     title: 'Reasoning Class by Niraj Sir',
+    //     subtitle: '7+ years of Teaching Experience',
+    //     studentsAttending: '100',
+    //     courseType: 'Free',
+    //     topicCovered: 'On-Demand',
+    //     createdAt: '27th May, 2021',
+    //     timings: `Everyday at 12:00 O'Clock, Tue and Sat Off`,
+    //     // message: "Today's class is suspended due to some unavoidable circumstances. Thanks!"
+    // }
+]
 
 const Content = ({ children, extra }) => (
     <div className="content">

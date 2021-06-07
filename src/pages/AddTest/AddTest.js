@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, List, message, Modal, Tag } from 'antd';
+import { Button, List, message, Modal, Tag, Switch, Form } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import AddTestWrapper from './AddTest.style';
 import axios from 'axios';
@@ -75,10 +75,34 @@ class AddTest extends Component {
   }
   onCancel = () => this.setState({ show: false, editItem: null })
   onShow = () => this.setState({ show: true })
+  handlePublish = async (test, isPublished) => {
+    Modal.confirm({
+      title: `Do you want to make this test ${isPublished ? 'Public' : 'Private'}?`,
+      icon: <ExclamationCircleOutlined />,
+      content: test.title,
+      onOk: async () => {
+        try {
+          await axios.get(`/test/toggle-publish/${test._id}`)
+          this.setState({
+            tests: this.state.tests.map((v) => {
+              if (v._id === test._id) {
+                v.isPublished = isPublished;
+              }
+              return v;
+            })
+          })
+          message.success(`Test is ${isPublished ? 'Public' : 'Private'} now`);
+        } catch (e) {
+          console.log(e);
+        }
+      },
+      onCancel() { },
+    });
+  }
   render() {
     return (
       <AddTestWrapper>
-        <h1 style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <h1 style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
           Created Tests
           <Button type="primary" onClick={this.onShow}>Create a new Test</Button>
         </h1>
@@ -106,7 +130,17 @@ class AddTest extends Component {
             >
               {/* <Skeleton avatar title={false} loading={item.loading} active> */}
               <List.Item.Meta
-                title={<><span style={{marginRight: '10px'}}>{item.title}</span><Tag color="orange">{item.type}</Tag></>}
+                title={
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <div>
+                      <span style={{ marginRight: '10px' }}>{item.title}</span>
+                      <Tag color="orange">{item.type}</Tag>
+                    </div>
+                    <Form.Item label="Public" valuePropName="checked">
+                      <Switch checked={item.isPublished} onChange={(isPublished) => this.handlePublish(item, isPublished)} />
+                    </Form.Item>
+                  </div>
+                }
                 description={item.description}
               />
               {/* <div>content</div> */}
