@@ -136,7 +136,7 @@ class AddTest extends Component {
                       <span style={{ marginRight: '10px' }}>{item.title}</span>
                       <Tag color="orange">{item.type}</Tag>
                     </div>
-                    <Form.Item label="Public" valuePropName="checked">
+                    <Form.Item label="Public" valuePropName="checked" style={{marginBottom: '0px'}}>
                       <Switch checked={item.isPublished} onChange={(isPublished) => this.handlePublish(item, isPublished)} />
                     </Form.Item>
                   </div>

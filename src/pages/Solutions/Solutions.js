@@ -21,7 +21,7 @@ class Solutions extends Component {
         fileList: [],
         question: null,
         answers: [],
-        [`activeKey${this.question_id}`]: "1"
+        [`activeKey${this.question_id}`]: "0"
     }
     handleCommentFormDisplay = () => {
         this.setState({ showCommentForm: !this.state.showCommentForm })
@@ -39,7 +39,10 @@ class Solutions extends Component {
         try {
             const res = await axios.get("/questions/" + this.question_id);
             const question = res.data.question;
-            this.setState({ question });
+            this.setState({ 
+                question, 
+                [`activeKey${this.question_id}`]: question.commentCount > 0 ? "1" : "0"
+            });
         } catch (e) {
             console.log(e);
         }

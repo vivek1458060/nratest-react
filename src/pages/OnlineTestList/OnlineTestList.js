@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Tag, Typography } from 'antd';
+import { Button, List, Tag, Typography, Descriptions } from 'antd';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import RenderAuthModal from '../../components/RenderAuthModal';
@@ -19,7 +19,7 @@ class Timer extends React.Component {
         renderer={({ hours, minutes, seconds, completed }) => {
           return (
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <span style={{marginRight: '10px'}}>Time Left: </span><Typography.Text mark>{hours}:{minutes}:{seconds}</Typography.Text> <span></span>
+              <span style={{ marginRight: '10px' }}>Time Left: </span><Typography.Text mark>{hours}:{minutes}:{seconds}</Typography.Text> <span></span>
             </div>
           )
         }}
@@ -71,7 +71,7 @@ class OnlineTestList extends Component {
                   {
                     (!item.submission || item.submission?.length === 0) && (
                       <div>
-                        { moment().valueOf() > moment(item.scheduledTime).add(item.activeDuration, 'hour') && <span style={{color: 'red'}}>Test is Over</span>}
+                        { moment().valueOf() > moment(item.scheduledTime).add(item.activeDuration, 'hour') && <span style={{ color: 'red' }}>Test is Over</span>}
                         { moment().valueOf() < item.scheduledTime && (
                           <div style={{ marginTop: '30px', marginBottom: '10px' }}>
                             <Timer onComplete={this.onComplete} milliseconds={item.scheduledTime} />
@@ -93,9 +93,13 @@ class OnlineTestList extends Component {
                   {item.submission && item.submission?.length > 0 && (
                     <div>
                       <Tag color="green">Submitted</Tag>
-                      {
-                        item.submission[0]?.score !== null ? <label>Score: {item.submission[0]?.score}</label> : <label>Score: Will be announced shortly</label>
-                      }
+                      <Typography.Text strong>Score: {item.submission[0]?.score !== null ? item.submission[0]?.score : 'Will be announced shortly'}</Typography.Text>
+                      <div style={{textAlign: 'initial'}}>
+                        <a onClick={(e) => {
+                          e.preventDefault();
+                          window.open(`/online-test-appear/${item._id}`, "_blank");
+                        }}>View Answer</a>
+                      </div>
                     </div>
                   )}
                 </div>

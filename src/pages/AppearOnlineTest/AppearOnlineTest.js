@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Layout, Steps, Button, message, Radio, Space, Divider, Modal, Result, Spin } from 'antd';
+import { Row, Col, Layout, Steps, Button, message, Radio, Space, Divider, Modal, Result, Spin, Tag } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import AppearOnlineTestWrapper from './AppearOnlineTest.style';
 import axios from 'axios';
@@ -31,6 +31,7 @@ class Timer extends React.Component {
 
 class AppearOnlineTest extends React.Component {
     state = {
+        test: null,
         questions: [],
         current: 0,
         submission: {},
@@ -38,6 +39,14 @@ class AppearOnlineTest extends React.Component {
         submitLoading: false,
     };
     testId = this.props.match.params.testId;
+    getTest = async () => {
+        try {
+            const res = await axios.get(`/test/${this.testId}`);
+            this.setState({ test: res.data.test, submission: res.data.test.submission?.[0] || {} });
+        } catch (e) {
+            console.log(e);
+        }
+    }
     getQuestions = async () => {
         try {
             const res = await axios.get(`/test-question/${this.testId}`);
@@ -59,7 +68,8 @@ class AppearOnlineTest extends React.Component {
             console.log(e);
         }
     }
-    async componentDidMount(testId) {
+    async componentDidMount() {
+        this.getTest();
         this.getQuestions();
     }
     next = () => {
@@ -69,6 +79,9 @@ class AppearOnlineTest extends React.Component {
         this.setState({ current: this.state.current - 1 });
     };
     onChange = (e, key) => {
+        if(this.state.test.submission?.length > 0) {
+            return message.warning("Test is view Only")
+        }
         this.setState({
             submission: {
                 ...this.state.submission,
@@ -112,26 +125,27 @@ class AppearOnlineTest extends React.Component {
     onSectionChange = (key) => {
         const { questions, current } = this.state;
         for (let i = 0; i < questions.length; i++) {
-            if(questions[i].section === key) {
+            if (questions[i].section === key) {
                 this.setState({ current: i });
                 break
             }
         }
     }
     render() {
-        const { current, questions, submission, sections } = this.state;
+        const { test, current, questions, submission, sections } = this.state;
         const currentQuestion = questions[current];
         if (!currentQuestion) return <span>Loading...</span>;
+        const hasSubmitted = test?.submission?.length > 0;
         return (
             <AppearOnlineTestWrapper>
                 <Row>
                     <Col lg={{ span: 18, offset: 2 }} xs={24}>
-                        <Layout.Header className="header">
+                        <Layout.Header className="header" style={{ marginBottom: '45px' }}>
                             <img className="logo" src="/cover2.png" width="250" alt="logo" />
                         </Layout.Header>
-                        <div style={{ marginTop: '30px', marginBottom: '10px' }}>
+                        {!hasSubmitted && <div style={{ marginBottom: '10px' }}>
                             <Timer onComplete={this.onComplete} />
-                        </div>
+                        </div>}
                         <Space>
                             {
                                 Object.keys(sections).map((key) => (
@@ -165,6 +179,9 @@ class AppearOnlineTest extends React.Component {
                                     }
                                 </Space>
                             </Radio.Group>
+                            <div style={{marginTop: '15px'}}>
+                                <Tag color="geekblue">Correct Option: {currentQuestion.correctOption}</Tag>
+                            </div>
                         </div>
                         <div className="steps-action">
                             {current > 0 && (
@@ -183,13 +200,18 @@ class AppearOnlineTest extends React.Component {
                                 </Button>
                             )}
                         </div>
-                        <Divider />
-                        <Button
-                            onClick={this.onSubmitClick}
-                            size="large" type="primary"
-                            style={{ background: 'green', borderColor: 'green' }}
-                        >
-                            Submit Test</Button>
+                        {!hasSubmitted && (
+                            <div>
+                                <Divider />
+                                <Button
+                                    onClick={this.onSubmitClick}
+                                    size="large" type="primary"
+                                    style={{ background: 'green', borderColor: 'green' }}
+                                >
+                                    Submit Test
+                                </Button>
+                            </div>
+                        )}
                     </Col>
                 </Row>
                 <Modal visible={this.state.submitted} width={400} closable={false} footer={null}>
