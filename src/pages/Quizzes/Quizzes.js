@@ -134,27 +134,28 @@ class Quizzes extends Component {
             <QuizzzesWrapper>
                 <SEO title="Quiz for Aptitude, Reasoning, English, and GS for Competitive exams" />
                 {quizList && (
-                    <Form
-                        layout="vertical"
-                        style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap', marginBottom: '15px' }}
-                    >
-                        <Form.Item
-                            label={<strong>Select Topic</strong>}
-                            style={{ margin: '0px 10px' }}
+                    <div style={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap', marginBottom: '15px' }}>
+                        <Form
+                            layout="vertical"
                         >
-                            <Select
-                                value={selectedQuiz?._id}
-                                style={{ width: 200 }}
-                                onChange={(value) => this.handleSelectQuiz(value, "topic")}
+                            <Form.Item
+                                label={<strong>Select Topic</strong>}
+                                style={{ margin: '0px 10px' }}
                             >
-                                {
-                                    quizList.map((quiz) => (
-                                        <Select.Option key={quiz._id} value={quiz._id}>{quiz.title}</Select.Option>
-                                    ))
-                                }
-                            </Select>
-                        </Form.Item>
-                    </Form>
+                                <Select
+                                    value={selectedQuiz?._id}
+                                    style={{ width: 200 }}
+                                    onChange={(value) => this.handleSelectQuiz(value, "topic")}
+                                >
+                                    {
+                                        quizList.map((quiz) => (
+                                            <Select.Option key={quiz._id} value={quiz._id}>{quiz.title}</Select.Option>
+                                        ))
+                                    }
+                                </Select>
+                            </Form.Item>
+                        </Form>
+                    </div>
                 )}
                 {questionList.length > 0 && (
                     <div className="question-list">
@@ -180,7 +181,7 @@ class Quizzes extends Component {
                                 </Result>
                             </Spin>
                         }
-                        <Typography.Title level={2}>{selectedQuiz?.title}</Typography.Title>
+                        <Typography.Title level={3}>{selectedQuiz?.title}</Typography.Title>
                         <Typography.Text>
                             Responders will see the results and correct answers immediately after submitting the Quiz.
                             </Typography.Text><br />
