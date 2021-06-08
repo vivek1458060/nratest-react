@@ -16,11 +16,11 @@ class Timer extends React.Component {
         return (
             <Countdown
                 onComplete={this.props.onComplete}
-                date={Date.now() + 1200000}
+                date={Date.now() + this.props.duration}
                 renderer={({ hours, minutes, seconds, completed }) => {
                     return (
                         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            Time Left: <span>{minutes}:{seconds}</span>
+                            Time Left: <span>{hours}:{minutes}:{seconds}</span>
                         </div>
                     )
                 }}
@@ -136,6 +136,8 @@ class AppearOnlineTest extends React.Component {
         const currentQuestion = questions[current];
         if (!currentQuestion) return <span>Loading...</span>;
         const hasSubmitted = test?.submission?.length > 0;
+        console.log(hasSubmitted);
+        if(!test) return "Loading..."
         return (
             <AppearOnlineTestWrapper>
                 <Row>
@@ -144,7 +146,7 @@ class AppearOnlineTest extends React.Component {
                             <img className="logo" src="/cover2.png" width="250" alt="logo" />
                         </Layout.Header>
                         {!hasSubmitted && <div style={{ marginBottom: '10px' }}>
-                            <Timer onComplete={this.onComplete} />
+                            <Timer onComplete={this.onComplete} duration={test?.testDuration*60000} /> {/*  duration is in minutes */}
                         </div>}
                         <Space>
                             {
@@ -175,7 +177,7 @@ class AppearOnlineTest extends React.Component {
                                             >
                                                 <span style={{marginRight: '10px'}} dangerouslySetInnerHTML={{ __html: option }}></span>
                                                 {
-                                                   hasSubmitted &&  index + 1 == submission[currentQuestion._id] && (
+                                                   hasSubmitted && index + 1 == submission[currentQuestion._id] && (
                                                     index + 1 ==  currentQuestion.correctOption ?
                                                         <CheckCircleOutlined style={{color: 'green'}} /> :
                                                         <CloseCircleOutlined style={{color: 'red'}} />  
@@ -187,7 +189,7 @@ class AppearOnlineTest extends React.Component {
                                 </Space>
                             </Radio.Group>
                             <div style={{ marginTop: '15px' }}>
-                                <Tag color="geekblue">Correct Option: {currentQuestion.correctOption}</Tag>
+                                { hasSubmitted && <Tag color="geekblue">Correct Option: {currentQuestion.correctOption}</Tag>}
                             </div>
                         </div>
                         <div className="steps-action">

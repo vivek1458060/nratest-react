@@ -151,10 +151,11 @@ class AddTest extends Component {
         </List>
         <br />
         <Modal
+          destroyOnClose
           title={`${this.state.editItem ? 'Edit' : 'Add'} Test`}
           visible={this.state.show}
           closable={false}
-          footer={<></>}
+          footer={null}
         >
           <AddTestForm
             values={this.state.editItem}

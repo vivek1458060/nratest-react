@@ -1,10 +1,33 @@
 import React, { Component } from 'react';
-import { Button, List, Tag, Typography, Descriptions } from 'antd';
+import { Button, List, Tag, Typography, Descriptions, Card, PageHeader, Alert } from 'antd';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import RenderAuthModal from '../../components/RenderAuthModal';
 import Countdown from 'react-countdown';
 import moment from 'moment';
+import styled from 'styled-components';
+
+const OnlineTestListWrapper = styled.div`
+  .example-link {
+    margin-right: 16px;
+    line-height: 24px;
+  };
+  .example-link-icon {
+    margin-right: 8px;
+  };
+  .ant-page-header-heading-title {
+    white-space: normal;
+  };
+  .ant-page-header-heading-sub-title {
+    white-space: normal;
+  }
+  @media(max-width: 992px) {
+    .ant-page-header-heading-left {
+      flex-direction: column;
+      align-items: initial;
+    }
+  }
+`
 
 class Timer extends React.Component {
   state = {}
@@ -18,9 +41,7 @@ class Timer extends React.Component {
         date={this.props.milliseconds}
         renderer={({ hours, minutes, seconds, completed }) => {
           return (
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <span style={{ marginRight: '10px' }}>Time Left: </span><Typography.Text mark>{hours}:{minutes}:{seconds}</Typography.Text> <span></span>
-            </div>
+            <Typography.Text mark>{hours}:{minutes}:{seconds}</Typography.Text>
           )
         }}
       />
@@ -53,76 +74,86 @@ class OnlineTestList extends Component {
   };
   render() {
     return (
-      <div>
+      <OnlineTestListWrapper>
         <h1 style={{ textAlign: 'center', fontSize: '24px' }}>
           Available Tests
         </h1>
-        <List
-          className="demo-loadmore-list"
-          bordered="true"
-          // loading={initLoading}
-          itemLayout="vertical"
-          // loadMore={loadMore}
-          dataSource={this.state.tests}
-          renderItem={item => (
-            <List.Item
-              actions={[
-                <div>
-                  {
-                    (!item.submission || item.submission?.length === 0) && (
-                      <div>
-                        { moment().valueOf() > moment(item.scheduledTime).add(item.activeDuration, 'hour') && <span style={{ color: 'red' }}>Test is Over</span>}
-                        { moment().valueOf() < item.scheduledTime && (
-                          <div style={{ marginTop: '30px', marginBottom: '10px' }}>
-                            <Timer onComplete={this.onComplete} milliseconds={item.scheduledTime} />
-                          </div>
-                        )}
-                        { moment().valueOf() > item.scheduledTime && moment().valueOf() < moment(item.scheduledTime).add(parseInt(item.activeDuration), 'hours') && (
-                          <a onClick={(e) => {
-                            e.preventDefault();
-                            if (!this.props.user) {
-                              this.setSigninModal(true);
-                            } else {
-                              window.open(`/online-test-appear/${item._id}`, "_blank");
-                            }
-                          }}>Start Test</a>
-                        )}
-                      </div>
-                    )
-                  }
-                  {item.submission && item.submission?.length > 0 && (
-                    <div>
-                      <Tag color="green">Submitted</Tag>
-                      <Typography.Text strong>Score: {item.submission[0]?.score !== null ? item.submission[0]?.score : 'Will be announced shortly'}</Typography.Text>
-                      <div style={{textAlign: 'initial'}}>
-                        <a onClick={(e) => {
+        {
+          this.state.tests.map((test) => {
+            const hasSubmitted = test.submission && test.submission?.length > 0;
+            const currentTimeGreaterThanLive = moment().valueOf() > test.liveDate;
+            const currentTimeLessThanLive = moment().valueOf() < test.liveDate;
+            return (
+              <div className="site-page-header-ghost-wrapper" style={{ padding: '10px', backgroundColor: '#f5f5f5' }}>
+                <PageHeader
+                  ghost={false}
+                  // onBack={() => window.history.back()}
+                  title={test.title}
+                  subTitle={test.description}
+                  extra={[]}
+                >
+                  {/* <Typography.Paragraph>{test.description}</Typography.Paragraph> */}
+                  <Descriptions size="small" column={{ sm: 2, xs: 1 }}>
+                    <Descriptions.Item label="Total Question">{test.totalQuestion}</Descriptions.Item>
+                    <Descriptions.Item label="Duration">{test.testDuration} mins</Descriptions.Item>
+                  </Descriptions>
+                  {currentTimeLessThanLive && (
+                    <Descriptions size="small" column={{ sm: 2, xs: 1 }}>
+                      <Descriptions.Item label="Live Date">
+                        {moment().isSame(test.liveDate, 'day') ? (
+                          <Timer onComplete={this.onComplete} milliseconds={test.liveDate} />
+                        ) : moment(test.liveDate).calendar()}
+                      </Descriptions.Item>
+                    </Descriptions>
+                  )}
+                  <div style={{ margin: "15px 0px" }}>
+                    {!hasSubmitted &&currentTimeGreaterThanLive && (
+                      <a
+                        className="example-link"
+                        onClick={(e) => {
                           e.preventDefault();
-                          window.open(`/online-test-appear/${item._id}`, "_blank");
-                        }}>View Answer</a>
-                      </div>
+                          if(!this.props.user) return this.setState({ showSigninModal: true });
+                          window.open(`/online-test-appear/${test._id}`, "_blank");
+                        }}
+                      >
+                        <img className="example-link-icon" src="https://gw.alipayobjects.com/zos/rmsportal/MjEImQtenlyueSmVEfUD.svg" alt="Start" />
+                          Start Test
+                      </a>
+                    )}
+                    {hasSubmitted && (
+                      <a
+                        className="example-link"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.open(`/online-test-appear/${test._id}`, "_blank");
+                        }}
+                      >
+                        <img className="example-link-icon" src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg" alt="Start" />
+                        View Answer
+                      </a>
+                    )}
+                  </div>
+                  {hasSubmitted && (
+                    <div>
+                      <Alert
+                        type="info"
+                        showIcon
+                        banner
+                        message={test.submission[0]?.score !== null ? `Your Score is ${test.submission[0]?.score}` : 'Score: Will be announced shortly'}
+                      />
                     </div>
                   )}
-                </div>
-              ]}
-            >
-              {/* <Skeleton avatar title={false} loading={item.loading} active> */}
-              <List.Item.Meta
-                title={item.title}
-                description={item.description}
-              />
-              {/* <div>content</div> */}
-              {/* </Skeleton> */}
-            </List.Item>
-          )
-          }
-        >
-        </List >
+                </PageHeader>
+              </div>
+            )
+          })
+        }
         <RenderAuthModal
           show={this.state.showSigninModal}
           onClose={() => this.setSigninModal(false)}
         />
         <br />
-      </div >
+      </OnlineTestListWrapper>
     );
   }
 }
