@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Layout, Steps, Button, message, Radio, Space, Divider, Modal, Result, Spin, Tag } from 'antd';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { ExclamationCircleOutlined, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import AppearOnlineTestWrapper from './AppearOnlineTest.style';
 import axios from 'axios';
 import Countdown from 'react-countdown';
@@ -42,7 +42,7 @@ class AppearOnlineTest extends React.Component {
     getTest = async () => {
         try {
             const res = await axios.get(`/test/${this.testId}`);
-            this.setState({ test: res.data.test, submission: res.data.test.submission?.[0] || {} });
+            this.setState({ test: res.data.test, submission: res.data.test.submission?.[0]?.submission || {} });
         } catch (e) {
             console.log(e);
         }
@@ -79,7 +79,7 @@ class AppearOnlineTest extends React.Component {
         this.setState({ current: this.state.current - 1 });
     };
     onChange = (e, key) => {
-        if(this.state.test.submission?.length > 0) {
+        if (this.state.test.submission?.length > 0) {
             return message.warning("Test is view Only")
         }
         this.setState({
@@ -164,22 +164,29 @@ class AppearOnlineTest extends React.Component {
                             </h3>
                             <Radio.Group
                                 onChange={(e) => this.onChange(e, currentQuestion._id)}
-                                value={this.state.submission[currentQuestion._id]}
+                                value={String(submission[currentQuestion._id])}
                             >
                                 <Space direction="vertical">
                                     {
                                         currentQuestion.options.map((option, index) => (
                                             <Radio
-                                                value={index + 1}
+                                                value={String(index + 1)}
                                                 key={index}
                                             >
-                                                <span dangerouslySetInnerHTML={{ __html: option }}></span>
+                                                <span style={{marginRight: '10px'}} dangerouslySetInnerHTML={{ __html: option }}></span>
+                                                {
+                                                   hasSubmitted &&  index + 1 == submission[currentQuestion._id] && (
+                                                    index + 1 ==  currentQuestion.correctOption ?
+                                                        <CheckCircleOutlined style={{color: 'green'}} /> :
+                                                        <CloseCircleOutlined style={{color: 'red'}} />  
+                                                   )
+                                                }
                                             </Radio>
                                         ))
                                     }
                                 </Space>
                             </Radio.Group>
-                            <div style={{marginTop: '15px'}}>
+                            <div style={{ marginTop: '15px' }}>
                                 <Tag color="geekblue">Correct Option: {currentQuestion.correctOption}</Tag>
                             </div>
                         </div>

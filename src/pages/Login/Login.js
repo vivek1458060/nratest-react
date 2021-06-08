@@ -7,6 +7,7 @@ import LoginWrapper from "./Login.style";
 import axios from 'axios';
 import GoogleOuthLoginComponent from "../../components/GoogleOuthLoginComponent";
 import FacebookOuthLoginComponent from "../../components/FacebookOuthLoginComponent";
+import SEO from '../../components/SEO';
 
 class Login extends Component {
     state = {
@@ -52,6 +53,7 @@ class Login extends Component {
     render() {
         return (
             <LoginWrapper style={{ minHeight: this.isParentModal ? 'unset' : '100vh', maxWidth: '450px' }}>
+                <SEO title="Log in to join the Online class, study material, Quiz, and doubt solutions" />
                 <Card className="container" bordered={this.isParentModal ? false : true}>
                     {!this.isParentModal && <div className="login-logo">
                         <Image src="/cover.png" alt="logo" preview={false} />

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import RenderAuthModal from '../../components/RenderAuthModal';
 import ClassesWrapper from './Classes.style';
+import SEO from '../../components/SEO';
 
 const classes = [
     // {
@@ -103,6 +104,7 @@ function Classes(props) {
     }
     return (
         <ClassesWrapper>
+            <SEO title="Online free Aptitude, Reasoning, GS, and English classes for Competitive exams" />
             {
                 classes.map((item) => (
                     <PageHeader

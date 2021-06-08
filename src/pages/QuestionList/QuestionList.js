@@ -11,6 +11,7 @@ import Comments from '../../components/Comments/QuestionComments';
 import RenderAuthModal from '../../components/RenderAuthModal';
 import { InView } from 'react-intersection-observer';
 import InfiniteScroll from 'react-infinite-scroller';
+import SEO from '../../components/SEO';
 
 const { Text, Title } = Typography;
 const { Panel } = Collapse;
@@ -142,6 +143,7 @@ class QuestionList extends Component {
         console.log(this.state.skip, this.state.limit)
         return (
             <QuestionWrapper>
+                <SEO title="Question Answers" />
                 <div bordered="false" className="title-card">
                     <div className="title-container">
                         <Title level={2} className="title">Questions</Title>

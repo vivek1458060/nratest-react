@@ -5,6 +5,7 @@ import QuizzzesWrapper from './Quizzes.style';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import SEO from '../../components/SEO';
 
 class Quizzes extends Component {
     state = {
@@ -131,6 +132,7 @@ class Quizzes extends Component {
         const showResult = !scoreLoading && isSubmitted;
         return (
             <QuizzzesWrapper>
+                <SEO title="Quiz for Aptitude, Reasoning, English, and GS for Competitive exams" />
                 {quizList && (
                     <Form
                         layout="vertical"
@@ -178,7 +180,7 @@ class Quizzes extends Component {
                                 </Result>
                             </Spin>
                         }
-                        <Typography.Title level={2}>{selectedQuiz?.heading}</Typography.Title>
+                        <Typography.Title level={2}>{selectedQuiz?.title}</Typography.Title>
                         <Typography.Text>
                             Responders will see the results and correct answers immediately after submitting the Quiz.
                             </Typography.Text><br />

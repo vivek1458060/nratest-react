@@ -7,6 +7,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import GoogleOuthLoginComponent from "../../components/GoogleOuthLoginComponent";
 import FacebookOuthLoginComponent from "../../components/FacebookOuthLoginComponent";
+import SEO from '../../components/SEO';
 
 class Signup extends Component {
     state = {
@@ -57,6 +58,7 @@ class Signup extends Component {
     render() {
         return (
             <SignupWrapper style={{minHeight: this.isParentModal ? 'unset' : '100vh', maxWidth: '450px'}}>
+                <SEO title="Sign up to join the Online class, study material, Quiz, and doubt solutions" />
                 <Card className="container" bordered={this.isParentModal ? false : true}>
                     {!this.isParentModal && <div className="login-logo">
                         <Image src="/cover.png" alt="logo" preview={false} />
