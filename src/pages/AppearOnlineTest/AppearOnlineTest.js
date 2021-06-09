@@ -100,9 +100,21 @@ class AppearOnlineTest extends React.Component {
     submitTest = async () => {
         this.setState({ submitted: true, submitLoading: true });
         try {
-            const { submission } = this.state;
+            const { test, submission, questions } = this.state;
+            const reqObj = { testId: this.testId, submission };
+            let score = 0;
+            for (let key in submission) {
+                const question = questions.filter(({ _id }) => _id == key)[0];
+                if (question.correctOption === submission[key]) {
+                    score++;
+                } else {
+                    score -= 0.25;
+                }
+            }
+            reqObj.score = score;
+
             if (this.props.user) {
-                await axios.post("/test-submission", { testId: this.testId, submission });
+                await axios.post("/test-submission", reqObj);
                 // await this.wait();
             }
         } catch (e) {
@@ -136,8 +148,7 @@ class AppearOnlineTest extends React.Component {
         const currentQuestion = questions[current];
         if (!currentQuestion) return <span>Loading...</span>;
         const hasSubmitted = test?.submission?.length > 0;
-        console.log(hasSubmitted);
-        if(!test) return "Loading..."
+        if (!test) return "Loading..."
         return (
             <AppearOnlineTestWrapper>
                 <Row>
@@ -177,11 +188,11 @@ class AppearOnlineTest extends React.Component {
                                             >
                                                 <span style={{marginRight: '10px'}} dangerouslySetInnerHTML={{ __html: option }}></span>
                                                 {
-                                                   hasSubmitted && index + 1 == submission[currentQuestion._id] && (
-                                                    index + 1 ==  currentQuestion.correctOption ?
+                                                    hasSubmitted && index + 1 == submission[currentQuestion._id] && (
+                                                        index + 1 ==  currentQuestion.correctOption ?
                                                         <CheckCircleOutlined style={{color: 'green'}} /> :
                                                         <CloseCircleOutlined style={{color: 'red'}} />  
-                                                   )
+                                                    )
                                                 }
                                             </Radio>
                                         ))

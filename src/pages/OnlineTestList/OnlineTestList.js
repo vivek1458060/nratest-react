@@ -81,8 +81,8 @@ class OnlineTestList extends Component {
         {
           this.state.tests.map((test) => {
             const hasSubmitted = test.submission && test.submission?.length > 0;
-            const currentTimeGreaterThanLive = moment().valueOf() > test.liveDate;
-            const currentTimeLessThanLive = moment().valueOf() < test.liveDate;
+            const currentTimeGreaterThanLive = moment().isSameOrAfter(test.liveDate, 'second')
+            const currentTimeLessThanLive = moment().isBefore(test.liveDate, 'second')
             return (
               <div className="site-page-header-ghost-wrapper" style={{ padding: '10px', backgroundColor: '#f5f5f5' }}>
                 <PageHeader
@@ -107,7 +107,7 @@ class OnlineTestList extends Component {
                     </Descriptions>
                   )}
                   <div style={{ margin: "15px 0px" }}>
-                    {!hasSubmitted &&currentTimeGreaterThanLive && (
+                    {!hasSubmitted && currentTimeGreaterThanLive && (
                       <a
                         className="example-link"
                         onClick={(e) => {
