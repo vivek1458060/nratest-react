@@ -4,6 +4,7 @@ import { CheckCircleOutlined, ExclamationCircleOutlined } from '@ant-design/icon
 import AddTestQuestionForm from '../../components/AddTestQuestion/AddTestQuestionForm';
 import axios from 'axios';
 import AddTestQuestionWrapper from './AddTestQuestion.style';
+import SEO from '../../components/SEO';
 
 class AddTest extends Component {
   state = {
@@ -97,6 +98,7 @@ class AddTest extends Component {
   render() {
     return (
       <AddTestQuestionWrapper>
+        <SEO title="Add TEst Question" meta={[{ property: 'robots', content: 'noindex' }]} />
         <h1 style={{ textAlign: 'center' }}>
           Test: {this.state.test?.title}
         </h1>

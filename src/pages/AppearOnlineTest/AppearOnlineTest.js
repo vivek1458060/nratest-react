@@ -6,6 +6,7 @@ import AppearOnlineTestWrapper from './AppearOnlineTest.style';
 import axios from 'axios';
 import Countdown from 'react-countdown';
 import { connect } from 'react-redux';
+import SEO from '../../components/SEO';
 
 class Timer extends React.Component {
     state = {}
@@ -151,6 +152,7 @@ class AppearOnlineTest extends React.Component {
         if (!test) return "Loading..."
         return (
             <AppearOnlineTestWrapper>
+                <SEO title="Online test" meta={[{ property: 'robots', content: 'noindex' }]} />
                 <Row>
                     <Col lg={{ span: 18, offset: 2 }} xs={24}>
                         <Layout.Header className="header" style={{ marginBottom: '45px' }}>

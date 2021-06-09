@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import AddQuestionWrapper from './AddQuestion.style'
 import RenderAuthModal from '../../components/RenderAuthModal';
+import SEO from '../../components/SEO';
 
 const normFile = (e) => {
     if (Array.isArray(e)) return e;
@@ -81,6 +82,7 @@ class AddQuestion extends Component {
     render() {
         return (
             <AddQuestionWrapper>
+                <SEO title="Ask a Question" />
                 <Typography.Title level={3} className="title" style={{ fontWeight: 300, marginBottom: '25px' }}>
                     {this.question_id ? 'Update Question' : 'Ask a public question'}
                 </Typography.Title>

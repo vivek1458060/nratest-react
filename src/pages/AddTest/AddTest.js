@@ -6,6 +6,7 @@ import AddTestWrapper from './AddTest.style';
 import axios from 'axios';
 
 import AddTestForm from '../../components/AddTest/AddTestForm';
+import SEO from '../../components/SEO';
 
 class AddTest extends Component {
   state = {
@@ -102,6 +103,7 @@ class AddTest extends Component {
   render() {
     return (
       <AddTestWrapper>
+        <SEO title="Create Online Test" meta={[{ property: 'robots', content: 'noindex' }]} />
         <h1 style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
           Created Tests
           <Button type="primary" onClick={this.onShow}>Create a new Test</Button>

@@ -6,6 +6,7 @@ import RenderAuthModal from '../../components/RenderAuthModal';
 import Countdown from 'react-countdown';
 import moment from 'moment';
 import styled from 'styled-components';
+import SEO from '../../components/SEO';
 
 const OnlineTestListWrapper = styled.div`
   .example-link {
@@ -75,6 +76,7 @@ class OnlineTestList extends Component {
   render() {
     return (
       <OnlineTestListWrapper>
+        <SEO title="Online test series" />
         <h1 style={{ textAlign: 'center', fontSize: '24px' }}>
           Available Tests
         </h1>
@@ -102,7 +104,7 @@ class OnlineTestList extends Component {
                       <Descriptions.Item label="Live Date">
                         {moment().isSame(test.liveDate, 'day') ? (
                           <Timer onComplete={this.onComplete} milliseconds={test.liveDate} />
-                        ) : moment(test.liveDate).calendar()}
+                        ) : <Typography.Text mark>{moment(test.liveDate).calendar()}</Typography.Text>}
                       </Descriptions.Item>
                     </Descriptions>
                   )}

@@ -192,7 +192,7 @@ function Classes(props) {
                     allow="microphone; camera; fullscreen;"
                 ></iframe>
             )} */}
-            <Collapse defaultActiveKey={['0']} ghost>
+            {/* <Collapse defaultActiveKey={['0']} ghost>
                 <Collapse.Panel header={<h3>This video will show you how to join a Live Class.</h3>} key="1">
                     <iframe
                         src="https://www.youtube.com/embed/epFguv3JLPE"
@@ -201,7 +201,14 @@ function Classes(props) {
                         allow="fullscreen;"
                     ></iframe>
                 </Collapse.Panel>
-            </Collapse>
+            </Collapse> */}
+            <Alert
+                banner
+                showIcon
+                type="info"
+                message='Prerequisite'
+                description={`Download Zoom App before joining a class.`}
+            />
             <RenderAuthModal
                 show={showSigninModal}
                 onClose={() => setSigninModal(false)}

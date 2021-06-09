@@ -144,7 +144,7 @@ class Quizzes extends Component {
                             >
                                 <Select
                                     value={selectedQuiz?._id}
-                                    style={{ width: 200 }}
+                                    style={{ width: 250 }}
                                     onChange={(value) => this.handleSelectQuiz(value, "topic")}
                                 >
                                     {

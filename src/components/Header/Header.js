@@ -51,13 +51,13 @@ function Navbar() {
                     <Space className="menu-right-items showabovelgscreen">
                         <Button type="text"><PhoneOutlined style={{ transform: 'rotate(100deg)' }} />+91 7980527922</Button>
                         <Button type="text"><MailOutlined />iamprincebhakt@gmail.com</Button>
-                        <Button
+                        {/* <Button
                             size="small"
                             type="text"
                             style={{ height: 'unset' }}
                             onClick={() => dispatch({ type: 'SHOW' })}
                         ><PauseOutlined />Demo
-                        </Button>
+                        </Button> */}
                         {!user && <Button type="text">
                             <Space>
                                 <Typography.Text type="secondary">Welcome Guest. </Typography.Text>
@@ -70,12 +70,12 @@ function Navbar() {
                             </a>
                         </Dropdown>}
                     </Space>
-                    <Button
+                    {/* <Button
                         size="small"
                         style={{ height: 'unset' }}
                         className="showunderlgscreen"
                         onClick={() => dispatch({ type: 'SHOW' })}
-                    ><PauseOutlined /> Demo</Button>
+                    ><PauseOutlined /> Demo</Button> */}
                 </div>
                 <Drawer
                     title={<img src="/cover.png" style={{ maxWidth: '200px' }} />}

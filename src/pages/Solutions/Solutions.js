@@ -9,6 +9,7 @@ import QuestionWrapper from './Solutions.style';
 import Comments from '../../components/Comments/QuestionComments';
 import AnswerForm from '../../components/AnswerForm/AnswerForm';
 import RenderAuthModal from '../../components/RenderAuthModal';
+import SEO from '../../components/SEO';
 
 const { Text, Title } = Typography;
 const { Meta } = Card;
@@ -39,8 +40,8 @@ class Solutions extends Component {
         try {
             const res = await axios.get("/questions/" + this.question_id);
             const question = res.data.question;
-            this.setState({ 
-                question, 
+            this.setState({
+                question,
                 [`activeKey${this.question_id}`]: question.commentCount > 0 ? "1" : "0"
             });
         } catch (e) {
@@ -140,6 +141,7 @@ class Solutions extends Component {
         const { user } = this.props;
         return (
             <QuestionWrapper>
+                <SEO title="Doubt Solutions" meta={[{ property: 'robots', content: 'noindex' }]} />
                 <List
                     itemLayout="vertical"
                     size="small"
@@ -296,15 +298,15 @@ class Solutions extends Component {
                                 style={{ marginBottom: answer.videoUrl ? '10px' : '' }}
                                 src={answer.imageUrl}
                             />}
-                            {answer.videoUrl && 
-                            <iframe 
-                                width="100%" 
-                                height="400" 
-                                title="video solution"
-                                src={answer.videoUrl}
-                                allow="fullscreen;"
-                            >
-                            </iframe>}
+                            {answer.videoUrl &&
+                                <iframe
+                                    width="100%"
+                                    height="400"
+                                    title="video solution"
+                                    src={answer.videoUrl}
+                                    allow="fullscreen;"
+                                >
+                                </iframe>}
                         </Card>
                     ))
                 }

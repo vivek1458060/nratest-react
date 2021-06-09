@@ -49,7 +49,7 @@ function App() {
             <PrivateRoute path="/online-test-appear/:testId" component={AppearOnlineTest} />
             <Layout>
               <Modal />
-              <Route path="/" component={() => <Redirect to="/question/list" />} exact />
+              <Route path="/" component={() => <Redirect to={{ pathname: "/question/list", state: { status: 301 } }} />} exact />
               <Route path="/question/list" component={QuestionList} exact />
               <Route path="/question/ask" component={AddQuestion} exact />
               <PrivateRoute path="/question/edit/:question_id" component={AddQuestion} exact />
