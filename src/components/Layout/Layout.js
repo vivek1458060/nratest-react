@@ -1,52 +1,33 @@
-import { Row, Col, Layout, Menu, Affix, Button } from 'antd';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Row, Col, Menu } from 'antd';
+import { MailOutlined, SettingOutlined, QuestionCircleOutlined, PlaySquareOutlined } from '@ant-design/icons';
 import { history } from '../../App';
 import LayoutWrapper from './Layout.style';
 import CustomHeader from '../../components/Header/Header';
 import { useSelector } from 'react-redux';
 
-const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
-export const SiderMenu = (props) => {
-    const user = useSelector((state) => state.auth.user)
-    const pathname = history.location.pathname;
-    return (
-        <Menu
-            mode="inline"
-            defaultSelectedKeys={[pathname === '/' ? '/question/list' : pathname]}
-            // defaultOpenKeys={['quiz']}
-            style={props.menuStyle}
-            onClick={props.onClick}
-        >
-            <Menu.Item key="/question/list">
-                <NavLink to="/question/list">Doubts</NavLink>
-            </Menu.Item>
-            {/* <SubMenu key="quiz" title="Quiz">
-                <Menu.Item key="/add-quiz">
-                    <NavLink to="/add-quiz">Add Quiz</NavLink>
-                </Menu.Item>
-                <Menu.Item key="/quizzes">
-                    <NavLink to="/quizzes">Take Quiz</NavLink>
-                </Menu.Item>
-            </SubMenu> */}
-            <Menu.Item key="/quizzes">
-                <NavLink to="/quizzes">Take Quiz</NavLink>
-            </Menu.Item>
-            <Menu.Item key="/classes">
-                <NavLink to="/classes">Live Class</NavLink>
-            </Menu.Item>
-            <Menu.Item key="/online-test">
-                <NavLink to="/online-test">Online Tests</NavLink>
-            </Menu.Item>
-            {user?.role === 'admin' && <Menu.Item key="/create-online-test">
-                <NavLink to="/create-online-test">Create Online Test</NavLink>
-            </Menu.Item>}
-        </Menu>
-    )
-}
-
 function LayoutCom(props) {
+    const rootSubmenuKeys = ['submenu'];
+    const pathname = history.location.pathname;
+
+    const [openKeys, setOpenKeys] = React.useState(['submenu']);
+    const [current, setCurrent] = useState(pathname);
+
+    const onOpenChange = keys => {
+        const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
+        if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+            setOpenKeys(keys);
+        } else {
+            setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+        }
+    };
+    const handleClick = ({ key }) => {
+        setCurrent(key);
+        history.push(key);
+    }
+    const user = useSelector((state) => state.auth.user);
     return (
         <LayoutWrapper>
             <Row>
@@ -54,31 +35,38 @@ function LayoutCom(props) {
                     <CustomHeader />
                 </Col>
             </Row>
-            <Row>
-                <Col lg={{ span: 20, offset: 2 }} xl={{ span: 18, offset: 3 }} xs={24}>
-                    <Layout style={{ background: 'none' }}>
-                        <Content style={{ paddingTop: '40px' }}>
-                            <Layout style={{ background: 'none' }}>
-                                <Sider
-                                    className="sider"
-                                    width={200}
-                                // breakpoint="lg"
-                                // collapsedWidth="0"
-                                // onBreakpoint={broken => {
-                                //     // console.log(broken);
-                                // }}
-                                // onCollapse={(collapsed, type) => {
-                                //     // console.log(collapsed, type);
-                                // }}
-                                >
-                                    <SiderMenu menuStyle={{ height: '100%' }} />
-                                </Sider>
-                                <Content style={{ minHeight: 280, padding: '0px 10px 60px 10px' }}>
-                                    {props.children}
-                                </Content>
-                            </Layout>
-                        </Content>
-                    </Layout>
+            <Row style={{ marginTop: '20px' }}>
+                <Col lg={{ span: 22, offset: 1 }} xl={{ span: 18, offset: 3 }} xs={24}>
+                    <Row>
+                        <Col lg={{ span: 5 }} className="showabovelgscreen">
+                            <Menu
+                                style={{ maxWidth: 250, height: '100vh' }}
+                                mode="inline"
+                                onClick={handleClick}
+                                openKeys={openKeys}
+                                onOpenChange={onOpenChange}
+                                selectedKeys={[current]}
+                                // theme="dark"
+                            >
+                                <Menu.Item key="/question/list" icon={<QuestionCircleOutlined />}>Doubts</Menu.Item>
+                                <SubMenu key="submenu" icon={<MailOutlined />} title="Test" icon={<SettingOutlined />}>
+                                    <Menu.Item key="/quizzes">Quiz</Menu.Item>
+                                    <Menu.Item key="/online-test">Online Test</Menu.Item>
+                                    {
+                                        user?.role === 'admin' && (
+                                            <Menu.Item key="/create-online-test">Create Online Test</Menu.Item>
+                                        )
+                                    }
+                                </SubMenu>
+                                <Menu.Item key="/classes" icon={<PlaySquareOutlined />}>Live Class</Menu.Item>
+                            </Menu>
+                        </Col>
+                        <Col lg={{ span: 19 }} xs={24}>
+                            <div style={{ padding: '10px 10px 40px 10px' }}>
+                                {props.children}
+                            </div>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         </LayoutWrapper>

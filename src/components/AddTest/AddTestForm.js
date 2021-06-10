@@ -16,7 +16,7 @@ function AddTestForm(props) {
         liveDate: props.values.liveDate ? moment(props.values.liveDate) : null
       });
     }
-  })
+  }, [])
   const onFinish = (values) => {
     if(values.liveDate) values.liveDate = values.liveDate.valueOf();
     props.onCreateTest(values);

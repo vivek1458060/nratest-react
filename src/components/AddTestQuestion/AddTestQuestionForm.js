@@ -35,7 +35,7 @@ function AddTestForm(props) {
         if (props.values) {
             formRef.current.setFieldsValue(props.values);
         }
-    })
+    }, [])
 
     const onCancel = () => {
         formRef.current.resetFields();
@@ -48,7 +48,6 @@ function AddTestForm(props) {
     };
 
     const handleOptionChange = (values) => {
-        if (!values.correctOption) formRef.current.setFieldsValue({ correctOption: null });
         if (values.options) {
             setCorrectOptions(createCorrectOptions(formRef.current.getFieldsValue().options));
             formRef.current.setFieldsValue({ correctOption: null });

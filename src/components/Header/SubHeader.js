@@ -2,29 +2,26 @@ import { Menu } from 'antd';
 import { QuestionCircleOutlined, PlaySquareOutlined, SettingOutlined } from '@ant-design/icons';
 import { history } from '../../App';
 import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const { SubMenu } = Menu;
 
 function SubHeader() {
-    const user = useSelector((state) => state.auth.user);
     const pathname = history.location.pathname;
-    useEffect(() => {
-        setCurrent(pathname)
-    }, [pathname]);
-    const [current, setCurrent] = useState('mail');
+    const [current, setCurrent] = useState(pathname);
+
     const handleClick = e => {
-        console.log('click ', e);
         setCurrent(e.key);
         history.push(e.key);
     };
+
+    const user = useSelector((state) => state.auth.user);
     return (
         <Menu 
             onClick={handleClick} 
             selectedKeys={[current]} 
             mode="horizontal" 
             className="showunderlgscreen"
-            style={{marginTop: '20px'}}
         >
             <Menu.Item key="/question/list" icon={<QuestionCircleOutlined />}>
                 Doubts

@@ -140,7 +140,6 @@ class QuestionList extends Component {
     render() {
         const { questions } = this.state;
         const { user } = this.props;
-        console.log(this.state.skip, this.state.limit)
         return (
             <QuestionWrapper>
                 <SEO title="Question Answers" />
@@ -157,11 +156,10 @@ class QuestionList extends Component {
                     defaultValue="newest"
                     onChange={this.handleFilterTabChange}
                     className="filters"
-                    size="small"
                 >
-                    <Radio.Button style={{ height: '40px', lineHeight: '36px', padding: '0px 12px' }} value="newest">Newest</Radio.Button>
-                    <Radio.Button style={{ height: '40px', lineHeight: '36px', padding: '0px 12px' }} value="answered">Answered</Radio.Button>
-                    {user && <Radio.Button style={{ height: '40px', lineHeight: '36px', padding: '0px 12px' }} value="my_questions">My Questions</Radio.Button>}
+                    <Radio.Button style={{padding: '0 12px'}} value="newest">Newest</Radio.Button>
+                    <Radio.Button style={{padding: '0 12px'}} value="answered">Answered</Radio.Button>
+                    {user && <Radio.Button style={{padding: '0 12px'}} value="my_questions">My Questions</Radio.Button>}
                 </Radio.Group>
                 <InfiniteScroll
                     initialLoad={false}

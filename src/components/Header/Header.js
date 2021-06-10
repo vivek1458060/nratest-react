@@ -113,7 +113,6 @@ function Navbar() {
                     footerStyle={{ paddingBottom: '30px' }}
                     bodyStyle={{ padding: 0, flexGrow: 0 }}
                 >
-                    {/* <SiderMenu onClick={() => showDrawer(false)} /> */}
                 </Drawer>
             </Layout.Header>
             <SubHeader />
