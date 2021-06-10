@@ -62,7 +62,7 @@ function LayoutCom(props) {
                             </Menu>
                         </Col>
                         <Col lg={{ span: 19 }} xs={24}>
-                            <div style={{ padding: '10px 10px 40px 10px' }}>
+                            <div style={{ padding: '10px 10px 80px 10px' }}>
                                 {props.children}
                             </div>
                         </Col>

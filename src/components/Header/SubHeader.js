@@ -21,7 +21,7 @@ function SubHeader() {
             onClick={handleClick} 
             selectedKeys={[current]} 
             mode="horizontal" 
-            className="showunderlgscreen"
+            style={{ position: 'relative' ,display: 'flex', justifyContent: 'center' }}
         >
             <Menu.Item key="/question/list" icon={<QuestionCircleOutlined />}>
                 Doubts

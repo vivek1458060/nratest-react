@@ -115,7 +115,9 @@ function Navbar() {
                 >
                 </Drawer>
             </Layout.Header>
-            <SubHeader />
+            <div className="showunderlgscreen">
+                <SubHeader />
+            </div>
         </HeaderWrapper>
     )
 }
