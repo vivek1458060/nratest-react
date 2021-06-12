@@ -206,8 +206,7 @@ function Classes(props) {
                 banner
                 showIcon
                 type="info"
-                message='Prerequisite'
-                description={`Download Zoom App before joining a class.`}
+                message='Prerequisite: Download Zoom App before joining a class.'
             />
             <RenderAuthModal
                 show={showSigninModal}

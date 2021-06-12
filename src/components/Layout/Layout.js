@@ -15,6 +15,10 @@ function LayoutCom(props) {
     const [openKeys, setOpenKeys] = React.useState(['submenu']);
     const [current, setCurrent] = useState(pathname);
 
+    useEffect(() => {
+        setCurrent(pathname);
+    }, [pathname])
+
     const onOpenChange = keys => {
         const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
         if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {

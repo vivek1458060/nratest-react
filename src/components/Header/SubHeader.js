@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { Menu } from 'antd';
 import { QuestionCircleOutlined, PlaySquareOutlined, SettingOutlined } from '@ant-design/icons';
 import { history } from '../../App';
@@ -9,6 +10,10 @@ const { SubMenu } = Menu;
 function SubHeader() {
     const pathname = history.location.pathname;
     const [current, setCurrent] = useState(pathname);
+
+    useEffect(() => {
+        setCurrent(pathname);
+    }, [pathname])
 
     const handleClick = e => {
         setCurrent(e.key);

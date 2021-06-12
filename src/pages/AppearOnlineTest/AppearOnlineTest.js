@@ -179,13 +179,13 @@ class AppearOnlineTest extends React.Component {
                             </h3>
                             <Radio.Group
                                 onChange={(e) => this.onChange(e, currentQuestion._id)}
-                                value={String(submission[currentQuestion._id])}
+                                value={submission[currentQuestion._id]}
                             >
                                 <Space direction="vertical">
                                     {
                                         currentQuestion.options.map((option, index) => (
                                             <Radio
-                                                value={String(index + 1)}
+                                                value={index + 1}
                                                 key={index}
                                             >
                                                 <span style={{marginRight: '10px'}} dangerouslySetInnerHTML={{ __html: option }}></span>

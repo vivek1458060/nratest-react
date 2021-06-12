@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, List, Tag, Typography, Descriptions, Card, PageHeader, Alert } from 'antd';
+import { Tag, Typography, Descriptions, PageHeader, Alert, Space } from 'antd';
+import { CheckCircleOutlined } from '@ant-design/icons'
 import axios from 'axios';
 import { connect } from 'react-redux';
 import RenderAuthModal from '../../components/RenderAuthModal';
@@ -71,7 +72,7 @@ class OnlineTestList extends Component {
     this.setState({ showSigninModal: val })
   }
   onComplete = () => {
-    this.forceUpdate();
+    setTimeout(() => this.forceUpdate(), 500);
   };
   render() {
     return (
@@ -83,8 +84,12 @@ class OnlineTestList extends Component {
         {
           this.state.tests.map((test) => {
             const hasSubmitted = test.submission && test.submission?.length > 0;
-            const currentTimeGreaterThanLive = moment().isSameOrAfter(test.liveDate, 'second')
-            const currentTimeLessThanLive = moment().isBefore(test.liveDate, 'second')
+
+            const testStartTime = test.liveDate;
+            const testEndTime = test.liveDate + test.liveDuration * 60000;
+
+            const isTestStarted = moment().valueOf() > testStartTime;
+            const isLive = isTestStarted && moment().isSameOrBefore(testEndTime);
             return (
               <div className="site-page-header-ghost-wrapper" style={{ padding: '10px', backgroundColor: '#f5f5f5' }}>
                 <PageHeader
@@ -99,22 +104,22 @@ class OnlineTestList extends Component {
                     <Descriptions.Item label="Total Question">{test.totalQuestion}</Descriptions.Item>
                     <Descriptions.Item label="Duration">{test.testDuration} mins</Descriptions.Item>
                   </Descriptions>
-                  {currentTimeLessThanLive && (
+                  {!isTestStarted && (
                     <Descriptions size="small" column={{ sm: 2, xs: 1 }}>
                       <Descriptions.Item label="Live Date">
-                        {moment().isSame(test.liveDate, 'day') ? (
-                          <Timer onComplete={this.onComplete} milliseconds={test.liveDate} />
-                        ) : <Typography.Text mark>{moment(test.liveDate).calendar()}</Typography.Text>}
+                        {moment().isSame(testStartTime, 'day') ? (
+                          <Timer onComplete={this.onComplete} milliseconds={testStartTime} />
+                        ) : <Typography.Text mark>{moment(testStartTime).calendar()}</Typography.Text>}
                       </Descriptions.Item>
                     </Descriptions>
                   )}
                   <div style={{ margin: "15px 0px" }}>
-                    {!hasSubmitted && currentTimeGreaterThanLive && (
+                    {!hasSubmitted && isTestStarted && (
                       <a
                         className="example-link"
                         onClick={(e) => {
                           e.preventDefault();
-                          if(!this.props.user) return this.setState({ showSigninModal: true });
+                          if (!this.props.user) return this.setState({ showSigninModal: true });
                           window.open(`/online-test-appear/${test._id}`, "_blank");
                         }}
                       >
@@ -122,29 +127,35 @@ class OnlineTestList extends Component {
                           Start Test
                       </a>
                     )}
-                    {hasSubmitted && (
-                      <a
-                        className="example-link"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          window.open(`/online-test-appear/${test._id}`, "_blank");
-                        }}
-                      >
-                        <img className="example-link-icon" src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg" alt="Start" />
-                        View Answer
-                      </a>
-                    )}
+                    {
+                      hasSubmitted && isLive && (
+                        <Alert
+                          type="info"
+                          showIcon
+                          banner
+                          message={`Result: Score and Submission will be visible ${moment(testEndTime).calendar()}`}
+                        />
+                      )
+                    } {
+                      hasSubmitted && !isLive && (
+                        <Space>
+                          <Tag color="geekblue" icon={<CheckCircleOutlined />}>
+                            Score: {test.submission[0]?.score}/{test.totalQuestion}
+                          </Tag>
+                          <a
+                            className="example-link"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              window.open(`/online-test-appear/${test._id}`, "_blank");
+                            }}
+                          >
+                            <img className="example-link-icon" src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg" alt="Start" />
+                            View Answer
+                          </a>
+                        </Space>
+                      )
+                    }
                   </div>
-                  {hasSubmitted && (
-                    <div>
-                      <Alert
-                        type="info"
-                        showIcon
-                        banner
-                        message={test.submission[0]?.score !== null ? `Your Score is ${test.submission[0]?.score}` : 'Score: Will be announced shortly'}
-                      />
-                    </div>
-                  )}
                 </PageHeader>
               </div>
             )
