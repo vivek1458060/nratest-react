@@ -28,13 +28,23 @@ class AddCurrentAffairs extends React.Component {
                         endDate: date.clone().endOf("day").valueOf()
                     }
                 });
-            this.setState({ currentAffairs: res.data.currentAffairs });
+            const currentAffairs = res.data.currentAffairs;
+            this.setState({ currentAffairs });
+            return currentAffairs;
         } catch (e) {
             console.log(e);
+            throw 'err'
         }
     }
-    componentDidMount() {
-        this.getCurrentAffairs(this.state.date);
+    async componentDidMount() {
+        try {
+            const data = await this.getCurrentAffairs(this.state.date);
+            if (!data.length) {
+                const prevDate = this.state.date.subtract(1, 'day');
+                await this.getCurrentAffairs(prevDate);
+                this.setState({ date: prevDate });
+            }
+        } catch (e) { }
     }
     onDateChange = (e) => {
         this.setState({ date: e })
@@ -94,27 +104,19 @@ class AddCurrentAffairs extends React.Component {
         return (
             <div>
                 <h1 style={{ fontWeight: 400, textAlign: 'center' }}>Current Affairs</h1>
-                <div style={{ display: 'flex' }}>
-                    <Form.Item
-                        validateTrigger={['onChange', 'onBlur']}
-                        name="date"
-                        rules={[
-                            {
-                                required: false,
-                                message: "Please select a date",
-                            },
-                        ]}
-                        style={{ marginRight: '10px' }}
-                    >
+                <div style={{ display: 'flex', alignItems: 'flex-end', margin: '15px 0px' }}>
+                    <div>
+                        <div><strong>Date</strong></div>
                         <DatePicker
                             onChange={this.onDateChange}
                             defaultValue={this.state.date}
-                            style={{ width: 150 }}
+                            style={{ width: 200 }}
                             disabledDate={(current) => current && current > moment().endOf('day')}
                             allowClear={false}
+                            format="MMMM Do YYYY"
                         />
-                    </Form.Item>
-                    {isAdmin && <Button type="primary" onClick={this.onShow}>Add One</Button>}
+                    </div>
+                    {isAdmin && <Button style={{marginLeft: '10px'}} type="primary" onClick={this.onShow}>Add One</Button>}
                 </div>
                 <Space direction="vertical" style={{ display: 'flex' }}>
                     {
@@ -125,8 +127,8 @@ class AddCurrentAffairs extends React.Component {
                             >
                                 <Card.Meta
                                     title={
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                            <div style={{ color: '#377dff' }}>{item.title}</div>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap-reverse' }}>
+                                            <div style={{ color: '#377dff', whiteSpace: 'break-spaces' }}>{item.title}</div>
                                             {isAdmin && <Space style={{ margin: '10px 0px' }}>
                                                 <Button onClick={(e) => {
                                                     e.stopPropagation();
@@ -143,7 +145,7 @@ class AddCurrentAffairs extends React.Component {
                                             </Space>}
                                         </div>
                                     }
-                                    description={<span dangerouslySetInnerHTML={{ __html: item.description }}></span>}
+                                    description={<span style={{ color: 'black' }} dangerouslySetInnerHTML={{ __html: item.description }}></span>}
                                 />
                             </Card>
                         ))

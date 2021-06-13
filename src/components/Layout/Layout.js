@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Menu } from 'antd';
-import { MailOutlined, SettingOutlined, QuestionCircleOutlined, PlaySquareOutlined } from '@ant-design/icons';
+import { MailOutlined, SettingOutlined, QuestionCircleOutlined, PlaySquareOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { history } from '../../App';
 import LayoutWrapper from './Layout.style';
 import CustomHeader from '../../components/Header/Header';
@@ -62,7 +62,7 @@ function LayoutCom(props) {
                                         )
                                     }
                                 </SubMenu>
-                                {user?.role === 'admin' && <Menu.Item key="/current-affairs">Current Affairs</Menu.Item>}
+                                <Menu.Item key="/current-affairs" icon={<UnorderedListOutlined />}>Current Affairs</Menu.Item>
                                 <Menu.Item key="/classes" icon={<PlaySquareOutlined />}>Live Class</Menu.Item>
                             </Menu>
                         </Col>
