@@ -34,9 +34,10 @@ function SubHeader() {
             <Menu.Item key="/classes" icon={<PlaySquareOutlined />}>
                 Live Class
             </Menu.Item>
-            <SubMenu key="SubMenu" icon={<SettingOutlined />} title="Test">
+            <SubMenu key="SubMenu" icon={<SettingOutlined />} title="More">
                 <Menu.Item key="/quizzes">Quiz</Menu.Item>
                 <Menu.Item key="/online-test">Online Tests</Menu.Item>
+                {user?.role === 'admin' && <Menu.Item key="/current-affairs">Current Affairs</Menu.Item>}
                 {
                     user?.role === 'admin' && (
                         <Menu.Item key="/create-online-test">Create Online Test</Menu.Item>

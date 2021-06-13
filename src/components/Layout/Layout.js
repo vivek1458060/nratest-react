@@ -9,10 +9,10 @@ import { useSelector } from 'react-redux';
 const { SubMenu } = Menu;
 
 function LayoutCom(props) {
-    const rootSubmenuKeys = ['submenu'];
+    const rootSubmenuKeys = ['testsubmenu'];
     const pathname = history.location.pathname;
 
-    const [openKeys, setOpenKeys] = React.useState(['submenu']);
+    const [openKeys, setOpenKeys] = React.useState(rootSubmenuKeys);
     const [current, setCurrent] = useState(pathname);
 
     useEffect(() => {
@@ -53,7 +53,7 @@ function LayoutCom(props) {
                                 // theme="dark"
                             >
                                 <Menu.Item key="/question/list" icon={<QuestionCircleOutlined />}>Doubts</Menu.Item>
-                                <SubMenu key="submenu" icon={<MailOutlined />} title="Test" icon={<SettingOutlined />}>
+                                <SubMenu key="testsubmenu" icon={<MailOutlined />} title="Test" icon={<SettingOutlined />}>
                                     <Menu.Item key="/quizzes">Quiz</Menu.Item>
                                     <Menu.Item key="/online-test">Online Test</Menu.Item>
                                     {
@@ -62,6 +62,7 @@ function LayoutCom(props) {
                                         )
                                     }
                                 </SubMenu>
+                                {user?.role === 'admin' && <Menu.Item key="/current-affairs">Current Affairs</Menu.Item>}
                                 <Menu.Item key="/classes" icon={<PlaySquareOutlined />}>Live Class</Menu.Item>
                             </Menu>
                         </Col>

@@ -25,6 +25,7 @@ const AddTest = loadable(() => import('./pages/AddTest/AddTest'));
 const AddTestQuestion = loadable(() => import('./pages/AddTestQuestion/AddTestQuestion'));
 const AppearOnlineTest = loadable(() => import('./pages/AppearOnlineTest/AppearOnlineTest'));
 const OnlineTestList = loadable(() => import("./pages/OnlineTestList/OnlineTestList"));
+const CurrentAffairs = loadable(() => import("./pages/CurrentAffairs"));
 
 export const history = createBrowserHistory();
 
@@ -61,6 +62,7 @@ function App() {
               <Route path="/create-online-test" component={AddTest} />
               <Route path="/create-online-test-questions/:testId" component={AddTestQuestion} />
               <Route path="/online-test" component={OnlineTestList} />
+              <Route path="/current-affairs" component={CurrentAffairs} />
             </Layout>
           </Switch>
         </Route>
